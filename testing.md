@@ -23,7 +23,9 @@ Future Live Application link
 ---
 ## TDD Documentation
 ---
-[]An admin can navigate to */admin to login and access admin controls.
+- [X] A superuser can navigate to */admin to login and access admin controls.
+- [ ] A user can login via URL naviagation */accounts/login.
+    
 
 
 ---
