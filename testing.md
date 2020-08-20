@@ -26,6 +26,7 @@ Future Live Application link
 - [X] A superuser can navigate to */admin to login and access admin controls.
 - [X] A user can login via URL naviagation */accounts/login.
     - Setup Allauth users can signup/login by email.
+- [X] A user can login via Google
 
 
 ---

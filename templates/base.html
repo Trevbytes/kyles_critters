@@ -1,0 +1,61 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block corecss %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>Kyle's Critters {% block extra_title %}{% endblock %}</title>
+  </head>
+  <body>
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
+
+  </body>
+</html>
