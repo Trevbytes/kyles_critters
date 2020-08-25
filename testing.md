@@ -25,10 +25,12 @@ Future Live Application link
 ---
 - [X] A superuser can navigate to */admin to login and access admin controls.
 - [X] A user can login via URL naviagation */accounts/login.
+    - Base template created.
     - Setup Allauth. users can signup/login by email.
 - [ ] A user can login via Google
+    - Added home app to be redirected to when logged in.
     - Google sign in connected. Cannot use the redirect function until the site is deployed on Heroku. Other login accounts will be added at this time.
-    
+- [ ] A user can navigate to diffrent pages via the nav bar.    
 
 ---
 ## Known Issues
