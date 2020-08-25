@@ -6,4 +6,4 @@ from django.shortcuts import render
 def loan(request):
     """ A view to return the loan a critter page """
 
-    return render(request, 'loan/loan.html')
+    return render(request, 'loan/loan_a_critter.html')
