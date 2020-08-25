@@ -42,7 +42,9 @@
     <title>Kyle's Critters {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header>
+    {% include 'includes/navbar.html' %}
+    </header>
 
     {% if messages %}
         <div class="message-container"></div>
