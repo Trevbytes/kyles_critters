@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.api
 if os.path.exists("env.py"):
     import env
 
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +95,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SITE_ID = 2
+SITE_ID = 3
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -167,3 +170,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+cloudinary.config(
+  cloud_name="chickpeas",
+  api_key='API_KEY_CLOUDINARY' in os.environ,
+  api_secret='SECRET_KEY_CLOUDINARY' in os.environ
+)

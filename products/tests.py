@@ -1,10 +1,14 @@
 from django.test import TestCase
 
-from .models import Item
+from .models import Product, Category, SubCategory
 
 
-class EntryModelTest(TestCase):
+class ProductModelTest(TestCase):
 
     def test_string_representation(self):
-        item = Item(name="Item Name")
-        self.assertEqual(str(item), item.name)
+        product = Product(name="Product Name")
+        self.assertEqual(str(product), product.name)
+
+    def test_verbose_name_plural(self):
+        self.assertEqual(str(Category._meta.verbose_name_plural), "Categories")
+        self.assertEqual(str(SubCategory._meta.verbose_name_plural), "Sub-Categories")
