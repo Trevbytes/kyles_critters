@@ -1,21 +1,21 @@
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
-  <a class="navbar-brand" href="#">Kyle's Critters</a>
+  <a class="navbar-brand" href="{% url 'home' %}">Kyle's Critters</a>
   <button
     class="navbar-toggler"
     type="button"
     data-toggle="collapse"
-    data-target="#navbarSupportedContent-333"
-    aria-controls="navbarSupportedContent-333"
+    data-target="#navbar-dropdown"
+    aria-controls="navbar-dropdown"
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+  <div class="collapse navbar-collapse" id="navbar-dropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"
+        <a class="nav-link" href="{% url 'home' %}"
           >Home
           <span class="sr-only">(current)</span>
         </a>
@@ -27,6 +27,7 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
+          href="{% url 'products' %}"         
           >Products
         </a>
         <ul
@@ -35,18 +36,18 @@
         >
           <li class="dropdown-item dropdown-submenu p-0">
             <a
-              href="#"
-              data-toggle="dropdown"
+              href="{% url 'products' %}"
+              data-hover="dropdown"
               class="dropdown-toggle dropdown-item w-100"
               >Critters
             </a>
             <ul
               class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100"
             >
-              <li class="dropdown-item dropdown-submenu p-0">
+              <li class="dropdown-submenu dropdown-item p-0">
                 <a
-                  href="#"
-                  data-toggle="dropdown"
+                  href="{% url 'products' %}"
+                  data-hover="dropdown"
                   class="dropdown-toggle dropdown-item w-100"
                   >Pedigree Critters
                 </a>
@@ -55,14 +56,14 @@
                   class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100"
                 >
                   <li class="dropdown-item p-0">
-                    <a href="#" class="dropdown-item w-100">How</a>
+                    <a href="{% url 'products' %}" class="dropdown-item w-100">How</a>
                   </li>
                 </ul>
               </li>
               <li class="dropdown-item dropdown-submenu p-0">
                 <a
-                  href="#"
-                  data-toggle="dropdown"
+                  href="{% url 'products' %}"
+                  data-hover="dropdown"
                   class="dropdown-toggle dropdown-item w-100"
                   >Feeders
                 </a>
@@ -71,22 +72,22 @@
                   class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100"
                 >
                   <li class="dropdown-item p-0">
-                    <a href="#" class="dropdown-item w-100">How</a>
+                    <a href="{% url 'products' %}" class="dropdown-item w-100">How</a>
                   </li>
                 </ul>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#" class="dropdown-item w-100">Misc.</a>
+            <a href="{% url 'products' %}" class="dropdown-item w-100">Misc.</a>
           </li>
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Loan a Critter</a>
+        <a class="nav-link" href="{% url 'loan' %}">Loan a Critter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Critter Gallery</a>
+        <a class="nav-link" href="{% url 'gallery' %}">Critter Gallery</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
@@ -102,19 +103,22 @@
         </a>
         <div
           class="dropdown-menu dropdown-menu-right dropdown-default"
-          aria-labelledby="navbarDropdownMenuLink-333"
+          aria-labelledby="user-options"
         >
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+        {% else %}
+            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+        {% endif %}
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
+        <a class="nav-link waves-effect waves-light" href="{% url 'checkout' %}">
           <i class="fa fa-paw"></i>
         </a>
       </li>
     </ul>
   </div>
 </nav>
-<!--/.Navbar -->
