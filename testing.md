@@ -32,7 +32,7 @@ Future Live Application link
     - Google sign in connected. Cannot use the redirect function until the site is deployed on Heroku. Other login accounts will be added at this time.
 - [X] A user can navigate to different pages via a url.
     - Set up basic sturcture all apps to allow for navigation to the pages. All tested urls return a 200 response.    
-- [ ] A user can navigate to different pages via the navbar.
+- [X] A user can navigate to the different pages via the navbar.
 ---
 ## Known Issues
 ---
