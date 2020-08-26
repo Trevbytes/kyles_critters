@@ -33,7 +33,9 @@ Future Live Application link
 - [X] A user can navigate to different pages via a url.
     - Set up basic sturcture all apps to allow for navigation to the pages. All tested urls return a 200 response.    
 - [X] A user can navigate to the different pages via the navbar.
-- [ ] A product can be registered into the store.
+- [X] A product can be registered into the store.
+    - Product models and catagories set up.
+- [ ] Products can be seen on the products page.
 ---
 ## Known Issues
 ---
