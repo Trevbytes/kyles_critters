@@ -33,5 +33,5 @@ class ProductsPageTests(TestCase):
         Product.objects.create(name='2-name', description='2-description', price=1.0)
         response = self.client.get('/products/')
         self.assertContains(response, '1-name')
-        self.assertContains(response, '1-body')
+        self.assertContains(response, '1-description')
         self.assertContains(response, '2-name')
