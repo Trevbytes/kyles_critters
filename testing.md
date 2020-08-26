@@ -35,7 +35,8 @@ Future Live Application link
 - [X] A user can navigate to the different pages via the navbar.
 - [X] A product can be registered into the store.
     - Product models and catagories set up.
-- [ ] Products can be seen on the products page.
+- [X] Products can be seen on the products page.
+    - Connected products to the html page.
 ---
 ## Known Issues
 ---
