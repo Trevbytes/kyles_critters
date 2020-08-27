@@ -37,7 +37,9 @@ Future Live Application link
     - Product models and catagories set up.
 - [X] Products can be seen on the products page.
     - Connected products to the html page.
-- [ ] Featured products display on the homepage.    
+- [X] Featured products display on the homepage.
+    - Featured option added to product model. Featured products are shown on the homepage.
+- [ ] Products are sorted and filtered on the products page. 
 ---
 ## Known Issues
 ---
