@@ -1,9 +1,52 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block page_header %}
+<div class="container">
+<div class="jumbotron card card-image home-jumbo">
+  <div class="text-white text-center py-5 px-4">
+    <div>
+      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong></strong></h2>
+      <p class="mx-5 mb-5">
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
 {% block content %}
-{% for product in products %}
-<p>{{product.name}}</p>
-<p>{{product.description}}</p>
-<p>{{product.price}}</p>
-{% endfor %}
+  <div class="container">
+  <h1 class="text-center">All Critters</h1>
+  <hr>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+  {% for product in products %} 
+  <div class="col mb-4">
+    <!-- Card -->
+    <div class="card">  
+      <!--Card image-->
+      <div class="view overlay">
+        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body bg-color-4 text-white">
+
+        <!--Title-->
+        <h4 class="card-title">{{product.name}}</h4>
+        <!--Text-->
+        <p class="card-text text-white">{{product.price}}</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-light-blue btn-md">Add to Cart</button>
+
+      </div>
+    </div>
+    <!-- Card --> 
+  </div>          
+  {% endfor %}  
+  </div>  
+</div>
+
 {% endblock %}
