@@ -1,9 +1,8 @@
-{% load static %}
-
 <!doctype html>
+{% load static %}
+{% load socialaccount %}
 <html lang="en">
   <head>
-
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
@@ -20,6 +19,8 @@
         <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <!-- Material Design Bootstrap -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css">
+        <!-- My Base CSS -->
+        <link rel="stylesheet"  href="{%  static  'css/base.css'  %}">
     {% endblock %}
 
     {% block extra_css %}
@@ -44,6 +45,7 @@
   <body>
     <header>
     {% include 'includes/navbar.html' %}
+    <div class="container mt-3 pt-5"></div>
     </header>
 
     {% if messages %}
@@ -54,6 +56,10 @@
     {% endblock %}
 
     {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    {% include 'includes/footer.html' %}
     {% endblock %}
 
     {% block postloadjs %}
