@@ -7,9 +7,11 @@
   <p>Welcome, {{ user.username }} !</p>
   {% endif %}
   {% for product in products %}
+  {% if product.featured == True %}
   <p>{{product.name}}</p>
   <p>{{product.description}}</p>
   <p>{{product.price}}</p>
+  {% endif %}
   {% endfor %}
 
 {% endblock %}
