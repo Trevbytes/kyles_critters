@@ -39,7 +39,7 @@ Future Live Application link
     - Connected products to the html page.
 - [X] Featured products display on the homepage.
     - Featured option added to product model. Featured products are shown on the homepage.
-- [ ] Products are sorted and filtered on the products page. 
+- [ ] Products are sorted and filtered on the products page. Products can be searched. 
 ---
 ## Known Issues
 ---
