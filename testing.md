@@ -37,6 +37,7 @@ Future Live Application link
     - Product models and catagories set up.
 - [X] Products can be seen on the products page.
     - Connected products to the html page.
+- [ ] Featured products display on the homepage.    
 ---
 ## Known Issues
 ---
