@@ -37,3 +37,12 @@ class TestViews(TestCase):
         response = self.client.get('/checkout/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout.html')
+
+    def test_get_search_q(self):
+        """ Test search function """
+        response = self.client.get('/products/?q=rat')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Rat')
+        response2 = self.client.get('/products/?q=mouse')
+        self.assertEqual(response2.status_code, 200)
+        self.assertContains(response2, 'Mouse')
