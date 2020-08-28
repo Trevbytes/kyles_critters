@@ -1,5 +1,6 @@
 from django.test import TestCase
-from products.models import Product
+from products.models import Product, Category, SubCategory
+
 
 class TestViews(TestCase):
 
@@ -40,8 +41,10 @@ class TestViews(TestCase):
 
     def test_get_search_q(self):
         """ Test search function """
-        Product.objects.create(name='Rat', description='1-description', price=3.7)
-        Product.objects.create(name='Mouse', description='2-description', price=1.0)
+        Product.objects.create(name='Rat', description='1-description',
+                               price=3.7)
+        Product.objects.create(name='Mouse', description='2-description',
+                               price=1.0)
         response = self.client.get('/products/?q=rat')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Rat')
@@ -50,3 +53,25 @@ class TestViews(TestCase):
         self.assertEqual(response2.status_code, 200)
         self.assertContains(response2, 'Mouse')
         self.assertNotContains(response2, 'Rat')
+
+    def test_get_product_categories(self):
+        """ Test search function """
+        Product.objects.create(category=(Category.objects.create(name='critters', friendly_name='Critters')),
+            sub_category=(SubCategory.objects.create(name='pedigree_critters', friendly_name='Pedigree Critters')), 
+            name='Rat', description='1-description', price=3.7)
+        Product.objects.create(category=(Category.objects.create(name='critters', friendly_name='Critters')),
+            sub_category=(SubCategory.objects.create(name='feeders', friendly_name='Feeders')), 
+            name='Mouse', description='1-description', price=3.7)
+        Product.objects.create(category=(Category.objects.create(name='critters', friendly_name='Critters')),
+            sub_category=(SubCategory.objects.create(name='pedigree_critters', friendly_name='Pedigree Critters')), 
+            name='Chicken', description='1-description', price=3.7)
+        Product.objects.create(category=(Category.objects.create(name='misc', friendly_name='Misc.')), 
+            name='Dirt', description='2-description', price=1.0)
+        response = self.client.get('/products/?q=critters')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Rat')
+        self.assertNotContains(response, 'Dirt')
+        response2 = self.client.get('/products/?q=pedigree_critters')
+        self.assertEqual(response2.status_code, 200)
+        self.assertContains(response2, 'Rat')
+        self.assertNotContains(response2, 'Mouse')
