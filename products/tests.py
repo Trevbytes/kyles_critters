@@ -33,3 +33,18 @@ class ProductsPageTests(TestCase):
         response = self.client.get('/products/')
         self.assertContains(response, '1-name')
         self.assertContains(response, '2-name')
+
+
+class ProductPageTest(TestCase):
+
+    def test_product(self):
+
+        """Test whether a product shows up on the product details page."""
+
+        Product.objects.create(name='1-name', description='1-description', price=5.8)
+        response = self.client.get('/products/1')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '1-description')
+        self.assertContains(response, 'price')
+        self.assertContains(response, 'name')
+

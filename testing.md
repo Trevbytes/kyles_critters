@@ -41,7 +41,10 @@ Future Live Application link
     - Featured option added to product model. Featured products are shown on the homepage.
 - [X] Products are sorted and filtered on the products page. Products can be searched.
     - Working search bar added to navbar.
-- [ ] Products can be filtered by catagories and subcatagories.
+- [X] Products can be filtered by catagories and subcatagories.
+    - Nav bar and search bar can be used to filter products by catagories.
+- [ ] A single product with details can be viewed.
+
 ---
 ## Known Issues
 ---
