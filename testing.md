@@ -43,8 +43,8 @@ Future Live Application link
     - Working search bar added to navbar.
 - [X] Products can be filtered by catagories and subcatagories.
     - Nav bar and search bar can be used to filter products by catagories.
-- [ ] A single product with details can be viewed.
-
+- [X] A single product with details can be viewed.
+    - A product details added.
 ---
 ## Known Issues
 ---
