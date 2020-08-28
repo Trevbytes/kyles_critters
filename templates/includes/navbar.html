@@ -36,7 +36,7 @@
         >
           <li class="dropdown-item dropdown-submenu p-0">
             <a
-              href="{% url 'products' %}"
+              href="{% url 'products' %}?category=critters"
               data-hover="dropdown"
               class="dropdown-toggle dropdown-item w-100"
               >Critters
@@ -46,7 +46,7 @@
             >
               <li class="dropdown-submenu dropdown-item p-0">
                 <a
-                  href="{% url 'products' %}"
+                  href="{% url 'products' %}?sub_category=pedigree_critters "
                   data-hover="dropdown"
                   class="dropdown-toggle dropdown-item w-100"
                   >Pedigree Critters
@@ -62,7 +62,7 @@
               </li>
               <li class="dropdown-item dropdown-submenu p-0">
                 <a
-                  href="{% url 'products' %}"
+                  href="{% url 'products' %}?sub_category=feeders"
                   data-hover="dropdown"
                   class="dropdown-toggle dropdown-item w-100"
                   >Feeders
@@ -73,13 +73,13 @@
                 >
                   <li class="dropdown-item p-0">
                     <a href="{% url 'products' %}" class="dropdown-item w-100">How</a>
-                  </li>
+                  </li> 
                 </ul>
               </li>
             </ul>
-          </li>
+          </li>          
           <li>
-            <a href="{% url 'products' %}" class="dropdown-item w-100">Misc.</a>
+            <a href="{% url 'products' %}?category=misc" class="dropdown-item w-100">Misc.</a>
           </li>
         </ul>
       </li>
