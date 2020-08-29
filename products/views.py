@@ -9,8 +9,8 @@ def products(request):
 
     products = Product.objects.all()
     query = None
-    category = None
-    subcategory = None
+    categories = None
+    subcategories = None
 
     if request.GET:
         if 'category' in request.GET:
@@ -34,8 +34,8 @@ def products(request):
     context = {
         'products': products,
         'search_term': query,
-        'current_category': category,
-        'current_subcategory': subcategory,
+        'current_category': categories,
+        'current_subcategory': subcategories,
     }
 
     return render(request, 'products/products.html', context)

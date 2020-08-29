@@ -15,7 +15,19 @@
 {% endblock %}
 {% block content %}
   <div class="container">
-  <h1 class="text-center">All Critters</h1>
+  <h1 class="text-center">
+  {% if current_subcategory %}
+  {% for c in current_subcategory %}
+  {{c.friendly_name}}
+  {% endfor %}
+  {% elif current_category %}
+  {% for c in current_category %}
+  {{c.friendly_name}}
+  {% endfor %}
+  {% else %}
+  Search Results for: {{search_term}}
+  {% endif %}
+  </h1>
   <hr>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
   {% for product in products %} 
