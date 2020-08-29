@@ -55,9 +55,13 @@
                   style="list-style-type: none;"
                   class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100"
                 >
+                  {% for product in all_critters %}
+                  {% if product.sub_category.name == 'pedigree_critters' %}
                   <li class="dropdown-item p-0">
-                    <a href="{% url 'products' %}" class="dropdown-item w-100">How</a>
+                    <a href="{% url 'product_detail' product.id %}" class="dropdown-item w-100">{{ product.name }}</a>
                   </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </li>
               <li class="dropdown-item dropdown-submenu p-0">
@@ -71,9 +75,13 @@
                   style="list-style-type: none;"
                   class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100"
                 >
+                  {% for product in all_critters %}
+                  {% if product.sub_category.name == 'feeders' %}
                   <li class="dropdown-item p-0">
-                    <a href="{% url 'products' %}" class="dropdown-item w-100">How</a>
-                  </li> 
+                    <a href="{% url 'product_detail' product.id %}" class="dropdown-item w-100">{{ product.name }}</a>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </li>
             </ul>
