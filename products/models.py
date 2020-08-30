@@ -36,7 +36,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     # Points to a Cloudinary image
-    image = CloudinaryField('image', null=True)
+    image = CloudinaryField('image', null=True, blank=True)
     featured = models.BooleanField(null=False, blank=False, default=False)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)

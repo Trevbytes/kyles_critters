@@ -1,9 +1,12 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+
+{% extends "base.html" %} {% load cloudinary %} {% load static %} {% block content %}
 
 <div class="container bg-color-4 rounded mb-5 mt-5">
   <div class="row">
     <div class="col-4 text-white">
-      Future image
+    <div class="container m-3">
+      {% cloudinary product.image THUMBNAILTEST %}
+    </div>  
     </div>
     <div class="col-8 text-white">
       <h1>{{ product.name }}</h1>

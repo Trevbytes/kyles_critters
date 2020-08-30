@@ -84,6 +84,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'products.context.all_critters',
+                'products.context.images',
             ],
         },
     },
