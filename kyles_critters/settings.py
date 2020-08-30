@@ -177,8 +177,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-cloudinary.config(
-  cloud_name="chickpeas",
-  api_key='API_KEY_CLOUDINARY' in os.environ,
-  api_secret='SECRET_KEY_CLOUDINARY' in os.environ
-)
+CLOUDINARY = {
+  'cloud_name': "chickpeas",
+  'api_key': 'CLOUDINARY_API_KEY' in os.environ,
+  'api_secret': 'CLOUDINARY_API_SECRET' in os.environ,
+}
