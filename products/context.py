@@ -18,11 +18,11 @@ def images(request):
             ]
         ),
         THUMBNAIL={
-            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 150, "width": 150, "use_root_path":True,
+            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 170, "width": 300,
         },
 
         THUMBNAILTEST={
-            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 300, "width": 300, "use_root_path":True,
+            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 300, "width": 300,
         },
         CLOUDINARY_CLOUD_NAME=cloudinary.config().chickpeas
     )
