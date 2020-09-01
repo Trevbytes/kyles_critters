@@ -2,7 +2,7 @@
 {% load static %}
 {% load cloudinary %}
 {% block page_header %}
-<div class="container">
+<div class="container ">
 <div class="jumbotron d-none d-md-flex p-0 b-0 m-0 card card-image">
 {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
 </div>
@@ -33,14 +33,14 @@
       </div>
 
       <!--Card content-->
-      <div class="card-body bg-color-4 text-white">
+      <div class="card-body bg-color-2 text-dark">
 
         <!--Title-->
         <h4 class="card-title">{{product.name}}</h4>
         <!--Text-->
-        <p class="card-text text-white">{{product.price}}</p>
+        <p class="card-text text-dark">{{product.price}}</p>
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-light-blue btn-md">Add to Cart</button>
+        <button type="button" class="btn bg-color-3 text-color-5 btn-md">Add to Cart</button>
 
       </div>
     </div>
