@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'gallery',
+    'cart',
     'checkout',
     'loan',
     'profiles',
