@@ -45,8 +45,9 @@ Future Live Application link
     - Nav bar and search bar can be used to filter products by catagories.
 - [X] A single product with details can be viewed.
     - A details page product added.
-- [ ] Products can be added to a cart and be viewed on a page.
-    -
+- [X] Products can be added to a cart and be viewed on a page.
+    - Started to write automated tests. Due to the simplicity of the add to cart forms, I removed the automated tests. Products can be added from the view products detail page. The cart can be viewed by clicking on the paw on the navbar.
+
 ---
 ## Known Issues
 ---
@@ -56,6 +57,8 @@ Most errors throughout the project have been simple syntax errors that took very
 ##### Resolved
 
 ##### Unresolved
+
+- A 404 error with no error details has been seen a few times throughout building the project. The exact reason I suspect has something to do with allauth. The current quick fix is to change the SITE_ID in the settings. After changing the id the project works again. 
 
 ---
 ## Pre-Release Testing

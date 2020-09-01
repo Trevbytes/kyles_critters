@@ -1,15 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 {% block page_header %}
 <div class="container">
-<div class="jumbotron card card-image home-jumbo">
-  <div class="text-white text-center py-5 px-4">
-    <div>
-      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong></strong></h2>
-      <p class="mx-5 mb-5">
-      </p>
-    </div>
-  </div>
+<div class="jumbotron d-none d-md-flex p-0 b-0 m-0 card card-image">
+{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
 </div>
 </div>
 {% endblock %}

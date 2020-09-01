@@ -24,5 +24,9 @@ def images(request):
         THUMBNAILTEST={
             "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 300, "width": 300,
         },
-        CLOUDINARY_CLOUD_NAME=cloudinary.config().chickpeas
-    )
+
+        JUMBO={
+            "crop": "scale", 'height': 400,
+        },
+
+ )
