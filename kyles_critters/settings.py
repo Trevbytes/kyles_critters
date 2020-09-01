@@ -86,6 +86,7 @@ TEMPLATES = [
 
                 'products.context.all_critters',
                 'products.context.images',
+                'cart.contexts.cart_contents',
             ],
         },
     },
