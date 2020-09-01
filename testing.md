@@ -44,7 +44,9 @@ Future Live Application link
 - [X] Products can be filtered by catagories and subcatagories.
     - Nav bar and search bar can be used to filter products by catagories.
 - [X] A single product with details can be viewed.
-    - A product details added.
+    - A details page product added.
+- [ ] Products can be added to a cart and be viewed on a page.
+    -
 ---
 ## Known Issues
 ---

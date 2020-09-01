@@ -34,6 +34,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/profile.html')
 
+    def test_get_cart(self):
+        response = self.client.get('/cart/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'cart/cart.html')
+
     def test_get_checkout(self):
         response = self.client.get('/checkout/')
         self.assertEqual(response.status_code, 200)
