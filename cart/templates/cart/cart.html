@@ -34,13 +34,23 @@
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                        <p class="my-0 small">SKU: {{ item.product.sku|upper }}</p>
+                                        <p class="my-0 small">SKU: {{ item.product.sku|upper }}</p>                                                                               
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <p class="my-0">{{ item.quantity }}</p>
+                                        <form class="update_cart" method="POST" action="{% url 'update_cart' item.item_id %}">
+                                            {% csrf_token %}
+                                                    <label for="id_qty_{{ item.item_id }}">Quantity</label>                                            
+                                                    <input class="form-control qty_input" type="number"
+                                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                        data-item_id="{{ item.item_id }}"
+                                                        id="id_qty_{{ item.item_id }}">
+
+                                        </form>
+                                        <button class="btn btn-danger btn-sm remove-item float-left mb-0" id="remove_{{ item.item_id }}">Remove<i class="fas fas fa-times pl-1"></i></button>
+                                        <button class="btn btn-rounded btn-elegant btn-sm update-btn float-right">Update<i class="fas fas fa-sync pl-1"></i></button>                                       
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -83,4 +93,29 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-btn').click(function(e) {
+        var form = $(this).prevUntil('.update-cart');
+        console.log(form)
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/cart/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
