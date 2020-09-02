@@ -47,7 +47,8 @@ Future Live Application link
     - A details page product added.
 - [X] Products can be added to a cart and be viewed on a page.
     - Started to write automated tests. Due to the simplicity of the add to cart forms, I removed the automated tests. Products can be added from the view products detail page. The cart can be viewed by clicking on the paw on the navbar.
-
+- [ ] Products can be updated and removed from the cart page.
+ 
 ---
 ## Known Issues
 ---
