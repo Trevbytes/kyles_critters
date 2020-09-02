@@ -45,6 +45,6 @@ class ProductPageTest(TestCase):
         response = self.client.get('/products/1')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '1-description')
-        self.assertContains(response, 'price')
+        self.assertContains(response, '$')
         self.assertContains(response, 'name')
 
