@@ -3,9 +3,7 @@
 {% load cloudinary %}
 {% block page_header %}
 <div class="container">
-<div class="jumbotron d-none d-md-flex p-0 b-0 m-0 card card-image">
-{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598974698/hamster.jpg" JUMBO %}
-</div>
+{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
 </div>
 {% endblock %}
 {% block content %}
@@ -34,9 +32,7 @@
       <!--Card image-->
       <div class="view overlay">
       {% if product.image %}
-        <div class="card-img-top" alt="Card image cap">
-        {% cloudinary product.image.url THUMBNAIL %}
-        </div>
+        {% cloudinary product.image.url CARD %}
       {% else %}
         <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
           alt="Card image cap">
@@ -47,7 +43,7 @@
       </div>
 
       <!--Card content-->
-      <div class="card-body bg-color-2 text-color-5">
+      <div class="card-body bg-color-2 text-color-5 rounded-bottom">
 
         <!--Title-->
         <h4 class="card-title">{{product.name}}</h4>

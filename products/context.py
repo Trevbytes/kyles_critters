@@ -21,12 +21,15 @@ def images(request):
             "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300,
         },
 
-        THUMBNAILTEST={
-            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 300, "width": 300,
+        DETAIL_IMAGE={
+            "class": "col-md-auto m-3 img-fluid rounded", "format": "jpg", "crop": "scale", "height": 300,
         },
 
         JUMBO={
-            "crop": "scale", 'height': 300,
+            "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto",
         },
 
+        CARD={
+            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "height": 170, "width": 300, "alt": "Card image cap",
+        },
  )

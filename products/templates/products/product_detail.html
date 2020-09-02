@@ -3,9 +3,7 @@
 
 <div class="container bg-color-2 rounded mb-5 mt-5">
   <div class="row justify-content-center">
-      <div class="col-md-auto container m-3 rounded">
-        {% cloudinary product.image THUMBNAILTEST %}
-      </div>
+    {% cloudinary product.image DETAIL_IMAGE %}
     <div class="col-md-auto text-color-5">
       <h1>{{ product.name }}</h1>
       <p>{{ product.description }}</p>

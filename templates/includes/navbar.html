@@ -55,7 +55,7 @@
 				<a class="nav-link dropdown-toggle multi-level-dropdown" id="products-dropdown" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false" href="{% url 'products' %}">Products
 				</a>
-				<ul style="list-style-type: none;" class="dropdown-menu mt-2 rounded-0 white border-0 z-depth-1">
+				<ul class="dropdown-menu mt-2 rounded-0 white border-0 z-depth-1">
 					<li class="dropdown-item dropdown-submenu p-0">
 						<a href="{% url 'products' %}?category=critters" data-hover="dropdown"
 							class="dropdown-toggle dropdown-item w-100">Critters
@@ -65,7 +65,7 @@
 								<a href="{% url 'products' %}?sub_category=pedigree_critters " data-hover="dropdown"
 									class="dropdown-toggle dropdown-item w-100">Pedigree Critters
 								</a>
-								<ul style="list-style-type: none;"
+								<ul 
 									class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100">
 									{% for product in all_critters %}
 									{% if product.sub_category.name == 'pedigree_critters' %}
@@ -115,8 +115,8 @@
           </div>
 				</form>
 			</li>
-			<li class="nav-item dropdown d-none d-md-block">
-				<a class="nav-link dropdown-toggle mt-1" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle mt-1" id="profileDropdown" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user"></i>
 				</a>
@@ -130,7 +130,7 @@
 					{% endif %}
 				</div>
 			</li>
-			<li class="nav-item d-none d-md-block">
+			<li class="nav-item d-none d-lg-block">
 				<a class="nav-link waves-effect waves-light" href="{% url 'view_cart' %}">
 					<div class="text-center">
 						<div><i class="fas fa-paw fa-lg"></i></div>
