@@ -21,8 +21,9 @@
       <!--Card image-->
       <div class="view overlay">
       {% if product.image %}
-        <img class="card-img-top" src="{{ product.image.url }}"
-          alt="Card image cap">      
+        <div class="card-img-top" alt="Card image cap">
+        {% cloudinary product.image.url THUMBNAIL %}
+        </div>   
       {% else %}
         <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
           alt="Card image cap">

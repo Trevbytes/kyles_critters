@@ -18,7 +18,7 @@ def images(request):
             ]
         ),
         THUMBNAIL={
-            "class": "thumbnail inline", "format": "jpg", "crop": "fill", "height": 170, "width": 300,
+            "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300,
         },
 
         THUMBNAILTEST={
@@ -26,7 +26,7 @@ def images(request):
         },
 
         JUMBO={
-            "crop": "scale", 'height': 400,
+            "crop": "scale", 'height': 300,
         },
 
  )
