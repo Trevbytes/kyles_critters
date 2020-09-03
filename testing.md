@@ -49,7 +49,10 @@ Future Live Application link
     - Started to write automated tests. Due to the simplicity of the add to cart forms, I removed the automated tests. Products can be added from the view products detail page. The cart can be viewed by clicking on the paw on the navbar.
 - [X] Products can be updated and removed from the cart page.
     - Quantity update and remove item buttons added.
-- [ ] Alert messages are shown when the cart is modified.
+- [X] Alert messages are shown when the cart is modified.
+    - Alerts added when adding, updateing, and removing items from the cart.
+- [ ] A user can 'checkout'. Providing checkout infomation such as billing address, delivery address and order details.
+
 ---
 ## Known Issues
 ---
