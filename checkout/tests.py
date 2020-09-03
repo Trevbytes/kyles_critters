@@ -1,4 +1,6 @@
 from django.test import TestCase
+from .models import Order
+
 
 class CheckoutModelTest(TestCase):
 
@@ -15,7 +17,7 @@ class CheckoutModelTest(TestCase):
                              county="erw",
                              date="22/23/2000",
                              grand_total=22.44)
-        
+
     def test_string_representation_order(self):
         order = Order.objects.get(full_name="Test Name")
-        self.assertEqual(str(order), order.order_number)        
+        self.assertEqual(str(order), order.order_number)
