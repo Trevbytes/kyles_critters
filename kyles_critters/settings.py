@@ -181,7 +181,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CLOUDINARY = {
-  'cloud_name': "chickpeas",
+  'cloud_name': 'CLOUDINARY_CLOUD_NAME' in os.environ,
   'api_key': 'CLOUDINARY_API_KEY' in os.environ,
   'api_secret': 'CLOUDINARY_API_SECRET' in os.environ,
 }
