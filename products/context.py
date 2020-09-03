@@ -30,6 +30,6 @@ def images(request):
         },
 
         CARD={
-            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "height": 170, "width": 300, "alt": "Card image cap",
+            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "alt": "Card image cap",
         },
  )
