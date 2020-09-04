@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Order
+from .forms import OrderForm
 
 
 class CheckoutModelTest(TestCase):
@@ -27,9 +28,9 @@ class CheckoutFormTest(TestCase):
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = OrderForm()
-        self.assertEqual(form.Meta.fields, ['full_name', 'email',
+        self.assertEqual(form.Meta.fields, ('full_name', 'email',
                                             'phone_number',
                                             'street_address1',
                                             'street_address2',
                                             'town_or_city', 'postcode',
-                                            'country', 'county'])
+                                            'country', 'county'))
