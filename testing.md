@@ -50,8 +50,10 @@ Future Live Application link
 - [X] Products can be updated and removed from the cart page.
     - Quantity update and remove item buttons added.
 - [X] Alert messages are shown when the cart is modified.
-    - Alerts added when adding, updateing, and removing items from the cart.
-- [ ] A user can 'checkout'. Providing checkout infomation such as billing address, delivery address and order details.
+    - Alerts added when adding, updating, and removing items from the cart.
+- [X] A user can 'checkout'. Providing checkout infomation such as billing address, delivery address and order details.
+    - Created a form for shopper information and finished first draft of the checkout template.
+- [ ] A user can pay via secure checkout by Stripe. 
 
 ---
 ## Known Issues
