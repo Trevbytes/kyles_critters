@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'cloudinary',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kyles_critters.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -88,6 +91,10 @@ TEMPLATES = [
                 'products.context.images',
                 'cart.contexts.cart_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
