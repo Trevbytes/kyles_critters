@@ -21,3 +21,15 @@ class CheckoutModelTest(TestCase):
     def test_string_representation_order(self):
         order = Order.objects.get(full_name="Test Name")
         self.assertEqual(str(order), order.order_number)
+
+
+class CheckoutFormTest(TestCase):
+
+    def test_fields_are_explicit_in_form_metaclass(self):
+        form = OrderForm()
+        self.assertEqual(form.Meta.fields, ['full_name', 'email',
+                                            'phone_number',
+                                            'street_address1',
+                                            'street_address2',
+                                            'town_or_city', 'postcode',
+                                            'country', 'county'])
