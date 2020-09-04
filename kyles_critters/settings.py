@@ -194,3 +194,8 @@ CLOUDINARY = {
   'api_key': 'CLOUDINARY_API_KEY' in os.environ,
   'api_secret': 'CLOUDINARY_API_SECRET' in os.environ,
 }
+
+# Stripe
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
