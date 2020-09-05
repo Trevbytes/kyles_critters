@@ -6,8 +6,8 @@ from .models import UserProfile
 class ProfileModelTest(TestCase):
 
     def setUp(self):
-        self.user1 = User.objects.create(username='user1')
-        UserProfile.objects.create(user=self.user1,
+        UserProfile.objects.create(user=(User.objects.create(
+                                         username='user1')),
                                    default_phone_number='252353',
                                    default_country="test",
                                    default_postcode="324",
