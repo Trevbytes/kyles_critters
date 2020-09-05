@@ -53,8 +53,10 @@ Future Live Application link
     - Alerts added when adding, updating, and removing items from the cart.
 - [X] A user can 'checkout'. Providing checkout infomation such as billing address, delivery address and order details.
     - Created a form for shopper information and finished first draft of the checkout template.
-- [ ] A user can pay via secure checkout by Stripe. 
-
+- [X] A user can pay via secure checkout by Stripe. 
+    - Orders can be processed using a test card. Webhooks are attached but not fully functional.
+- [ ] A user can view their order history as well as save their user information.
+ 
 ---
 ## Known Issues
 ---
