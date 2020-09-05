@@ -41,8 +41,8 @@ class TestViews(TestCase):
 
     def test_get_checkout(self):
         response = self.client.get('/checkout/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'checkout/checkout.html')
+        # The cart is empty, the view is redirected.
+        self.assertEqual(response.status_code, 302)
 
     def test_get_search_q(self):
         """ Test search function """

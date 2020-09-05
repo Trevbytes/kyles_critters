@@ -189,10 +189,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CLOUDINARY_CLOUD_NAME = os.getenv('CLOUDINARY_CLOUD_NAME', '')
+CLOUDINARY_API_KEY = os.getenv('CLOUDINARY_API_KEY', '')
+CLOUDINARY_API_SECRET = os.getenv('CLOUDINARY_API_SECRET', '')
+
 CLOUDINARY = {
-  'cloud_name': 'CLOUDINARY_CLOUD_NAME' in os.environ,
-  'api_key': 'CLOUDINARY_API_KEY' in os.environ,
-  'api_secret': 'CLOUDINARY_API_SECRET' in os.environ,
+  'cloud_name': CLOUDINARY_CLOUD_NAME,
+  'api_key': CLOUDINARY_API_KEY,
+  'api_secret': CLOUDINARY_API_SECRET,
 }
 
 # Stripe
