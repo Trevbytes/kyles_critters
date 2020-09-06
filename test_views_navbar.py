@@ -31,8 +31,8 @@ class TestViews(TestCase):
 
     def test_get_profile(self):
         response = self.client.get('/profile/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'profiles/profile.html')
+        # User that is not logged in is redirected to login page
+        self.assertEqual(response.status_code, 302)
 
     def test_get_cart(self):
         response = self.client.get('/cart/')

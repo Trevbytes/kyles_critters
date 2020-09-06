@@ -17,18 +17,3 @@ class ProfileModelTest(TestCase):
                                    default_street_address2="wwer",
                                    default_county="erw")
 
-    def test_string_representation_profile(self):
-        profile = UserProfile.objects.get(default_phone_number="252353")
-        self.assertEqual(str(profile), profile.user.username)
-
-
-class ProfileFormTest(TestCase):
-
-    def test_fields_are_explicit_in_user_form_metaclass(self):
-        form = UserProfileForm()
-        self.assertEqual(form.Meta.fields, ('default_phone_number',
-                                            'default_street_address1',
-                                            'default_street_address2',
-                                            'default_town_or_city',
-                                            'default_postcode',
-                                            'default_county'))
