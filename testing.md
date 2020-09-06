@@ -55,7 +55,9 @@ Future Live Application link
     - Created a form for shopper information and finished first draft of the checkout template.
 - [X] A user can pay via secure checkout by Stripe. 
     - Orders can be processed using a test card. Webhooks are attached but not fully functional.
-- [ ] A user can view their order history as well as save their user information.
+- [X] A user can view their order history as well as save their user information.
+    - User profile page added. Added a form to store default profile information. Added order history to the profile page.
+- [ ] An admin can add, remove, and edit products.
  
 ---
 ## Known Issues
