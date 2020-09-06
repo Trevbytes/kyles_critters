@@ -19,11 +19,11 @@
                         <legend class="fieldset-label small text-black px-2 w-auto rounded">Delivery</legend>
                         {{ form.default_phone_number | as_crispy_field }}
                         {{ form.default_country | as_crispy_field }}
-                        {{ form.default_postcode | as_crispy_field }}
-                        {{ form.default_town_or_city | as_crispy_field }}
                         {{ form.default_street_address1 | as_crispy_field }}
-                        {{ form.default_street_address2 | as_crispy_field }}
+                        {{ form.default_street_address2 | as_crispy_field }}                        
+                        {{ form.default_town_or_city | as_crispy_field }}
                         {{ form.default_county | as_crispy_field }}
+                        {{ form.default_postcode | as_crispy_field }}                        
                     </fieldset>
                     <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
                 </form>
