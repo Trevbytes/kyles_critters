@@ -2,3 +2,5 @@
 *.pyc
 __pycache__
 env.py
+loan/static/loan/js/imagesloaded.pkgd.min.js
+loan/static/loan/js/masonry.pkgd.min.js
