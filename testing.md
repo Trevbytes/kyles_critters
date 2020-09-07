@@ -57,8 +57,8 @@ Future Live Application link
     - Orders can be processed using a test card. Webhooks are attached but not fully functional.
 - [X] A user can view their order history as well as save their user information.
     - User profile page added. Added a form to store default profile information. Added order history to the profile page.
-- [ ] An admin can add, remove, and edit products.
- 
+- [X] An admin can add, remove, and edit products.
+    - Added pages to add and edit products. Added view and url to delete products.
 ---
 ## Known Issues
 ---
