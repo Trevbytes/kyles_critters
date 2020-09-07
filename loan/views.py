@@ -43,3 +43,29 @@ def loan(request):
 
     return render(request, template, context)
 
+    if request.method == 'POST':
+
+        form_data = {
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'town_or_city': request.POST['town_or_city'],
+            'county': request.POST['county'],
+            'postcode': request.POST['postcode'],
+            'critter_request': request.POST['critter_request'],
+            'request_info': request.POST['request_info'],
+        }
+
+        request_form = LoanRequestForm(form_data)
+        if request_form.is_valid():
+            request = request_form.save(commit=False)
+
+            # Save the info to the user's profile if all is well
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', args=[request.request_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
