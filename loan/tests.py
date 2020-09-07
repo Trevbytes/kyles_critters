@@ -1,6 +1,5 @@
 from django.test import TestCase
 from .models import LoanRequest
-from .forms import LoanRequestForm
 
 
 class CheckoutModelTest(TestCase):
