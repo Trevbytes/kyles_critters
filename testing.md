@@ -59,6 +59,8 @@ Future Live Application link
     - User profile page added. Added a form to store default profile information. Added order history to the profile page.
 - [X] An admin can add, remove, and edit products.
     - Added pages to add and edit products. Added view and url to delete products.
+- [ ] A user can request to loan available critters.
+
 ---
 ## Known Issues
 ---
