@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import LoanRequest
+from .forms import LoanRequestForm
 
 
 class CheckoutModelTest(TestCase):
@@ -33,5 +34,5 @@ class LoanFormTest(TestCase):
                                             'street_address2',
                                             'town_or_city', 'postcode',
                                             'country', 'county',
-                                            'request_info',
-                                            'critter_request'))
+                                            'critter_request',
+                                            'request_info',))
