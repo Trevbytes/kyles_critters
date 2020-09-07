@@ -1,1 +1,80 @@
 {% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+{% block page_header %}
+<div class="container">
+{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
+</div>
+{% endblock %}
+{% block content %}
+    <div class="container mb-3 pr-3">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Loan a Critter</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row bg-color-2 rounded-top pt-3">
+            <div class="col">
+                <h2 class="logo-font mb-4">About loaning a critter.</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row bg-color-2 rounded-bottom pt-3">
+
+            <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <h4>Available Critters</h4>
+
+            <div class="container-fluid">
+            <div class="grid">
+                {% for product in products %}
+                {% if product.featured == True %}  
+                {% cloudinary product.image.url LOAN %}    
+                {% endif %}    
+                {% endfor %}
+                </div>          
+            </div>                              
+              
+            </div>
+            <div class="col-12 col-lg-6">
+                <p class="text-muted">Please fill out the form below to request to loan our critters.</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-5">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                        {{ request_form.full_name | as_crispy_field }}
+                        {{ request_form.email | as_crispy_field }}
+                        {{ request_form.phone_number | as_crispy_field }}
+                        {{ request_form.country | as_crispy_field }}
+                        {{ request_form.street_address1 | as_crispy_field }}
+                        {{ request_form.street_address2 | as_crispy_field }}                        
+                        {{ request_form.town_or_city | as_crispy_field }}
+                        {{ request_form.county | as_crispy_field }}
+                        {{ request_form.postcode | as_crispy_field }}
+                        {{ request_form.critter_request | as_crispy_field }}
+                        {{ request_form.request_info | as_crispy_field }}                        
+                    </fieldset>
+                    <div class="submit-button text-right mt-5 mb-2">                    
+						<button id="submit-button" class="btn bg-color-3 rounded">
+							<span class="font-weight-bold">Send Request</span>
+							<span class="icon">
+								<i class="fas fa-lock"></i>
+							</span>
+						</button>
+					</div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super }}
+<script>
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 160,
+  gutter: 20
+});
+</script>
+{% endblock %}

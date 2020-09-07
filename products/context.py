@@ -32,4 +32,8 @@ def images(request):
         CARD={
             "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "alt": "Card image cap",
         },
- )
+
+        LOAN={
+            "class": "grid-item p-2", "format": "jpg", "crop": "scale", "width": 200,
+        },   
+    )
