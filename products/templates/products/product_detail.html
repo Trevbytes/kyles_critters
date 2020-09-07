@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load cloudinary %} {% load static %} 
 {% block content %}
 
-<div class="container bg-color-2 rounded mb-5 mt-5">
+<div class="container bg-color-2 rounded mb-5 mt-5 p-3">
   <div class="row justify-content-center">
     {% cloudinary product.image DETAIL_IMAGE %}
     <div class="col-md-auto text-color-5">
@@ -9,12 +9,12 @@
       <p>{{ product.description }}</p>
       <p>${{ product.price }}</p>
       <form
-        class="md-form"
+        class=""
         action="{% url 'add_to_cart' product.id %}"
         method="POST"
       >
         {% csrf_token %}
-          <div>
+          <div class="md-form">
             <input
               type="number"
               name="quantity"
@@ -26,7 +26,7 @@
             <label for="quantity">Quantity</label>
           </div>
           <div class="col-12 mb-0">
-            <a href="{% url 'products' %}" class="btn rounded-0 mt-5">
+            <a href="{% url 'products' %}" class="btn bg-color-3 mt-5">
               <span class="icon">
                 <i class="fas fa-chevron-left"></i>
               </span>
@@ -34,7 +34,7 @@
             </a>
             <input
               type="submit"
-              class="btn rounded-0 text-uppercase mt-5"
+              class="btn bg-color-3 text-uppercase mt-5"
               value="Add to Cart"
             />
           </div>
