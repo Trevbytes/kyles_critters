@@ -12,7 +12,7 @@
         </div>
 
         <div class="row bg-color-2 rounded justify-content-center p-3">
-                <p class="text-black">Your request information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>. If you have not heard back from us within a week please feel free to contact us. </p>
+                <p class="text-black">Your request information is below. A confirmation email will be sent to <strong>{{ loan_request.email }}</strong>. If you have not heard back from us within a week please feel free to contact us. </p>
 
             <div class="col-12">
                 <div class="order-confirmation-wrapper">
@@ -28,7 +28,7 @@
                             <p class="mb-0 text-black font-weight-bold">Request Number</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.request_number }}</p>
+                            <p class="mb-0">{{ loan_request.order_number }}</p>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                             <p class="mb-0 text-black font-weight-bold">Request Date</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.date }}</p>
+                            <p class="mb-0">{{ loan_request.date }}</p>
                         </div>
                     </div>
 
@@ -50,11 +50,16 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="small mb-0 text-black font-weight-bold">
-                                Requested Critter(s): {{ request.critter_request }}
+                                Requested Critter(s): {{ loan_request.critter_request }}
                             </p>
                         </div>
-                        <div class="col-12 col-md-8 text-md-right">
-                            <p>Request info: {{ request.request_info }} </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Request Info: {{ loan_request.request_info }}
+                            </p>
                         </div>
                     </div>
 
@@ -69,7 +74,7 @@
                             <p class="mb-0 text-black font-weight-bold">Full Name</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.full_name }}</p>
+                            <p class="mb-0">{{ loan_request.full_name }}</p>
                         </div>
                     </div>
 
@@ -78,28 +83,28 @@
                             <p class="mb-0 text-black font-weight-bold">Address 1</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.street_address1 }}</p>
+                            <p class="mb-0">{{ loan_request.street_address1 }}</p>
                         </div>
                     </div>
 
-                    {% if request.street_address2 %}
+                    {% if loan_request.street_address2 %}
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">Address 2</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.street_address2 }}</p>
+                            <p class="mb-0">{{ loan_request.street_address2 }}</p>
                         </div>
                     </div>
                     {% endif %}
 
-                    {% if request.county %}
+                    {% if loan_request.county %}
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">County</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.county }}</p>
+                            <p class="mb-0">{{ loan_request.county }}</p>
                         </div>
                     </div>
                     {% endif %}
@@ -109,17 +114,17 @@
                             <p class="mb-0 text-black font-weight-bold">Town or City</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.town_or_city }}</p>
+                            <p class="mb-0">{{ loan_request.town_or_city }}</p>
                         </div>
                     </div>
 
-                    {% if request.postcode %}
+                    {% if loan_request.postcode %}
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">Postal Code</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.postcode }}</p>
+                            <p class="mb-0">{{ loan_request.postcode }}</p>
                         </div>
                     </div>
                     {% endif %}
@@ -129,7 +134,7 @@
                             <p class="mb-0 text-black font-weight-bold">Country</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.country }}</p>
+                            <p class="mb-0">{{ loan_request.country }}</p>
                         </div>
                     </div>
 
@@ -138,7 +143,7 @@
                             <p class="mb-0 text-black font-weight-bold">Phone Number</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ request.phone_number }}</p>
+                            <p class="mb-0">{{ loan_request.phone_number }}</p>
                         </div>
                     </div>
                 </div>
