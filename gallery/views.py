@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from .models import GalleryEntry
 
 
@@ -7,8 +8,9 @@ def gallery(request):
 
     entries = GalleryEntry.objects.all()
 
+    template = 'gallery/gallery.html'
     context = {
         'entries': entries,
     }
 
-    return render(request, 'gallery/gallery.html', context)
+    return render(request, template, context)

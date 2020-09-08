@@ -1,1 +1,50 @@
 {% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container mb-3 pr-3">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Critter Gallery</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row bg-color-2 rounded pt-3">
+            <div class="col">
+                <h2 class="logo-font mb-4">Welcome to the critter gallery! Here you can find pictures of critters.</h2>
+                <hr>                
+                <p>Log in or Create an account to add pictures of critters you purchased here.</p>
+                <button class="btn bg-color-3">Add a Critter</button>
+            </div>
+        </div>
+        <div class="grid p-3">
+                {% for entry in entries %}
+                {% if entry.critter_type != 'Dirt' %}  
+                <div class="grid-item card card-flip rounded bg-color-2">
+                    <div class="card-front">
+                {% cloudinary entry.image.url GALLERY %}
+                    </div>
+                    <div class="card-back bg-color-2 text-dark rounded ">
+                        {{ entry.critter_name }}
+                    </div>
+                </div>                   
+                {% endif %}    
+                {% endfor %}
+        </div>
+    </div>    
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script>
+    $('.grid').masonry({
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 300
+});
+    </script>
+{% endblock %}

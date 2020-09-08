@@ -35,5 +35,9 @@ def images(request):
 
         LOAN={
             "class": "grid-item p-2", "format": "jpg", "crop": "scale", "width": 200,
-        },   
+        },
+
+        GALLERY={
+            "format": "jpg", "crop": "scale", "width": 300,
+        },
     )
