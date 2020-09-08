@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
