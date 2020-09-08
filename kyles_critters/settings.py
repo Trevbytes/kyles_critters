@@ -18,21 +18,11 @@ if os.path.exists("env.py"):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-if 'DEVELOPMENT' in os.environ:
-    BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-else:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.9/howto/static-files/
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -79,6 +69,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'kyles_critters.urls'
