@@ -12,8 +12,4 @@ class GalleryEntryForm(forms.ModelForm):
 
     image = CloudinaryField('image', null=True, blank=True)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        names = Product.objects.all()
 
-        self.fields['critter_type'].choices = names

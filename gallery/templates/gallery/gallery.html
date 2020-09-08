@@ -18,7 +18,7 @@
                 <h2 class="logo-font mb-4">Welcome to the critter gallery! Here you can find pictures of critters.</h2>
                 <hr>                
                 <p>Log in or Create an account to add pictures of critters you purchased here.</p>
-                <button class="btn bg-color-3">Add a Critter</button>
+                <a class="btn bg-color-3" href="{% url 'add_entry' %}">Add a Critter</a>
             </div>
         </div>
         <div class="grid p-3">
@@ -28,8 +28,16 @@
                     <div class="card-front">
                 {% cloudinary entry.image.url GALLERY %}
                     </div>
-                    <div class="card-back bg-color-2 text-dark rounded ">
-                        {{ entry.critter_name }}
+                    <div class="card-back card bg-color-2 text-dark rounded justify-content-center">
+                        <h3>{{ entry.critter_name }}</h3>
+                        <h5>Critter: {{ entry.critter_type }}</h5>
+                        <p><strong>{{ entry.critter_info }}</strong></p>
+                        {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                        <a href="{% url 'edit_entry' entry.entry_number %}">Edit</a> | 
+                        <a class="text-danger" href="{% url 'delete_entry' entry.entry_number %}">Delete</a>
+                        </small>
+                        {% endif %}                                              
                     </div>
                 </div>                   
                 {% endif %}    
