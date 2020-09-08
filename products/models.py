@@ -44,6 +44,8 @@ class Product(models.Model):
     # Points to a Cloudinary image
     image = CloudinaryField('image', null=True, blank=True)
     featured = models.BooleanField(null=False, blank=False, default=False)
+    ready_to_loan = models.BooleanField(null=False, blank=False, default=False)
+    out_of_stock = models.BooleanField(null=False, blank=False, default=False) 
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
 
