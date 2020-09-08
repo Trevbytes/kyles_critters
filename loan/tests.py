@@ -6,7 +6,7 @@ from .forms import LoanRequestForm
 class CheckoutModelTest(TestCase):
 
     def setUp(self):
-        LoanRequest.objects.create(request_number="123",
+        LoanRequest.objects.create(order_number="123",
                              full_name="Test Name",
                              email="wer@eftim",
                              phone_number='252353',
@@ -22,7 +22,8 @@ class CheckoutModelTest(TestCase):
 
     def test_string_representation_order(self):
         loan_request = LoanRequest.objects.get(full_name="Test Name")
-        self.assertEqual(str(loan_request), loan_request.request_number)
+        self.assertEqual(str(loan_request), loan_request.order_number)
+
 
 class LoanFormTest(TestCase):
 
