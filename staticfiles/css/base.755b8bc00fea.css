@@ -1,0 +1,52 @@
+/*----------Site Color Palette-----------*/
+
+:root {
+  --bg-color-1: #F7F7FF;
+  --bg-color-2: #C49991;
+  --bg-color-3: #279AF1;
+  --bg-color-4: #60656F;
+  --bg-color-5: #131112;
+}
+.bg-color-1 {
+background-color: var(--bg-color-1);
+}
+
+.bg-color-2 {
+background-color: var(--bg-color-2);
+}
+
+.bg-color-3 {
+background-color: var(--bg-color-3);
+}
+
+.bg-color-4 {
+background-color: var(--bg-color-4);
+}
+
+.bg-color-5 {
+background-color: var(--bg-color-5);
+}
+
+.text-color-5 {
+    color: var(--bg-color-5);
+}
+
+body {
+    background: var(--bg-color-4);
+    background: radial-gradient(circle, var(--bg-color-4) 0%, var(--bg-color-5) 81%);
+    color: var(--bg-color-1);
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.home-jumbo {
+    background: var(--bg-color-4) url('/media/rabbit-home.jpg') no-repeat center;
+    background-size: contain;
+}
