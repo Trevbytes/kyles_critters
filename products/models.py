@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -39,7 +40,7 @@ class Product(models.Model):
                                      on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=False, blank=False)
     name = models.CharField(max_length=254, null=False, blank=False)
-    description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     # Points to a Cloudinary image
     image = CloudinaryField('image', null=True, blank=True)

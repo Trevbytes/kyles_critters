@@ -18,13 +18,11 @@
                 <h5 class="text-muted pt-3">Add an Entry</h5>            
                 <form method="POST" action="{% url 'add_entry' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
+                        {{ form.critter_name | as_crispy_field }}
+                        {{ form.critter_type | as_crispy_field }}
+                        {{ form.critter_info | safe }}
+                        {{ form.media }}
+                        {{ form.image }}
                     <div class="text-right">
                         <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
                         <button class="btn bg-color-3" type="submit">Add Entry</button>

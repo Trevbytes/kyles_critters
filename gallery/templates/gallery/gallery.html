@@ -31,7 +31,7 @@
                     <div class="card-back card bg-color-2 text-dark rounded justify-content-center">
                         <h3>{{ entry.critter_name }}</h3>
                         <h5>Critter: {{ entry.critter_type }}</h5>
-                        <p><strong>{{ entry.critter_info }}</strong></p>
+                        <p><strong>{{ entry.critter_info | safe }}</strong></p>
                         {% if request.user.is_superuser %}
                         <small class="ml-3">
                         <a href="{% url 'edit_entry' entry.entry_number %}">Edit</a> | 

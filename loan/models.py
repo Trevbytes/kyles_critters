@@ -4,6 +4,7 @@ from django.db import models
 from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
+from ckeditor.fields import RichTextField
 
 
 class LoanRequest(models.Model):
@@ -20,7 +21,7 @@ class LoanRequest(models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     critter_request = models.CharField(max_length=100, null=True, blank=True)
-    request_info = models.TextField(null=True, blank=True)    
+    request_info = RichTextField(null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def _generate_order_number(self):

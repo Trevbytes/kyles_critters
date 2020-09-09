@@ -6,7 +6,7 @@
     {% cloudinary product.image DETAIL_IMAGE %}
     <div class="col-md-auto text-color-5">
       <h1>{{ product.name }}</h1>
-      <p>{{ product.description }}</p>
+      <p>{{ product.description | safe }}</p>
       <p>${{ product.price }}</p>
       <form
         class=""

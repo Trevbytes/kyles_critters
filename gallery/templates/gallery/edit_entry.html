@@ -20,6 +20,9 @@
                     {% for field in form %}
                         {% if field.name != 'image' %}
                             {{ field | as_crispy_field }}
+                        {% elif field.name == critter_info %}
+                            {{ field | safe }}
+                            {{ field.media }}                            
                         {% else %}
                             {{ field }}
                         {% endif %}

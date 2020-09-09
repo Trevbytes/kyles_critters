@@ -53,7 +53,9 @@
                         {{ request_form.county | as_crispy_field }}
                         {{ request_form.postcode | as_crispy_field }}
                         {{ request_form.critter_request | as_crispy_field }}
-                        {{ request_form.request_info | as_crispy_field }}                        
+                        <p>Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
+                        {{ request_form.request_info | safe }}
+                        {{ request_form.media }}                        
                     </fieldset>
                     <div class="submit-button text-right mt-5 mb-2">                    
 						<button id="submit-button" class="btn bg-color-3 rounded">

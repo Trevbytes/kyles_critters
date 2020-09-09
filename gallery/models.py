@@ -4,6 +4,7 @@ from django.db import models
 from products.models import Product
 from profiles.models import UserProfile
 from cloudinary.models import CloudinaryField
+from ckeditor.fields import RichTextField
 
 
 class GalleryEntry(models.Model):
@@ -13,7 +14,7 @@ class GalleryEntry(models.Model):
     critter_name = models.CharField(max_length=50, null=False, blank=False)
     critter_type = models.ForeignKey(Product, null=True, blank=True,
                                  on_delete=models.SET_NULL)
-    critter_info = models.TextField(null=True, blank=True)
+    critter_info = RichTextField(null=True, blank=True)
     # Points to a Cloudinary image
     image = CloudinaryField('image', null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
