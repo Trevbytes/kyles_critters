@@ -17,16 +17,11 @@
             <div class="col-12">
                 <form method="POST" action="{% url 'edit_entry' entry.entry_number %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% elif field.name == critter_info %}
-                            {{ field | safe }}
-                            {{ field.media }}                            
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
+                        {{ form.critter_name | as_crispy_field }}
+                        {{ form.critter_type | as_crispy_field }}
+                        {{ form.critter_info | safe }}
+                        {{ form.media }}
+                        {{ form.image }}
                     <div class="text-right">
                         <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
                         <button class="btn bg-color-3" type="submit">Update Entry</button>
