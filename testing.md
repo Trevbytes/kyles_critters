@@ -27,7 +27,7 @@ Future Live Application link
 - [X] A user can login via URL naviagation */accounts/login.
     - Base template created.
     - Setup Allauth. users can signup/login by email.
-- [ ] A user can login via Google
+- [X] A user can login via Google
     - Added home app to be redirected to when logged in.
     - Google sign in connected. Cannot use the redirect function until the site is deployed on Heroku. Other login accounts will be added at this time.
 - [X] A user can navigate to different pages via a url.
@@ -61,7 +61,8 @@ Future Live Application link
     - Added pages to add and edit products. Added view and url to delete products.
 - [X] A user can request to loan available critters.
     - Added models and forms to handle a user sending in a request form.
-- [ ] A logged in user can add a gallery entry with a picture and basic info. 
+- [X] A logged in user can add a gallery entry with a picture and basic info.
+    - Gallery set up. An entry can be created and shown in the gallery. 
 
 ---
 ## Known Issues
