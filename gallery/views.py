@@ -3,16 +3,19 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import GalleryEntry
 from .forms import GalleryEntryForm
+from random import shuffle
 
 
 def gallery(request):
     """ A view to return the gallery page """
 
     entries = GalleryEntry.objects.all()
-
+    shuffled_entries = list(entries)
+    shuffle(shuffled_entries)
     template = 'gallery/gallery.html'
     context = {
         'entries': entries,
+        'shuffled_entries': shuffled_entries,
     }
 
     return render(request, template, context)

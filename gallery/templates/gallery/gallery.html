@@ -6,32 +6,32 @@
 {% endblock %}
 {% block content %}
     <div class="container mb-3 pr-3">
-        <div class="row">
+        <div class="row animated fadeIn">
             <div class="col">
                 <hr>
                 <h2 class="logo-font mb-4">Critter Gallery</h2>
                 <hr>
             </div>
         </div>
-        <div class="row bg-color-2 rounded pt-3">
+        <div class="row bg-color-2 p-3 pb-2 pt-4 rounded animated fadeIn">
             <div class="col text-center">
                 <p class="logo-font mb-4">Welcome! Here you can find pictures of critters bought at or sold at our store. If you have purchased a critter from us, please share a photo and short story of your critter in its new home!</p>
                 <hr>                
                 {% if request.user.is_authenticated %}                
                 <a class="btn bg-color-3" href="{% url 'add_entry' %}">Add a Critter</a>
                 {% else %}
-                <p>Log in or Create an account to add pictures of critters you purchased here.</p>                
+                <p><a href="{% url 'account_login' %}">Log in</a> or <a href="{% url 'account_signup' %}">Create an account</a>  to add pictures of critters you purchased here.</p>                
                 {% endif %}
             </div>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="grid col-xl-10 pt-3">
-                {% for entry in entries %}{% if entry.critter_type != 'Dirt' %}                  
-                <div class="grid-item card card-flip rounded bg-color-2">
+                {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
+                <div class="grid-item card card-flip bg-color-2">
                     <div class="card-front">
                         {% cloudinary entry.image.url GALLERY %}
                     </div>
-                    <div class="card-back card bg-color-2 logo-font rounded example-1 square scrollbar-cyan thin p-2">
+                    <div class="card-back card bg-color-2 logo-font example-1 square scrollbar-cyan thin p-2">
                         <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
                         <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}">
                         <p>{{ entry.critter_info|safe }}<p>
