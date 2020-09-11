@@ -2,7 +2,7 @@
 {% load static %}
 {% load cloudinary %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
+<link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
 {% endblock %}
 {% block content %}
     <div class="container mb-3 pr-3">
@@ -14,45 +14,55 @@
             </div>
         </div>
         <div class="row bg-color-2 rounded pt-3">
-            <div class="col">
-                <h2 class="logo-font mb-4">Welcome to the critter gallery! Here you can find pictures of critters.</h2>
+            <div class="col text-center">
+                <p class="logo-font mb-4">Welcome! Here you can find pictures of critters bought at or sold at our store. If you have purchased a critter from us, please share a photo and short story of your critter in its new home!</p>
                 <hr>                
-                <p>Log in or Create an account to add pictures of critters you purchased here.</p>
+                {% if request.user.is_authenticated %}                
                 <a class="btn bg-color-3" href="{% url 'add_entry' %}">Add a Critter</a>
+                {% else %}
+                <p>Log in or Create an account to add pictures of critters you purchased here.</p>                
+                {% endif %}
             </div>
         </div>
-        <div class="grid p-3">
-                {% for entry in entries %}
-                {% if entry.critter_type != 'Dirt' %}  
+        <div class="row d-flex justify-content-center">
+            <div class="grid col-xl-10 pt-3">
+                {% for entry in entries %}{% if entry.critter_type != 'Dirt' %}                  
                 <div class="grid-item card card-flip rounded bg-color-2">
                     <div class="card-front">
-                {% cloudinary entry.image.url GALLERY %}
+                        {% cloudinary entry.image.url GALLERY %}
                     </div>
-                    <div class="card-back card bg-color-2 text-dark rounded justify-content-center">
-                        <h3>{{ entry.critter_name }}</h3>
-                        <h5>Critter: {{ entry.critter_type }}</h5>
-                        <p><strong>{{ entry.critter_info | safe }}</strong></p>
+                    <div class="card-back card bg-color-2 logo-font rounded example-1 square scrollbar-cyan thin p-2">
+                        <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
+                        <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}">
+                        <p>{{ entry.critter_info|safe }}<p>
+                        <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>           
                         {% if request.user.is_superuser %}
-                        <small class="ml-3">
-                        <a href="{% url 'edit_entry' entry.entry_number %}">Edit</a> | 
-                        <a class="text-danger" href="{% url 'delete_entry' entry.entry_number %}">Delete</a>
-                        </small>
+                        <span>
+                          <a href="{% url 'edit_entry' entry.entry_number %}">Edit</a> | 
+                          <a class="text-danger" href="{% url 'delete_entry' entry.entry_number %}">Delete</a>
+                        </span>
                         {% endif %}                                              
                     </div>
                 </div>                   
-                {% endif %}    
-                {% endfor %}
+                {% endif %}{% endfor %}                   
+            </div>
         </div>
     </div>    
 {% endblock %}
 {% block postloadjs %}
     {{ block.super }}
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script>
-    $('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 300
-});
+        var $grid = $('.grid').masonry({
+    // options...
+        itemSelector: '.grid-item',
+        columnWidth: 300,
+        isFitWidth: true
+    });
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
+    });
     </script>
 {% endblock %}
