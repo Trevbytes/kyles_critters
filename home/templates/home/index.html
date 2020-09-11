@@ -2,18 +2,18 @@
 {% load static %}
 {% load cloudinary %}
 {% block page_header %}
-<div class="container align-context-center ">
+<div class="container align-context-center animated fadeIn">
 {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/h_300,w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
 </div>
 {% endblock %}
 {% block content %}
   <div class="container">
-  <h1 class="text-center">Featured Critters</h1>
+  <h1 class="text-center animated fadeIn">Featured Critters</h1>
   <hr>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
   {% for product in products %}
   {% if product.featured == True %}  
-  <div class="col mb-4">
+  <div class="col mb-4 animated fadeIn">
     <!-- Card -->
     <div class="card" style="height: 350px;">  
       <!--Card image-->
