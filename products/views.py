@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Product, Category, SubCategory
 from .forms import ProductForm
+from gallery.models import GalleryEntry
+from random import shuffle
 
 
 def products(request):
@@ -47,12 +49,17 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-
+    entries = GalleryEntry.objects.filter(Q(critter_type=product))
+    shuffled_entries = list(entries)
+    shuffle(shuffled_entries)
+    template = 'products/product_detail.html'
     context = {
         'product': product,
+        'shuffled_entries': shuffled_entries,
     }
 
-    return render(request, 'products/product_detail.html', context)
+    return render(request, template, context)
+
 
 @login_required
 def add_product(request):
@@ -71,7 +78,7 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,
