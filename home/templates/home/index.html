@@ -1,69 +1,85 @@
-{% extends "base.html" %}
-{% load static %}
-{% load cloudinary %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load cloudinary %} 
 {% block page_header %}
 <div class="container align-context-center animated fadeIn">
-{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/h_300,w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
+  {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/h_300,w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
 </div>
-{% endblock %}
+{% endblock %} 
 {% block content %}
-  <div class="container">
+<div class="container pt-3">
   <h1 class="text-center animated fadeIn">Featured Critters</h1>
-  <hr>
+  <hr />
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-  {% for product in products %}
-  {% if product.featured == True %}  
-  <div class="col mb-4 animated fadeIn">
-    <!-- Card -->
-    <div class="card" style="height: 350px;">  
-      <!--Card image-->
-      <div class="view overlay">
-      {% if product.image %}
-        {% cloudinary product.image.url CARD %}
-      {% else %}
-        <img class="card-img-top rounded-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-          alt="Card image cap">
-      {% endif %}          
-        <a href="{% url 'product_detail' product.id %}">
-          <div class="mask rgba-white-slight"></div>
-        </a> 
-      </div>
+    {% for product in products %} {% if product.featured == True %}
+    <div class="col mb-4 animated fadeIn">
+      <!-- Card -->
+      <div class="card" style="height: 350px;">
+        <!--Card image-->
+        <div class="view overlay">
+          {% if product.image %} {% cloudinary product.image.url CARD %} {% else %}
+          <img
+            class="card-img-top rounded-top"
+            src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+            alt="Card image cap"
+          />
+          {% endif %}
+          <a href="{% url 'product_detail' product.id %}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
 
-      <!--Card content-->
-      <div class="card-body bg-color-2 text-color-5 text-center">
-
-        <!--Title-->
-        <h4 class="card-title">{{product.name}}</h4>
-        <!--Text-->
-        <p class="card-text text-dark">${{product.price}}</p>
-        <a href="{% url 'product_detail' product.id %}">More Info</a>
-      </div>
-      <div class="card-footer bg-color-2 text-color-5 rounded-bottom text-center m-0 p-0">
-              <form
-        class="md-form m-0"
-        action="{% url 'add_to_cart' product.id %}"
-        method="POST"
-      >
-        {% csrf_token %}
-          <div>
+        <!--Card content-->
+        <div class="card-body bg-color-2 text-color-5 text-center">
+          <!--Title-->
+          <h4 class="card-title font-weight-normal">{{product.name}}</h4>
+          <!--Text-->
+          <p class="text-dark font-weight-bolder">${{product.price}}</p>
+        </div>
+        <div
+          class="card-footer bg-color-2 text-color-5 rounded-bottom text-center m-0 p-0 pt-1"
+        >
+          <a href="{% url 'product_detail' product.id %}">More Info</a>
+          <form
+            class="md-form m-0"
+            action="{% url 'add_to_cart' product.id %}"
+            method="POST"
+          >
+            {% csrf_token %}
+            <div>
+              <input
+                type="number"
+                name="quantity"
+                id="quantity"
+                value="1"
+                hidden
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn bg-color-3 btn-md rounded align-bottom"
+            >
+              <i class="fas fa-paw fa-lg"></i> Add 1 to Cart
+            </button>
             <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              value="1"
-              hidden
+              type="hidden"
+              name="redirect_url"
+              value="{{ request.path }}"
             />
-          </div>
-            <button type="submit" class="btn bg-color-3 btn-md rounded align-bottom">Add 1 to Cart</button>
-          <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-      </form>      
+          </form>
+          {% if request.user.is_superuser %}
+          <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
+            <a class="text-dark" href="{% url 'edit_product' product.id %}">
+              <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
+            >
+          </span>
+          {% endif %}
+        </div>
       </div>
+      <!-- Card -->
     </div>
-    <!-- Card --> 
-  </div>          
-  {% endif %}
-  {% endfor %}  
-  </div>  
+    {% endif %} {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

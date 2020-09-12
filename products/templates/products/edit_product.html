@@ -28,9 +28,14 @@
                     {{ form.featured | as_crispy_field }}
                     {{ form.ready_to_loan | as_crispy_field }}
                     {{ form.out_of_stock | as_crispy_field }}
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Update Product</button>
+                    <div class="row">
+                    <div class="col justify-contents-left">
+                    <a onclick="return confirmDelete()" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
+                    </div>                    
+                    <div class="col float-right justify-contents-right text-right">
+                        <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn bg-color-3 " type="submit">Update Product</button>
+                    </div>
                     </div>
                 </form>
             </div>            
@@ -45,5 +50,13 @@
             var file = $('#new-image')[0].files[0];
             $('#filename').text(`Image will be set to: ${file.name}`);
         });
+        //Confirms deletion
+        function confirmDelete() {
+        if (confirm("Are you sure you want to remove this product?") == false) {
+            return false;
+        } else {
+            return true;
+        }
+        }
     </script>
 {% endblock %}
