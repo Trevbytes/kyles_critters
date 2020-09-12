@@ -37,11 +37,12 @@
                         <p>{{ entry.critter_info|safe }}<p>
                         <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>           
                         {% if request.user.is_superuser %}
-                        <span>
-                          <a href="{% url 'edit_entry' entry.entry_number %}">Edit</a> | 
-                          <a class="text-danger" href="{% url 'delete_entry' entry.entry_number %}">Delete</a>
+                        <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
+                            <a class="text-dark" href="{% url 'edit_entry' entry.entry_number %}">
+                            <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
+                            >
                         </span>
-                        {% endif %}                                              
+                        {% endif %}                                               
                     </div>
                 </div>                   
                 {% endif %}{% endfor %}                   

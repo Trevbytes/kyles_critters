@@ -22,9 +22,14 @@
                         {{ form.critter_info | safe }}
                         {{ form.media }}
                         {{ form.image }}
-                    <div class="text-right">
-                        <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn bg-color-3" type="submit">Update Entry</button>
+                    <div class="row">
+                    <div class="col justify-contents-left">
+                    <a onclick="return confirmDelete()" class="btn btn-danger" href="{% url 'delete_entry' entry.entry_number %}">Delete Entry</a>
+                    </div>                    
+                    <div class="col float-right justify-contents-right text-right">
+                        <a class="btn bg-color-3" href="{% url 'gallery' %}">Cancel</a>
+                        <button class="btn bg-color-3 " type="submit">Update Entry</button>
+                    </div>
                     </div>
                 </form>
             </div>            
@@ -39,5 +44,13 @@
             var file = $('#new-image')[0].files[0];
             $('#filename').text(`Image will be set to: ${file.name}`);
         });
+            //Confirms deletion
+        function confirmDelete() {
+        if (confirm("Are you sure you want to remove this product?") == false) {
+            return false;
+        } else {
+            return true;
+        }
+        }
     </script>
 {% endblock %}
