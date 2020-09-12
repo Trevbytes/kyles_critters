@@ -1,5 +1,5 @@
 {% extends "account/base.html" %}
-
+{% load account socialaccount %}
 {% load i18n %}
 
 {% block content %}
@@ -24,18 +24,22 @@
     <button class="btn btn-info my-4 btn-block" type="submit">Register</button>
 
     <!-- Social register -->
-    <p>or sign up with:</p>
-
-    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
+    <p class="mr-5 pr-5 ml-5 pl-5">or login in with:</p>
+    {% get_providers as socialaccount_providers %}
+    {% providers_media_js %}    
+    <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="mx-2" role="button">
+    <i class="fab fa-facebook-f light-blue-text"></i></a>
+    {% for provider in socialaccount_providers %}
+    {% if provider.name == 'Google' %}
+    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} mx-2" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fab fa-google-plus-g fa-lg light-blue-text"></i></a>
+    {% endif %}
+    {% endfor %} 
     <hr>
 
     <!-- Terms of service -->
     <p>By clicking
-        <em>Sign up</em> you agree to our
+        <em>Register</em> you agree to our
         <a href="" target="_blank">terms of service</a>
     </p>
     <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">log in</a>.{% endblocktrans %}</p>
