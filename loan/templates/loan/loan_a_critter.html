@@ -17,20 +17,20 @@
         </div>
         <div class="row bg-color-2 rounded-top pt-3">
             <div class="col">
-                <h2 class="logo-font mb-4">About loaning a critter.</h2>
+                <h2 class="mb-4 text-dark">About loaning a critter.</h2>
                 <hr>
             </div>
         </div>
         <div class="row bg-color-2 rounded-bottom pt-3">
 
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark">
             <h4>Available Critters</h4>
 
             <div class="container-fluid">
             <div class="grid">
                 {% for product in products %}
-                {% if product.featured == True %}  
-                {% cloudinary product.image.url LOAN %}    
+                {% if product.ready_to_loan == True %}
+                {% cloudinary product.image.url LOAN %}     
                 {% endif %}    
                 {% endfor %}
                 </div>          
@@ -41,8 +41,7 @@
                 <p class="text-muted">Please fill out the form below to request to loan our critters.</p>
                 <form action="{% url 'loan' %}" method="POST" id="request-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <fieldset>                      
                         {{ request_form.full_name | as_crispy_field }}
                         {{ request_form.email | as_crispy_field }}
                         {{ request_form.phone_number | as_crispy_field }}
@@ -53,16 +52,16 @@
                         {{ request_form.county | as_crispy_field }}
                         {{ request_form.postcode | as_crispy_field }}
                         {{ request_form.critter_request | as_crispy_field }}
-                        <p>Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
+                        <p class="text-dark">Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
                         {{ request_form.request_info | safe }}
                         {{ request_form.media }}                        
                     </fieldset>
-                    <div class="submit-button text-right mt-5 mb-2">                    
-						<button id="submit-button" class="btn bg-color-3 rounded">
-							<span class="font-weight-bold">Send Request</span>
+                    <div class="submit-button text-center mb-2">                    
+						<button id="submit-button" class="btn bg-color-3 rounded">							
 							<span class="icon">
-								<i class="fas fa-lock"></i>
+								<i class="fas fa-paper-plane"></i>
 							</span>
+                            <span class="font-weight-bold">Send Request</span>
 						</button>
 					</div>
                 </form>
