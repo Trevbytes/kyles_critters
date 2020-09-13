@@ -58,8 +58,14 @@
             <button
               type="submit"
               class="btn bg-color-3 btn-md "
+              {% if product.out_of_stock %}
+              disabled
+              data-toggle="tooltip"              
             >
+              Out of Stock
+              {% else %} 
               <i class="fas fa-paw fa-lg"></i> Add 1 to Cart
+              {% endif %}
             </button>
             <input
               type="hidden"

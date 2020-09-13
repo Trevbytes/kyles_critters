@@ -1,89 +1,103 @@
-{% extends "base.html" %}
-{% load static %}
-{% load cloudinary %}
-{% block page_header %}
+{% extends "base.html" %} {% load static %} {% load cloudinary %} {% block page_header %}
 <div class="container animated fadeIn">
-{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
+  {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
 </div>
-{% endblock %}
-{% block content %}
-  <div class="container">
+{% endblock %} {% block content %}
+<div class="container">
   <h1 class="text-center animated slideInLeft">
-  {% if current_subcategory %}
-  {% for c in current_subcategory %}
-  {{c.friendly_name}}
-  {% endfor %}
-  {% elif current_category %}
-  {% for c in current_category %}
-  {{c.friendly_name}}
-  {% endfor %}
-  {% elif search_term %}
-  Search Results for: {{search_term}}
-  {% else %}
-  All Products
-  {% endif %}
+    {% if current_subcategory %}
+    {% for c in current_subcategory %}
+    {{c.friendly_name}}
+    {% endfor %}
+    {% elif current_category %}
+    {% for c in current_category %}
+    {{c.friendly_name}}
+    {% endfor %}
+    {% elif search_term %}
+    Search Results for: {{search_term}}
+    {% else %}
+    All Products
+    {% endif %}
   </h1>
-  <hr>
+  <hr />
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-  {% for product in products %} 
-  <div class="col mb-3 animated fadeIn">
-    <!-- Card -->
-    <div class="card" style="height: 350px;">  
-      <!--Card image-->
-      <div class="view overlay" >
-      {% if product.image %}
-        {% cloudinary product.image.url CARD %}
-      {% else %}
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-          alt="Card image cap">
-      {% endif %}          
-        <a href="{% url 'product_detail' product.id %}">
-          <div class="mask rgba-white-slight"></div>
-        </a> 
-      </div>
+    {% for product in products %}
+    <div class="col mb-3 animated fadeIn">
+      <!-- Card -->
+      <div class="card" style="height: 350px;">
+        <!--Card image-->
+        <div class="view overlay">
+          {% if product.image %} {% cloudinary product.image.url CARD %} {% else %}
+          <img
+            class="card-img-top"
+            src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+            alt="Card image cap"
+          />
+          {% endif %}
+          <a href="{% url 'product_detail' product.id %}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
 
-      <!--Card content-->
-      <div class="card-body bg-color-2 text-color-5 text-center">
-
-        <!--Title-->
-        <h4 class="card-title font-weight-normal">{{product.name}}</h4>
-        <!--Text-->
-        <p class="card-text text-dark text-color-5 font-weight-bolder">${{product.price}}</p>
-
-      </div>
-      <div class="card-footer bg-color-2 text-color-5 rounded-bottom text-center m-0 p-0 pt-1">
-        <a href="{% url 'product_detail' product.id %}">More Info</a>      
-              <form
-        class="md-form m-0"
-        action="{% url 'add_to_cart' product.id %}"
-        method="POST"
-      >
-        {% csrf_token %}
-          <div>
+        <!--Card content-->
+        <div class="card-body bg-color-2 text-color-5 text-center">
+          <!--Title-->
+          <h4 class="card-title font-weight-normal">{{product.name}}</h4>
+          <!--Text-->
+          <p class="card-text text-dark text-color-5 font-weight-bolder">
+            ${{product.price}}
+          </p>
+        </div>
+        <div
+          class="card-footer bg-color-2 text-color-5 rounded-bottom text-center m-0 p-0 pt-1"
+        >
+          <a href="{% url 'product_detail' product.id %}">More Info</a>
+          <form
+            class="md-form m-0"
+            action="{% url 'add_to_cart' product.id %}"
+            method="POST"
+          >
+            {% csrf_token %}
+            <div>
+              <input
+                type="number"
+                name="quantity"
+                id="quantity"
+                value="1"
+                hidden
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn bg-color-3 btn-md rounded align-bottom text-white"
+              {% if product.out_of_stock %}
+              disabled
+              data-toggle="tooltip"              
+            >
+              Out of Stock
+              {% else %} 
+              <i class="fas fa-paw fa-lg"></i> Add 1 to Cart
+              {% endif %}
+            </button>
             <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              value="1"
-              hidden
+              type="hidden"
+              name="redirect_url"
+              value="{{ request.path }}"
             />
-          </div>
-            <button type="submit" class="btn bg-color-3 btn-md rounded align-bottom text-white"><i class="fas fa-paw fa-lg"></i> Add 1 to Cart</button>
-          <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-      </form>        
-        {% if request.user.is_superuser %}
+          </form>
+          {% if request.user.is_superuser %}
           <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
             <a class="text-white" href="{% url 'edit_product' product.id %}">
               <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
             >
           </span>
-        {% endif %}      
+          {% endif %}
+        </div>
       </div>
+      <!-- Card -->
     </div>
-    <!-- Card --> 
-  </div>          
-  {% endfor %}  
-  </div>  
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

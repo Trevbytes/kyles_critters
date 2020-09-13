@@ -81,17 +81,22 @@
     setTimeout(function () {
       $('.alert').alert('close');
     }, 5000);
-let windowWidth = window.matchMedia("(max-width: 986px)");
-windowWidth.addListener(navFix);
-navFix(windowWidth);
-function navFix(y) {
-  if (y.matches) {
-    // If media query matches
-    $(".dropdownfix").addClass("d-none d-lg-block");
-  } else {
-    $(".dropdownfix").removeClass("d-none d-lg-block");
-  }
-}    
+    let windowWidth = window.matchMedia("(max-width: 986px)");
+    windowWidth.addListener(navFix);
+    navFix(windowWidth);
+    function navFix(y) {
+    if (y.matches) {
+        // If media query matches
+        $(".dropdownfix").addClass("d-none d-lg-block");
+    } else {
+        $(".dropdownfix").removeClass("d-none d-lg-block");
+    }
+    }
+
+    // Tooltips Initialization
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
     </script>
     {% endblock %}
 
