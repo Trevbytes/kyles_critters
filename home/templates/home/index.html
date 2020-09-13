@@ -37,7 +37,7 @@
           <p class="text-dark font-weight-bolder">${{product.price}}</p>
         </div>
         <div
-          class="card-footer bg-color-2 text-color-5 rounded-bottom text-center m-0 p-0 pt-1"
+          class="card-footer bg-color-2 rounded-bottom text-center m-0 p-0 pt-1"
         >
           <a href="{% url 'product_detail' product.id %}">More Info</a>
           <form
@@ -57,7 +57,7 @@
             </div>
             <button
               type="submit"
-              class="btn bg-color-3 btn-md rounded align-bottom"
+              class="btn bg-color-3 btn-md "
             >
               <i class="fas fa-paw fa-lg"></i> Add 1 to Cart
             </button>
@@ -68,8 +68,8 @@
             />
           </form>
           {% if request.user.is_superuser %}
-          <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
-            <a class="text-dark" href="{% url 'edit_product' product.id %}">
+          <span class="badge badge-pill badge-cyan bg-color-3  mb-2">
+            <a class="text-white" href="{% url 'edit_product' product.id %}">
               <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
             >
           </span>

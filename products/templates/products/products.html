@@ -68,12 +68,12 @@
               hidden
             />
           </div>
-            <button type="submit" class="btn bg-color-3 btn-md rounded align-bottom"><i class="fas fa-paw fa-lg"></i> Add 1 to Cart</button>
+            <button type="submit" class="btn bg-color-3 btn-md rounded align-bottom text-white"><i class="fas fa-paw fa-lg"></i> Add 1 to Cart</button>
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
       </form>        
         {% if request.user.is_superuser %}
           <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
-            <a class="text-dark" href="{% url 'edit_product' product.id %}">
+            <a class="text-white" href="{% url 'edit_product' product.id %}">
               <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
             >
           </span>

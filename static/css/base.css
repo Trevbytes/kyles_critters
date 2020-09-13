@@ -50,3 +50,5 @@ body {
     background: var(--bg-color-4) url('/media/rabbit-home.jpg') no-repeat center;
     background-size: contain;
 }
+
+.dropdown-item:hover {background-color: var(--bg-color-4) !important;}

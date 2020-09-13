@@ -20,6 +20,10 @@
 			</a>
 			<div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="user-options">
 				{% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'add_product' %}" class="dropdown-item">Add Product to Store</a>
+                        <a href="{% url 'admin:index' %}" class="dropdown-item">Admin Site</a>
+                    {% endif %}
 				<a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
 				<a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
 				{% else %}
@@ -52,42 +56,47 @@
 				</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle multi-level-dropdown" id="products-dropdown" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false" href="{% url 'products' %}">Products
+                <div class="btn-group">
+				<a class="nav-link mr-0 pr-0" id="products-drop" href="{% url 'products' %}">Products
 				</a>
-				<ul class="dropdown-menu mt-2 rounded-0 white border-0 z-depth-1">
-					<li class="dropdown-item dropdown-submenu p-0">
-						<a href="{% url 'products' %}?category=critters" data-hover="dropdown"
-							class="dropdown-toggle dropdown-item w-100">Critters
+				<a class="nav-link dropdown-toggle multi-level-dropdown ml-0 pl-0" id="products-dropdown" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+				</a>
+				<ul class="dropdown-menu mt-2 multi-level-dropdown z-depth-1 rounded bg-color-3 mr-1 dropright">                
+					<li class="dropdown-item dropdown-submenu multi-level-dropdown btn-group p-0">
+						<a href="{% url 'products' %}?category=critters"
+							class="nav-link w-75">Critters
 						</a>
-						<ul class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100">
+						<a  
+							class="dropdown-toggle nav-link w-25 d-none d-lg-block" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
+						</a>
+						<ul class="dropdown-menu mr-2 bg-color-3 rounded z-depth-1 r-100 dropdownfix">
 							<li class="dropdown-submenu dropdown-item p-0">
-								<a href="{% url 'products' %}?sub_category=pedigree_critters " data-hover="dropdown"
-									class="dropdown-toggle dropdown-item w-100">Pedigree Critters
+								<a href="{% url 'products' %}?sub_category=pedigree_critters "
+									class="dropdown-toggle dropdown-item nav-link w-100">Pedigree Critters
 								</a>
 								<ul 
-									class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100">
+									class="dropdown-menu mr-2 bg-color-3 rounded  z-depth-1 r-100">
 									{% for product in all_critters %}
 									{% if product.sub_category.name == 'pedigree_critters' %}
-									<li class="dropdown-item p-0">
+									<li class="dropdown-item nav-link p-0">
 										<a href="{% url 'product_detail' product.id %}"
-											class="dropdown-item w-100">{{ product.name }}</a>
+											class="dropdown-item w-100 nav-link">{{ product.name }}</a>
 									</li>
 									{% endif %}
 									{% endfor %}
 								</ul>
 							</li>
-							<li class="dropdown-item dropdown-submenu p-0">
-								<a href="{% url 'products' %}?sub_category=feeders" data-hover="dropdown"
-									class="dropdown-toggle dropdown-item w-100">Feeders
+							<li class="dropdown-item bg-color-3 rounded dropdown-submenu p-0">
+								<a href="{% url 'products' %}?sub_category=feeders"
+									class="dropdown-toggle dropdown-item w-100 nav-link">Feeders
 								</a>
-								<ul style="list-style-type: none;"
-									class="dropdown-menu mr-2 rounded-0 white border-0 z-depth-1 r-100">
+								<ul class="dropdown-menu mr-2 bg-color-3 rounded z-depth-1 r-100">
 									{% for product in all_critters %}
 									{% if product.sub_category.name == 'feeders' %}
 									<li class="dropdown-item p-0">
 										<a href="{% url 'product_detail' product.id %}"
-											class="dropdown-item w-100">{{ product.name }}</a>
+											class="dropdown-item w-100 nav-link">{{ product.name }}</a>
 									</li>
 									{% endif %}
 									{% endfor %}
@@ -96,9 +105,10 @@
 						</ul>
 					</li>
 					<li>
-						<a href="{% url 'products' %}?category=misc" class="dropdown-item w-100">Misc.</a>
+						<a href="{% url 'products' %}?category=misc" class="dropdown-item w-100 nav-link">Misc.</a>
 					</li>
 				</ul>
+                </div>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'loan' %}">Loan a Critter</a>
@@ -120,17 +130,17 @@
 					aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user"></i>
 				</a>
-				<div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="user-options">
+				<div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
 					{% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                        <a href="{% url 'add_product' %}" class="dropdown-item">Add Product to Store</a>
-                        <a href="{% url 'admin:index' %}" class="dropdown-item">Admin Site</a>
+                        <a href="{% url 'add_product' %}" class="dropdown-item nav-link">Add Product to Store</a>
+                        <a href="{% url 'admin:index' %}" class="dropdown-item nav-link">Admin Site</a>
                     {% endif %}
-					<a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-					<a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+					<a href="{% url 'profile' %}" class="dropdown-item nav-link">My Profile</a>
+					<a href="{% url 'account_logout' %}" class="dropdown-item nav-link">Logout</a>
 					{% else %}
-					<a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-					<a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+					<a href="{% url 'account_signup' %}" class="dropdown-item nav-link">Register</a>
+					<a href="{% url 'account_login' %}" class="dropdown-item nav-link">Login</a>
 					{% endif %}
 				</div>
 			</li>
