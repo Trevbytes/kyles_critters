@@ -14,7 +14,7 @@
     {% for product in products %} {% if product.featured == True %}
     <div class="col mb-4 animated fadeIn">
       <!-- Card -->
-      <div class="card" style="height: 350px;">
+      <div class="card h-100">
         <!--Card image-->
         <div class="view overlay">
           {% if product.image %} {% cloudinary product.image.url CARD %} {% else %}
@@ -30,14 +30,14 @@
         </div>
 
         <!--Card content-->
-        <div class="card-body bg-color-2 text-color-5 text-center">
+        <div class="card-body bg-color-2 text-color-5 text-center" >
           <!--Title-->
-          <h4 class="card-title font-weight-normal">{{product.name}}</h4>
+          <h4 class="card-title font-weight-normal mb-0 ">{{product.name}}</h4>
           <!--Text-->
-          <p class="text-dark font-weight-bolder">${{product.price}}</p>
+          <p class="body-text text-dark font-weight-bolder mb-0">${{product.price}}</p>
         </div>
         <div
-          class="card-footer bg-color-2 rounded-bottom text-center m-0 p-0 pt-1"
+          class="card-footer bg-color-2 rounded-bottom text-center m-0 p-0"
         >
           <a href="{% url 'product_detail' product.id %}">More Info</a>
           <form
