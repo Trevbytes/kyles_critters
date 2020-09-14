@@ -19,6 +19,14 @@
     All Products
     {% endif %}
   </h1>
+  <div class="text-center animate fadeIn">
+  {% for category in all_categories %}
+  <a href="{% url 'products' %}?category={{category.name}}" class="badge bg-color-3 animate fadeIn">{{category.friendly_name}}</a>
+  {% endfor %}
+  {% for subcategory in all_subcategories %}
+  <a href="{% url 'products' %}?sub_category={{subcategory.name}}" class="badge bg-color-3 animate fadeIn">{{subcategory.friendly_name}}</a>
+  {% endfor %}
+  </div>
   <hr />
   {% include 'includes/product_card_stack.html' %}
 </div>

@@ -12,6 +12,8 @@ def products(request):
     """ A view to return the products page """
 
     products = Product.objects.all()
+    allcategories = Category.objects.all()
+    allsubcategories = SubCategory.objects.all()
     query = None
     categories = None
     subcategories = None
@@ -40,6 +42,8 @@ def products(request):
         'search_term': query,
         'current_category': categories,
         'current_subcategory': subcategories,
+        'all_categories': allcategories,
+        'all_subcategories': allsubcategories,
     }
 
     return render(request, 'products/products.html', context)
