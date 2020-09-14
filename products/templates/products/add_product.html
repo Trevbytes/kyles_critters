@@ -8,14 +8,13 @@
             <div class="col-12 ">
                 <hr>
                 <h2 class="logo-font mb-4">Product Management</h2>
-
+                <h5 class="text-muted">Add a Product</h5>     
                 <hr>
             </div>
         </div>
 
-        <div class="row bg-color-2 rounded ">
-            <div class="col-12">
-                <h5 class="text-muted pt-3">Add a Product</h5>            
+        <div class="row bg-color-2 rounded pt-2">
+            <div class="col-12">      
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.category | as_crispy_field }}
@@ -30,8 +29,8 @@
                     {{ form.ready_to_loan | as_crispy_field }}
                     {{ form.out_of_stock | as_crispy_field }}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+                        <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn bg-color-3" type="submit">Add Product</button>
                     </div>
                 </form>
             </div>            
