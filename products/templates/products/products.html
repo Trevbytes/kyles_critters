@@ -20,8 +20,9 @@
     {% endif %}
   </h1>
   <div class="text-center animate fadeIn">
-  {% for subcategory in all_subcategories %}
+  {% for subcategory in all_subcategories %}{% if subcategory.name != 'none' %}
   <a href="{% url 'products' %}?sub_category={{subcategory.name}}" class="badge bg-color-3 animate fadeIn">{{subcategory.friendly_name}}</a>
+  {% endif %}
   {% endfor %}  
   {% for category in all_categories %}{% if category.name != 'critters' %}
   <a href="{% url 'products' %}?category={{category.name}}" class="badge bg-color-3 animate fadeIn">{{category.friendly_name}}</a>
