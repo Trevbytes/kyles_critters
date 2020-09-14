@@ -9,14 +9,13 @@
     {% cloudinary product.image DETAIL_IMAGE %}
     </div>
     <div class="col-md-auto text-color-5 pt-2">
-                 {% if request.user.is_superuser %}
-            <h1>{{ product.name }}</h1>                 
-          <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
-            <a class="text-white" href="{% url 'edit_product' product.id %}">
-              <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
-            >
-          </span>
-          {% endif %}     
+             <h1>{{ product.name }}</h1>    
+                 {% if request.user.is_superuser %}   
+                    <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
+                    <a class="text-white" href="{% url 'edit_product' product.id %}">
+                    <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a>
+                    </span>
+                 {% endif %}     
       <p>{{ product.description | safe }}</p>
       <p>${{ product.price }}</p>
       <form action="{% url 'add_to_cart' product.id %}" method="POST">
