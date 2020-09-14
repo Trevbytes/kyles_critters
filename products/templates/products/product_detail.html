@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load cloudinary %} {% load static %} 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+<link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container bg-color-2 rounded mt-5 p-3">
@@ -50,53 +50,15 @@
   </div>
 </div>
 <div class="container p-3 pb-5">
-                {% if shuffled_entries %}
-                <div class="row justify-content-center">
-                <h4>Critter Showcase</h4>              
-                </div>
-
-                {% endif %} 
-
-          <div class="row justify-content-center">
-
-            <div class="grid col-xl-10 pt-3">
-                {% for entry in shuffled_entries %}{% if entry.critter_type == product %}              
-                <div class="grid-item card card-flip bg-color-2">
-                    <div class="card-front">
-                        {% cloudinary entry.image.url GALLERY %}
-                    </div>
-                    <div class="card-back card bg-color-2 logo-font example-1 square scrollbar-cyan thin p-2">
-                        <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
-                        <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}">
-                        <p>{{ entry.critter_info|safe }}<p>
-                        {% if request.user.is_superuser %}
-                        <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
-                            <a class="text-dark" href="{% url 'edit_entry' entry.entry_number %}">
-                            <i class="fas fa-cog fa-sm" aria-hidden="true"></i> Edit</a
-                            >
-                        </span>
-                        {% endif %}                                              
-                    </div>
-                </div>                   
-                {% endif %}{% endfor %}                   
-        </div>  
-          </div>
+{% if shuffled_entries %}
+<div class="row justify-content-center">
+    <h4>{{product.name}} Showcase</h4>              
+</div>
+{% include 'includes/gallery_masonry.html' %}
+{% endif %}                 
 </div>
 {% endblock %}
 {% block postloadjs %}
     {{ block.super }}
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script>
-        var $grid = $('.grid').masonry({
-    // options...
-        itemSelector: '.grid-item',
-        columnWidth: 300,
-        isFitWidth: true
-    });
-    // layout Masonry after each image loads
-    $grid.imagesLoaded().progress( function() {
-    $grid.masonry('layout');
-    });
-    </script>
+    {% include 'includes/masonry_js.html' %}
 {% endblock %}
