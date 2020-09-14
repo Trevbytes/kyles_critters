@@ -51,64 +51,10 @@
 	<div class="collapse navbar-collapse" id="navbar-dropdown">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="{% url 'home' %}">Home
-					<span class="sr-only">(current)</span>
-				</a>
+				<a class="nav-link" href="{% url 'home' %}">Home</a>
 			</li>
-			<li class="nav-item dropdown">
-                <div class="btn-group">
-				<a class="nav-link mr-0 pr-0" id="products-drop" href="{% url 'products' %}">Products
-				</a>
-				<a class="nav-link dropdown-toggle multi-level-dropdown ml-0 pl-0" id="products-dropdown" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false">
-				</a>
-				<ul class="dropdown-menu mt-2 multi-level-dropdown z-depth-1 rounded bg-color-3 mr-1 dropright">                
-					<li class="dropdown-item dropdown-submenu multi-level-dropdown btn-group p-0">
-						<a href="{% url 'products' %}?category=critters"
-							class="nav-link w-75">Critters
-						</a>
-						<a  
-							class="dropdown-toggle nav-link w-25 d-none d-lg-block" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
-						</a>
-						<ul class="dropdown-menu mr-2 bg-color-3 rounded z-depth-1 r-100 dropdownfix">
-							<li class="dropdown-submenu dropdown-item p-0">
-								<a href="{% url 'products' %}?sub_category=pedigree_critters "
-									class="dropdown-toggle dropdown-item nav-link w-100">Pedigree Critters
-								</a>
-								<ul 
-									class="dropdown-menu mr-2 bg-color-3 rounded  z-depth-1 r-100">
-									{% for product in all_critters %}
-									{% if product.sub_category.name == 'pedigree_critters' %}
-									<li class="dropdown-item nav-link p-0">
-										<a href="{% url 'product_detail' product.id %}"
-											class="dropdown-item w-100 nav-link">{{ product.name }}</a>
-									</li>
-									{% endif %}
-									{% endfor %}
-								</ul>
-							</li>
-							<li class="dropdown-item bg-color-3 rounded dropdown-submenu p-0">
-								<a href="{% url 'products' %}?sub_category=feeders"
-									class="dropdown-toggle dropdown-item w-100 nav-link">Feeders
-								</a>
-								<ul class="dropdown-menu mr-2 bg-color-3 rounded z-depth-1 r-100">
-									{% for product in all_critters %}
-									{% if product.sub_category.name == 'feeders' %}
-									<li class="dropdown-item p-0">
-										<a href="{% url 'product_detail' product.id %}"
-											class="dropdown-item w-100 nav-link">{{ product.name }}</a>
-									</li>
-									{% endif %}
-									{% endfor %}
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="{% url 'products' %}?category=misc" class="dropdown-item w-100 nav-link">Misc.</a>
-					</li>
-				</ul>
-                </div>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'products' %}?category=critters">Critters</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'loan' %}">Loan a Critter</a>
