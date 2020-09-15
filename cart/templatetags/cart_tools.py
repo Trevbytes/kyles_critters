@@ -1,3 +1,4 @@
+# Custom cart tool to calculate a subtotal. Code taught by Code Institute
 from django import template
 
 
