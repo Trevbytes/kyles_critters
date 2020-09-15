@@ -1,140 +1,119 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cart_tools %}
-
 {% block content %}
-    <div class="container mb-2">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="mb-4">Your Cart</h2>
-                <hr>
+<div class="container mb-2">
+   <div class="row d-flex justify-content-center">
+      <div class="col-md-8">
+         <hr>
+         <h2 class="mb-4">Your Cart</h2>
+         <hr>
+      </div>
+   </div>
+   <div class="row d-flex justify-content-center">
+      <div class="col-md-8">
+         {% if cart_items %}
+         <div class="table-responsive mx-auto bg-color-2 rounded">
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th scope="col">Product Info</th>
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Subtotal</th>
+                  </tr>
+               </thead>
+               {% for item in cart_items %}
+               <tr>
+                  <td class="py-3 w-25">
+                     <div class="view overlay">
+                        {% if item.product.image %}
+                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                        {% else %}
+                        <img
+                           class="card-img-top"
+                           src="https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg"
+                           alt="Card image cap"
+                           />
+                        {% endif %}
+                        <a href="{% url 'product_detail' item.product.id %}" target="_blank">
+                           <div class="mask rgba-white-slight"></div>
+                        </a>
+                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        <p class="my-0 small">SKU: {{ item.product.sku|upper }}</p>
+                        <p>Price: ${{ item.product.price }}</p>
+                     </div>
+                  </td>
+                  <td class="py-3 px-0 w-50">
+                     <form class="update_cart" method="POST" action="{% url 'update_cart' item.item_id %}">
+                        {% csrf_token %}                                           
+                        <input class="form-control qty_input text-center" type="number"
+                           name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                           data-item_id="{{ item.item_id }}"
+                           id="id_qty_{{ item.item_id }}">
+                     </form>
+                     <button class="btn btn-danger btn-sm remove-item float-left my-1 py-1" id="remove_{{ item.item_id }}"><i class="fas fas fa-times"></i> Remove</button>
+                     <button class="btn text-white bg-color-3 btn-sm float-right my-1 py-1 update-btn"><i class="fas fas fa-sync"></i> Update</button>                                       
+                  </td>
+                  <td class="py-3">
+                     <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                  </td>
+               </tr>
+               {% endfor %}
+               <tr>
+                  <td colspan="3" class=" text-center">
+                     <h4 class=""><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="3" class="text-center">
+                     <a href="{% url 'products' %}" class="btn btn-sm text-white bg-color-3 m-1">
+                     <i class="fas fa-chevron-left"></i>
+                     Back to the Critters
+                     </a>
+                     <a href="{% url 'checkout' %}" class="btn text-white bg-color-3 m-1">
+                     <i class="fas fa-lock"></i>                                 
+                     Secure Checkout
+                     </a>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         {% else %}
+         <p class="lead mb-5">Your cart is empty.</p>
+         <a href="{% url 'products' %}" class="btn bg-color-3 btn-lg">
+         <i class="fas fa-chevron-left"></i> 
+         Back to the Critters
+         </a>
+         <div class="m-5 p-5 b-5">
+            <div class="m-5 p-5 b-5">
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                {% if cart_items %}
-                    <div class="table-responsive table-borderless rounded">
-                        <table class="table bg-color-2 rounded">
-                            <thead class="">
-                                <tr>
-                                    <th scope="col">Product Info</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Qty</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
-
-                            {% for item in cart_items %}
-                                <tr class="">
-                                    <td class="p-3 w-25">
-                                            <div class="view overlay">
-                                            {% if item.product.image %}
-                                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
-                                            {% else %}
-                                            <img
-                                                class="card-img-top"
-                                                src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-                                                alt="Card image cap"
-                                            />
-                                            {% endif %}
-                                            <a href="{% url 'product_detail' item.product.id %}" target="_blank">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </a>
-                                            </div>
-                                        
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                        <p class="my-0 small">SKU: {{ item.product.sku|upper }}</p>                                                                               
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0">${{ item.product.price }}</p>
-                                    </td>
-                                    <td class="py-3 w-25">
-                                        <form class="update_cart" method="POST" action="{% url 'update_cart' item.item_id %}">
-                                            {% csrf_token %}
-                                                    <label for="id_qty_{{ item.item_id }}">Quantity</label>                                            
-                                                    <input class="form-control qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        id="id_qty_{{ item.item_id }}">
-
-                                        </form>
-                                        <button class="btn btn-danger btn-sm remove-item float-left mb-0" id="remove_{{ item.item_id }}">Remove<i class="fas fas fa-times pl-1"></i></button>
-                                        <button class="btn text-white bg-color-3 btn-sm float-right">Update<i class="fas fas fa-sync pl-1"></i></button>                                       
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            <tr>
-                                <td colspan="5" class="pt-3 text-right">
-                                    <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="text-right">
-                                    <a href="{% url 'products' %}" class="btn text-white bg-color-3">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </span>
-                                        <span>Back to the Critters</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn text-white bg-color-3">
-                                        <span class="icon">
-                                            <i class="fas fa-lock"></i>
-                                        </span>                                    
-                                        <span>Secure Checkout</span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                        </div>
-                    </div>
-                {% else %}
-                    <p class="lead mb-5">Your cart is empty.</p>
-                    <a href="{% url 'products' %}" class="btn bg-color-3 btn-lg">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Keep Shopping</span>
-                    </a>
-                    <div class="m-5 p-5 b-5">
-                    <div class="m-5 p-5 b-5">
-                    
-                    </div>                    
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+</div>
 {% endblock %}
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-btn').click(function(e) {
-        var form = $(this).prevUntil('.update-cart');
-        console.log(form)
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+   // Update quantity on click
+   $('.update-btn').click(function(e) {
+       var form = $(this).prevUntil('.update-cart');
+       form.submit();
+   })
+   
+   // Remove item and reload on click
+   $('.remove-item').click(function(e) {
+       var csrfToken = "{{ csrf_token }}";
+       var itemId = $(this).attr('id').split('remove_')[1];
+       var size = $(this).data('size');
+       var url = `/cart/remove/${itemId}/`;
+       var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+   
+       $.post(url, data)
+        .done(function() {
+            location.reload();
+        });
+   })
 </script>
 {% endblock %}
