@@ -22,7 +22,7 @@ def images(request):
         },
 
         DETAIL_IMAGE={
-            "class": "col-md-auto m-3 img-fluid rounded", "format": "jpg", "crop": "scale", "height": 300,
+            "class": "col-auto m-3 mb-auto p-0 card card-image img-fluid", "format": "jpg", "crop": "scale", "height": 300,
         },
 
         JUMBO={
