@@ -39,7 +39,14 @@
                <button
                   type="submit"
                   class="btn bg-color-3 text-uppercase text-white"
-                  ><i class="fas fa-paw fa-lg"></i> Add to Cart</button>
+                  {% if product.out_of_stock %}
+                  disabled
+                  >
+                  Out of Stock
+                  {% else %}
+                  >
+                  <i class="fas fa-paw fa-lg"></i> Add to Cart</button>
+                  {% endif %}
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}" />
          </form>
