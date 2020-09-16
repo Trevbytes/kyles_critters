@@ -4,12 +4,13 @@
 {% block page_header %}
 <div class="container align-context-center animated fadeIn">
   {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/h_300,w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1598970250/rabbit.jpg" JUMBO %}
+  <p class="text-center animated fadeIn">Welcome to Kyle's Critters! We are a pet store specializing in selling and loaning small critters.</p>  
 </div>
 {% endblock %} 
 {% block content %}
-<div class="container pt-3">
-  <h1 class="text-center animated fadeIn">Featured Critters</h1>
-  <p class="text-center animated fadeIn">Welcome to Kyle's Critters! We are a pet store specializing in selling and loaning small critters.</p>
+<div class="container">
+  <hr />
+  <h1 class="text-center animated fadeIn">Featured Critters</h1>  
   <hr />
   {# Product card stack. Filtered featured products in views.py #}
   {% include 'includes/product_card_stack.html' %}   
