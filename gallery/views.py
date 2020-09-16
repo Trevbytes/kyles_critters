@@ -24,7 +24,7 @@ def gallery(request):
 @login_required
 def add_entry(request):
     """ Add an entry to the gallery """
-    if not request.user.is_superuser:
+    if not request.user.is_authenticated:
         messages.error(request, 'Sorry, only logged in users can do that.')
         return redirect(reverse('gallery'))
 
@@ -50,7 +50,7 @@ def add_entry(request):
 @login_required
 def edit_entry(request, entry_number):
     """ Edit an entry in the gallery """
-    if not request.user.is_superuser:
+    if not request.user.is_staff:
         messages.error(request, 'Sorry, only logged in users can do that.')
         return redirect(reverse('gallery'))
 
@@ -79,7 +79,7 @@ def edit_entry(request, entry_number):
 @login_required
 def delete_entry(request, entry_number):
     """ Delete an entry from the gallery """
-    if not request.user.is_superuser:
+    if not request.user.is_staff:
         messages.error(request, 'Sorry, only logged in users can do that.')
         return redirect(reverse('gallery'))
 

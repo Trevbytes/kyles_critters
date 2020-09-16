@@ -20,7 +20,7 @@
          </a>
          <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
             {% if request.user.is_authenticated %}
-            {% if request.user.is_superuser %}
+            {% if request.user.is_staff %}
             <a href="{% url 'add_product' %}" class="dropdown-item nav-link">Add Product to Store</a>
             <a href="{% url 'admin:index' %}" class="dropdown-item nav-link">Admin Site</a>
             {% endif %}
@@ -86,7 +86,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
                {% if request.user.is_authenticated %}
-               {% if request.user.is_superuser %}
+               {% if request.user.is_staff %}
                <a href="{% url 'add_product' %}" class="dropdown-item nav-link">Add Product to Store</a>
                <a href="{% url 'admin:index' %}" class="dropdown-item nav-link">Admin Site</a>
                {% endif %}
