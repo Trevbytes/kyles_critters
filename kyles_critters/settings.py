@@ -142,7 +142,7 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'facebook': {
         'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile'],
+        'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'FIELDS': [
             'id',
@@ -216,6 +216,7 @@ USE_TZ = True
 # facebook
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # app key
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 # Cloudinary
 
