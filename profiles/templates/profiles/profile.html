@@ -6,14 +6,13 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
+                <h2 class="logo-font mb-4">{{profile.user}}'s Profile</h2>
                 <hr>
             </div>
         </div>
-
-        <div class="row bg-color-2 rounded pt-3">
-            <div class="col-12 col-lg-6">
-                <p class="text-muted">Default User Information</p>
+        <div class="row bg-color-2 rounded py-3">
+            <div class="col-12 col-lg-6">               
+                <p class="text-color-5">Default User Information</p>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     <fieldset>
@@ -25,11 +24,19 @@
                         {{ form.default_county | as_crispy_field }}
                         {{ form.default_postcode | as_crispy_field }}                        
                     </fieldset>
-                    <button class="btn bg-color-3 float-right">Update Information</button>
+                    <button class="btn col-auto col-lg-4 bg-color-3 px-1 float-right">Update User Information</button>                  
                 </form>
+                <div class="col-8 ml-0 pl-0 my-auto">
+                 <a class="btn btn-sm bg-color-3" href="{% url 'account_email' %}">Email Accounts</a>
+                 <a class="btn btn-sm bg-color-3" href="{% url 'socialaccount_connections' %}">Social Accounts</a>
+                </div>
             </div>
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Order History - Click on the order number for order details</p>
+                <div class="d-lg-none pt-3"><hr></div>
+                <p class="text-color-5">
+                 <small>Order History - Click on the order number for a copy of the order confirmation</small>
+                </p>
+                <hr>
                 <div class="order-history table-responsive">
                     <table class="table table-hover table-sm table-borderless">
                         <thead>
@@ -46,7 +53,7 @@
                                     <td>
                                         <a href="{% url 'order_history' order.order_number %}"
                                         title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
+                                            {{ order.order_number|truncatechars:8 }}
                                         </a>
                                     </td>
                                     <td>{{ order.date }}</td>
