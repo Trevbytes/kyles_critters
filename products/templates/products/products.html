@@ -8,6 +8,7 @@
 
 {% block content %}
 <div class="container">
+   <hr />
    <h1 class="text-center animated slideInLeft">
       {# Determine page header #}
       {% if current_subcategory %}
@@ -29,17 +30,26 @@
    <div class="text-center animate fadeIn">
       {% for subcategory in all_subcategories %}{% if subcategory.name != 'none' %}
         <a href="{% url 'products' %}?sub_category={{subcategory.name}}" 
-           class="badge bg-color-3 animate fadeIn">{{subcategory.friendly_name}}</a>
+           class="btn badge bg-color-3 animate fadeIn mx-1">{{subcategory.friendly_name}}</a>
       {% endif %}{% endfor %}  
       {% for category in all_categories %}{% if category.name != 'critters' %}
       <a href="{% url 'products' %}?category={{category.name}}" 
-         class="badge bg-color-3 animate fadeIn">{{category.friendly_name}}</a>
+         class="btn badge bg-color-3 animate fadeIn mx-1">{{category.friendly_name}}</a>
       {% endif %}{% endfor %}
-      <a href="{% url 'products' %}" class="badge bg-color-3 animate fadeIn">All Products</a>  
+      <a href="{% url 'products' %}" class="btn badge bg-color-3 animate fadeIn mx-1">All Products</a>  
    </div>
    {% endif %}  
    <hr />
    {# Product card stack. Requires "products" variable. #}
    {% include 'includes/product_card_stack.html' %}
+   {% if products.count == 0 %}
+   <h4 class="text-center pt-3">Sorry, No Products Found</h4>
+   <div class="text-center pt-5">
+   <a class="btn bg-color-3 text-center" href="{% url 'products' %}">View all Products</a>
+   </div>
+   <div class="m-5 p-4">
+   <div class="m-5 p-4 d-none d-lg-block"></div>
+   </div>
+   {% endif %}
 </div>
 {% endblock %}
