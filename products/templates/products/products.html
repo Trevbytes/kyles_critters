@@ -1,37 +1,45 @@
-{% extends "base.html" %} {% load static %} {% load cloudinary %} {% block page_header %}
-<div class="container animated fadeIn">
-  {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
-</div>
-{% endblock %} {% block content %}
-<div class="container">
-  <h1 class="text-center animated slideInLeft">
-    {% if current_subcategory %}
-    {% for c in current_subcategory %}
-    {{c.friendly_name}}
-    {% endfor %}
-    {% elif current_category %}
-    {% for c in current_category %}
-    {{c.friendly_name}}
-    {% endfor %}
-    {% elif search_term %}
-    Search Results for: {{search_term}}
-    {% else %}
-    All Products
-    {% endif %}
-  </h1>
-  <div class="text-center animate fadeIn">
-  {% for subcategory in all_subcategories %}{% if subcategory.name != 'none' %}
-  <a href="{% url 'products' %}?sub_category={{subcategory.name}}" class="badge bg-color-3 animate fadeIn">{{subcategory.friendly_name}}</a>
-  {% endif %}
-  {% endfor %}  
-  {% for category in all_categories %}{% if category.name != 'critters' %}
-  <a href="{% url 'products' %}?category={{category.name}}" class="badge bg-color-3 animate fadeIn">{{category.friendly_name}}</a>
-  {% endif %}
-  {% endfor %}
-  <a href="{% url 'products' %}" class="badge bg-color-3 animate fadeIn">All Products</a>  
-  </div>
-  <hr />
-  {% include 'includes/product_card_stack.html' %}
-</div>
+{% extends "base.html" %} {% load static %} {% load cloudinary %}
 
+{% block page_header %}
+<div class="container animated fadeIn">
+   {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+   <h1 class="text-center animated slideInLeft">
+      {# Determine page header #}
+      {% if current_subcategory %}
+        {% for c in current_subcategory %}
+            {{c.friendly_name}}
+        {% endfor %}
+      {% elif current_category %}
+        {% for c in current_category %}
+            {{c.friendly_name}}
+        {% endfor %}
+      {% elif search_term %}
+        Search Results for: {{search_term}}
+      {% else %}
+        All Products
+      {% endif %}
+   </h1>
+   {# Apply filter badges if the page is not a search page #}
+   {% if not search_term %}  
+   <div class="text-center animate fadeIn">
+      {% for subcategory in all_subcategories %}{% if subcategory.name != 'none' %}
+        <a href="{% url 'products' %}?sub_category={{subcategory.name}}" 
+           class="badge bg-color-3 animate fadeIn">{{subcategory.friendly_name}}</a>
+      {% endif %}{% endfor %}  
+      {% for category in all_categories %}{% if category.name != 'critters' %}
+      <a href="{% url 'products' %}?category={{category.name}}" 
+         class="badge bg-color-3 animate fadeIn">{{category.friendly_name}}</a>
+      {% endif %}{% endfor %}
+      <a href="{% url 'products' %}" class="badge bg-color-3 animate fadeIn">All Products</a>  
+   </div>
+   {% endif %}  
+   <hr />
+   {# Product card stack. Requires "products" variable. #}
+   {% include 'includes/product_card_stack.html' %}
+</div>
 {% endblock %}
