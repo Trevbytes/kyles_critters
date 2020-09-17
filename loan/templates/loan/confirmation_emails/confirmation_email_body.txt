@@ -1,0 +1,23 @@
+Hi {{ request.full_name }}!
+
+This is a confirmation of your loan request at Kyle's Critters. Your request information is below:
+
+Request Number: {{ request.request_number }}
+Request Date: {{ request.date }}
+
+Requested Critters: {{ request.critter_request }}
+
+Request Info:
+
+{{ request.request_info | safe }}
+
+
+Your phone number is on file as {{ request.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your request!
+
+Sincerely,
+
+Kyle's Critters

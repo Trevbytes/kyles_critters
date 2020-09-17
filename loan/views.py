@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from .forms import LoanRequestForm
 from .models import LoanRequest
 from products.models import Product
@@ -35,7 +36,8 @@ def loan(request):
         if request_form.is_valid():
             request_form = request_form.save(commit=False)
             request_form.save()
-            return redirect(reverse('request_success', args=[request_form.order_number]))
+            return redirect(reverse('request_success',
+                                    args=[request_form.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -71,15 +73,38 @@ def loan(request):
 
 def request_success(request, order_number):
     """
-    Handle successful loan requests
+    Handle successful loan requests and send the user
+    and store a confirmation email.
     """
-
     loan_request = get_object_or_404(LoanRequest, order_number=order_number)
+    request_email = loan_request.email
+    subject = render_to_string(
+        'loan/confirmation_emails/confirmation_email_subject.txt',
+        {'request': loan_request})
+    body = render_to_string(
+        'loan/confirmation_emails/confirmation_email_body.txt',
+        {'request': loan_request,
+         'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [request_email]
+    )
+
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.DEFAULT_FROM_EMAIL]
+    )
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
-        request.user_profile = profile
+        loan_request.user_profile = profile
+        loan_request.save()
 
     messages.success(request, f'Request sent successfully! \
         Your request number is {order_number}. A confirmation \
