@@ -5,6 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from checkout.models import Order
+from loan.models import LoanRequest
 
 
 @login_required
@@ -20,12 +21,14 @@ def profile(request):
 
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
+    loan_requests = profile.requests.all()
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
         'form': form,
         'orders': orders,
+        'loan_requests': loan_requests,
         'on_profile_page': True
     }
 
@@ -43,6 +46,23 @@ def order_history(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+
+def request_history(request, request_number):
+    loan_request = get_object_or_404(LoanRequest, request_number=request_number)
+
+    messages.info(request, (
+        f'This is a past confirmation for request number {request_number}. '
+        'A confirmation email was sent on the request date.'
+    ))
+
+    template = 'loan/request_success.html'
+    context = {
+        'loan_request': loan_request,
         'from_profile': True,
     }
 
