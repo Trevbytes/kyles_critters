@@ -34,7 +34,7 @@ def images(request):
         },
 
         LOAN={
-            "class": "grid-item p-2", "format": "jpg", "crop": "scale", "width": 200,
+            "class": "hoverable grid-item p-2 waves-effect", "format": "jpg", "crop": "scale", "width": 200,
         },
 
         GALLERY={
