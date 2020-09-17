@@ -34,11 +34,11 @@
             <div class="col-12 col-lg-6">
                 <div class="d-lg-none pt-3"><hr></div>
                 <p class="text-color-5">
-                 <small>Order History - Click on the order number for a copy of the order confirmation</small>
+                 <small>Order & Loan Request History - Click on the order or request number for a copy of the confirmation</small>
                 </p>
                 <hr>
                 <div class="order-history table-responsive">
-                    <table class="table table-hover table-sm table-borderless">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Order Number</th>
@@ -61,14 +61,37 @@
                                         <ul class="list-unstyled">
                                             {% for item in order.lineitems.all %}
                                                 <li class="small">
-                                                    {% if item.product.has_sizes %}
-                                                        Size {{ item.product.size|upper }}
-                                                    {% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                                {{ item.product.name }} x{{ item.quantity }}
                                                 </li>
                                             {% endfor %}
                                         </ul>
                                     </td>
                                     <td>${{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="request-history table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Loan Request Number</th>
+                                <th>Date</th>
+                                <th>Critter(s) Requested</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for loan_request in loan_requests %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'request_history' loan_request.order_number %}"
+                                        title="{{ loan_request.request_number }}">
+                                            {{ loan_request.order_number|truncatechars:8 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ loan_request.date }}</td>
+                                    <td>{{ loan_request.critter_request }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

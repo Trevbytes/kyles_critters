@@ -20,8 +20,8 @@ def profile(request):
             messages.success(request, 'Profile updated successfully')
 
     form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
-    loan_requests = profile.requests.all()
+    orders = profile.orders.order_by('-date')
+    loan_requests = profile.requests.order_by('-date')
 
     template = 'profiles/profile.html'
     context = {
@@ -52,11 +52,11 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
-def request_history(request, request_number):
-    loan_request = get_object_or_404(LoanRequest, request_number=request_number)
+def request_history(request, order_number):
+    loan_request = get_object_or_404(LoanRequest, order_number=order_number)
 
     messages.info(request, (
-        f'This is a past confirmation for request number {request_number}. '
+        f'This is a past confirmation for request number {order_number}. '
         'A confirmation email was sent on the request date.'
     ))
 
