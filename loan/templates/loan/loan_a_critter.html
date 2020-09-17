@@ -3,69 +3,99 @@
 {% load cloudinary %}
 {% block page_header %}
 <div class="container">
-{% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
+   {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
 </div>
 {% endblock %}
 {% block content %}
-    <div class="container mb-3 pr-3">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Loan a Critter</h2>
-                <hr>
-            </div>
-        </div>
-        <div class="row bg-color-2 rounded-top pt-3">
-            <div class="col">
-                <h2 class="mb-4 text-dark">About loaning a critter.</h2>
-                <hr>
-            </div>
-        </div>
-        <div class="row bg-color-2 rounded-bottom pt-3">
-
-            <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark">
-            <h4>Available Critters</h4>
-
-            <div class="container-fluid">
+<div class="container mb-3 pr-3">
+   <div class="row">
+      <div class="col">
+         <hr>
+         <h2 class="logo-font mb-4">Loan a Critter</h2>
+         <hr>
+      </div>
+   </div>
+   <div class="row bg-color-2 rounded-top pt-3">
+      <div class="col">
+         <h4 class="mb-4 text-dark">About loaning a critter</h4>
+         <hr>
+      </div>
+   </div>
+   <div class="row bg-color-2 rounded-bottom pt-3">
+      <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark">
+         <h4>Available Critters</h4>
+         <p><small>Click to add to the form.</small></p>
+         <div class="container-fluid">
             <div class="grid">
-                {% for product in products %}
-                {% if product.ready_to_loan == True %}
-                {% cloudinary product.image.url LOAN %}     
-                {% endif %}    
-                {% endfor %}
-                </div>          
-            </div>                              
-              
+               {% for product in products %}
+               {% cloudinary product.image.url LOAN %}
+               {% endfor %}
             </div>
-            <div class="col-12 col-lg-6">
-                <p class="text-muted">Please fill out the form below to request to loan our critters.</p>
-                <form action="{% url 'loan' %}" method="POST" id="request-form">
-                    {% csrf_token %}
-                    <fieldset>                      
-                        {{ request_form.full_name | as_crispy_field }}
-                        {{ request_form.email | as_crispy_field }}
-                        {{ request_form.phone_number | as_crispy_field }}
-                        {{ request_form.country | as_crispy_field }}
-                        {{ request_form.street_address1 | as_crispy_field }}
-                        {{ request_form.street_address2 | as_crispy_field }}                        
-                        {{ request_form.town_or_city | as_crispy_field }}
-                        {{ request_form.county | as_crispy_field }}
-                        {{ request_form.postcode | as_crispy_field }}
-                        {{ request_form.critter_request | as_crispy_field }}
-                        <p class="text-dark">Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
-                        {{ request_form.request_info | safe }}
-                        {{ request_form.media }}                        
-                    </fieldset>
-                    <div class="submit-button text-center mb-2">                    
-						<button id="submit-button" class="btn bg-color-3 rounded">							
-							<span class="icon">
-								<i class="fas fa-paper-plane"></i>
-							</span>
-                            <span class="font-weight-bold">Send Request</span>
-						</button>
-					</div>
-                </form>
+         </div>
+      </div>
+      <div class="col-12 col-lg-6">
+         <p class="text-color-5">Please fill out the form below to request to loan our critters.</p>
+         <form action="{% url 'loan' %}" method="POST" id="request-form">
+            {% csrf_token %}
+            <fieldset>
+               {{ request_form.full_name | as_crispy_field }}
+               {{ request_form.email | as_crispy_field }}
+               {{ request_form.phone_number | as_crispy_field }}
+               {{ request_form.country | as_crispy_field }}
+               {{ request_form.street_address1 | as_crispy_field }}
+               {{ request_form.street_address2 | as_crispy_field }}                        
+               {{ request_form.town_or_city | as_crispy_field }}
+               {{ request_form.county | as_crispy_field }}
+               {{ request_form.postcode | as_crispy_field }}
+               {{ request_form.critter_request | as_crispy_field }}
+               <p class="text-color-5">Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
+               {{ request_form.request_info | safe }}
+               {{ request_form.media }}                        
+            </fieldset>
+            <div class="submit-button text-center mb-2">                    
+               <button id="submit-button" class="btn bg-color-3 rounded">							
+               <span class="icon">
+               <i class="fas fa-paper-plane"></i>
+               </span>
+               <span class="font-weight-bold">Send Request</span>
+               </button>
             </div>
-        </div>
-    </div>
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+<script>
+   // Create an array with the names of the products
+   var names = new Array(
+   {% for product in products %}
+   {% if not forloop.last %}
+   "{{product.name}}",
+   {% else %}
+   "{{product.name}}"
+   {% endif %}                    
+   {% endfor %}         
+   );
+   /* Each time this variable is called, the next item
+   in the names array is returned. */ 
+   var productName = (function(){
+        var i=0;
+        return function() {
+            return names[i++];
+        }
+    })();
+   /* This function cycles through the elements with 
+   the class 'hoverable'. It adds the product name as 
+   the elements id. It then adds an 'onClick' function
+   that adds that id to the input with the id of 
+   'id_critter_request'.*/    
+   $(".hoverable").each(function () {
+      $(this).attr("id",productName);
+      $(this).on("click", function () {        
+        $("#id_critter_request").val($('#id_critter_request').val() + $(this).attr("id") +", ");
+        })
+   });   
+</script>
 {% endblock %}
