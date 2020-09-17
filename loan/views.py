@@ -8,6 +8,7 @@ from .models import LoanRequest
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -58,7 +59,7 @@ def loan(request):
         else:
             request_form = LoanRequestForm()
 
-    products = Product.objects.all()
+    products = Product.objects.filter(Q(ready_to_loan=True))
     template = 'loan/loan_a_critter.html'
     context = {
         'request_form': request_form,
