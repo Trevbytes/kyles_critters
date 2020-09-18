@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Request Confirmation</title>
+</head>
+<body>
+<h1>Hi {{ request.full_name }}!</h1>
+
+<p>This is a confirmation of your loan request at Kyle's Critters. Your request information is below:</p>
+<hr>
+
+<p>Request Number: {{ request.request_number }}</p><br> 
+<p>Request Date: {{ request.date }}</p><br> 
+
+<p>Requested Critters: {{ request.critter_request }}</p><br> 
+
+<p>Request Info:</p><br>
+
+{{ request.request_info | safe }}
+
+<p>Your phone number is on file as {{ request.phone_number }}.</p><br>
+
+<p>If you have any questions, feel free to contact us at {{ contact_email }}.</p><br><br>
+
+<p>Thank you for your request!</p><br>
+
+<p>Sincerely,</p><br>
+<p>Kyle's Critters</p>
+    
+</body>
+</html>

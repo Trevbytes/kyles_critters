@@ -81,7 +81,7 @@ def request_success(request, order_number):
         'loan/confirmation_emails/confirmation_email_subject.txt',
         {'request': loan_request})
     body = render_to_string(
-        'loan/confirmation_emails/confirmation_email_body.txt',
+        'loan/confirmation_emails/confirmation_email_body_copy.html',
         {'request': loan_request,
          'contact_email': settings.DEFAULT_FROM_EMAIL})
     plain_message = strip_tags(body)
