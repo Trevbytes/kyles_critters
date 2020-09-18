@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Loan Request Confirmation</title>
+      <!-- Font Awesome -->
+      <link  rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <!-- Bootstrap core CSS -->
+      <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+      <!-- Material Design Bootstrap -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css">
+      <!-- My Base CSS -->
+      <link rel="stylesheet"  href="{%  static  'css/base.css'  %}">
+   </head>
+   <body>
+      <div class="container">
+         <div class="row">
+            <hr>
+            <h1>Hi {{ request.full_name }}!</h1>
+            <hr>
+         </div>
+         <div class="row bg-color-2">
+            <div class="col-12">
+               <p>This is a confirmation of your loan request at Kyle's Critters. Your request information is below:</p>
+               <hr>
+               <p>Request Number: {{ request.request_number }}</p>
+               <br> 
+               <p>Request Date: {{ request.date }}</p>
+               <br> 
+               <p>Requested Critters: {{ request.critter_request }}</p>
+               <br> 
+               <p>Request Info:</p>
+               <br>
+               {{ request.request_info | safe }}
+               <p>Your phone number is on file as {{ request.phone_number }}.</p>
+               <br>
+               <p>If you have any questions, feel free to contact us at {{ contact_email }}.</p>
+               <br><br>
+               <p>Thank you for your request!</p>
+               <br>
+               <p>Sincerely,</p>
+               <br>
+               <p>Kyle's Critters</p>
+            </div>
+         </div>
+         <div class="row">
+            <a href="{% url '/' %}" class="btn bg-color-3" target="_blank">
+            <span class="icon mr-2">
+            <i class="fas fa-paw"></i>
+            </span>
+            <span class="text-uppercase">To Kyle's Critters</span>
+            </a>
+         </div>
+      </div>
+      <!-- JQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>  
+   </body>
+</html>
