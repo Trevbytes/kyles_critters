@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
-from django.views.decorators.http import require_POST
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
@@ -8,8 +7,8 @@ from .forms import LoanRequestForm
 from .models import LoanRequest
 from products.models import Product
 from profiles.models import UserProfile
-from profiles.forms import UserProfileForm
 from django.db.models import Q
+from django.utils.html import strip_tags
 
 # Create your views here.
 
@@ -85,19 +84,22 @@ def request_success(request, order_number):
         'loan/confirmation_emails/confirmation_email_body.txt',
         {'request': loan_request,
          'contact_email': settings.DEFAULT_FROM_EMAIL})
+    plain_message = strip_tags(body)
 
     send_mail(
         subject,
-        body,
+        plain_message,
         settings.DEFAULT_FROM_EMAIL,
-        [request_email]
+        [request_email, settings.DEFAULT_FROM_EMAIL],
+        html_message=body
     )
 
     send_mail(
         subject,
-        body,
+        plain_message,
         settings.DEFAULT_FROM_EMAIL,
-        [settings.DEFAULT_FROM_EMAIL]
+        [settings.DEFAULT_FROM_EMAIL],
+        html_message=body
     )
 
     if request.user.is_authenticated:

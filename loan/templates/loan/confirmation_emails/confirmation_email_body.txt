@@ -9,7 +9,7 @@ Requested Critters: {{ request.critter_request }}
 
 Request Info:
 
-{{ request.request_info }}
+{{ request.request_info | safe }}
 
 
 Your phone number is on file as {{ request.phone_number }}.
