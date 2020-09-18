@@ -1,6 +1,6 @@
 from products.models import Product
 import cloudinary
-
+from django.conf import settings
 
 def all_critters(request):
     products = Product.objects.all()
@@ -41,3 +41,10 @@ def images(request):
             "format": "jpg", "crop": "scale", "width": 300,
         },
     )
+
+
+def google_api_key(request):
+    context = {
+        'api_key': settings.GOOGLE_MAPS_API_KEY
+    }
+    return context

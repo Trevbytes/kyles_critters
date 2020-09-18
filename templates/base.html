@@ -39,10 +39,25 @@
         <!-- MDB core JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
         <!-- Stripe -->
-        <script src="https://js.stripe.com/v3/"></script>    
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfYqcmn1l_22Z4cMpvUEk1B9p7AFsyxEw&callback=initMap&libraries=&v=weekly"
+        defer
+        ></script>  
     {% endblock %}
 
     {% block extra_js %}
+    <script>
+    let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map-container-google-16"), {
+    center: { lat: 40.760734, lng: -111.891644 },
+    zoom: 8
+  });
+}
+    </script>
     {% endblock %}
 
     <title>Kyle's Critters {% block extra_title %}{% endblock %}</title>

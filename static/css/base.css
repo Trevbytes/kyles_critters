@@ -52,3 +52,19 @@ body {
 }
 
 .dropdown-item:hover {background-color: var(--bg-color-4) !important;}
+
+/* Google Maps Modal */
+
+.map-container-9{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container-9 iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}

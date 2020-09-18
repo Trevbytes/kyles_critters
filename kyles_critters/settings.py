@@ -98,6 +98,7 @@ TEMPLATES = [
 
                 'products.context.all_critters',
                 'products.context.images',
+                'products.context.google_api_key',
                 'cart.contexts.cart_contents',
             ],
             'builtins': [
@@ -265,3 +266,5 @@ CKEDITOR_CONFIGS = {
         ],
     }
 }
+
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
