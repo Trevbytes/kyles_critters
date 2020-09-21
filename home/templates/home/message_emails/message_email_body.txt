@@ -1,0 +1,22 @@
+Hi {{ message_form.full_name }}!
+
+This is a copy of your message to Kyle's Critters. Your message information is below:
+
+Message Date: {{ message_form.date }}
+
+Subject: {{ message_form.message_form_subject }}
+
+Body:
+
+{{ message_form.message_form_body | safe }}
+
+
+Your phone number is on file as {{ message_form.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your message_form!
+
+Sincerely,
+
+Kyle's Critters

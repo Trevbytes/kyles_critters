@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Message Confirmation</title>
+   </head>
+   <body>
+      <hr>
+      <h1>Hi {{ full_name }}!</h1>
+      <hr>
+      <p>This is a copy your  message to  Kyle's Critters. Your message is below:</p>
+      <hr>
+      <p>Sent: {{ date }}</p>
+      <br> 
+      <p>Subject: {{ message_subject }}</p>
+      <br> 
+      <p>Message:</p>
+      <br>
+      {{ message_body | safe }}
+      <p>Your phone number is on file as {{ phone_number }}.</p>
+      <br>
+      <p>If you have any questions, feel free to contact us at {{ contact_email }}.</p>
+      <br><br>
+      <p>Thank you for contacting us!</p>
+      <br>
+      <p>Sincerely,</p>
+      <br>
+      <p>Kyle's Critters</p>
+      <a href="https://kyles-crittersv1.herokuapp.com" target="_blank">
+      <span>To Kyle's Critters</span>
+      </a>
+   </body>
+</html>

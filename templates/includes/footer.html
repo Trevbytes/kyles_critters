@@ -8,7 +8,7 @@
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+      <div class="col-md-4 mt-md-0 mt-3">
 
         <!-- Content -->
         <h5 class="text-uppercase">Kyle's Critters</h5>
@@ -16,7 +16,7 @@
         <p class="font-weight-bold mb-0">374 S 230 W</p>
         <p class="font-weight-bold mb-0">Salt Lake City, UT</p>
         <p class="font-weight-bold">48575</p>
-        <a class="font-weight-bold" data-toggle="modal" data-target="#modalRegular">Find us on Google Maps</a>
+        <a class="font-weight-bold" data-toggle="modal" data-target="#modalRegular"><i class="fas fa-map-pin"></i> Find us on Google Maps</a>
        
 
       </div>
@@ -25,23 +25,24 @@
       <hr class="clearfix w-100 d-md-none pb-3">
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-5 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Quick Links</h5>
+        <h5 class="text-uppercase">Open Hours:</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <p>Currently by appointment only. Call or email us!</p>
+          </li>
+
+        <h5 class="text-uppercase">Contact Us</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>Phone: 435-234-2342</p>
           </li>
           <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
+            <a href="" data-toggle="modal" data-target="#modalContactForm"><i class="fas fa-envelope" ></i> Send Message</a>          
           </li>
         </ul>
 
@@ -49,23 +50,23 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-3 mb-md-0 mb-1">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
+        <h5 class="text-uppercase">Quick Links</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="{% url 'profile' %}">My Profile</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="{% url 'view_cart' %}">My Cart</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <a href="{% url 'products' %}">All Products</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+            <a href="#!">Privacy Policy/Terms of Service</a>
           </li>
         </ul>
 
@@ -84,23 +85,25 @@
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-12 py-2">
+      <div class="col-md-12 py-4 mb-2">
+        <hr class="mb-2">      
         <div class="flex-center">
 
           <!-- Facebook -->
           <a class="fb-ic">
-            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
           </a>
           <!--Instagram-->
           <a class="ins-ic">
-            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
           </a>
           <!--Pinterest-->
           <a class="pin-ic">
             <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-          </a>
-        </div>
+          </a>             
+        </div>    
       </div>
+
       <!-- Grid column -->
 
     </div>
@@ -145,4 +148,52 @@
 
   </div>
 </div>
-<!--Modal: Name-->
+
+<!--Message Modal-->
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content bg-color-2 text-color-5">
+      <div class="modal-header text-center bg-color-5 text-white">
+        <h4 class="modal-title w-100 font-weight-bold">Send us a message</h4>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <form action="#" method="POST" id="request-form">
+        {% csrf_token %}
+      <div class="modal-body mx-3 rounded text-color-5">
+        <div class="md-form mb-5 text-color-5">
+          <i class="fas fa-user prefix black-text"></i>
+          {{ message_form.full_name  }}
+
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix black-text"></i>
+          {{ message_form.email }}
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-phone prefix black-text"></i>
+          {{ message_form.phone_number }}
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-tag prefix black-text"></i>
+        {{ message_form.message_subject }}
+        </div>
+
+        <div class="md-form">         
+            {{ message_form.message_body | safe }}
+            {{ message_form.media }}  
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="submit" class="btn bg-color-3 text-white"><i class="fas fa-paper-plane "></i> Send</button>
+      </div>
+    </form>      
+    </div>
+  </div>
+</div>

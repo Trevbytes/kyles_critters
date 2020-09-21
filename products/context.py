@@ -44,7 +44,4 @@ def images(request):
 
 
 def google_api_key(request):
-    context = {
-        'api_key': settings.GOOGLE_MAPS_API_KEY
-    }
-    return context
+    return {'api_key': settings.GOOGLE_MAPS_API_KEY}

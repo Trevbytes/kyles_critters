@@ -100,6 +100,7 @@ TEMPLATES = [
                 'products.context.images',
                 'products.context.google_api_key',
                 'cart.contexts.cart_contents',
+                'context_processors.message_form',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
