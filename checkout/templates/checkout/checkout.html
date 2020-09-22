@@ -80,8 +80,8 @@
                {% else %}
                <div class="float-right mr-0 text-color-5">
                   <label class="" for="id-save-info">
-                  <a class="text-white" href="{% url 'account_signup' %}">Create an account</a> or 
-                  <a class="text-white" href="{% url 'account_login' %}">login</a> to save this information
+                  <a class="" href="{% url 'account_signup' %}">Create an account</a> or 
+                  <a class="" href="{% url 'account_login' %}">login</a> to save this information
                   </label>
                   {% endif %}
                </div>
@@ -96,11 +96,8 @@
          <input type="hidden" value="{{ client_secret }}" name="client_secret">
          </fieldset>
          <div class="submit-button text-right mt-5 mb-2">                    
-         <a href="{% url 'view_cart' %}" class="btn bg-color-3 rounded">
-         <span class="icon">
-         <i class="fas fa-chevron-left"></i>
-         </span>
-         <span class="font-weight-bold">Adjust Cart</span>
+         <a href="{% url 'view_cart' %}" class="btn btn-sm bg-color-3 rounded">
+         <i class="fas fa-chevron-left"></i> Adjust Cart
          </a>
          <button id="submit-button" class="btn bg-color-3 rounded">
          <i class="fas fa-lock font-weight-bold"></i> Complete Order								
