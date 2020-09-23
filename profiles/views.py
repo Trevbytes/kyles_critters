@@ -22,6 +22,7 @@ def profile(request):
     form = UserProfileForm(instance=profile)
     orders = profile.orders.order_by('-date')
     loan_requests = profile.requests.order_by('-date')
+    entries = profile.entries.order_by('-date')
 
     template = 'profiles/profile.html'
     context = {
@@ -29,7 +30,8 @@ def profile(request):
         'form': form,
         'orders': orders,
         'loan_requests': loan_requests,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'shuffled_entries': entries
     }
 
     return render(request, template, context)
