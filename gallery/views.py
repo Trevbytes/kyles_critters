@@ -40,7 +40,7 @@ def add_entry(request):
             new_entry.user_profile = profile
             new_entry.save()
             messages.success(request, 'Successfully added entry!')
-            return redirect(reverse('gallery'))
+            return redirect(reverse('profile') + "#gallery-entries")
         else:
             messages.error(request, 'Failed to add entry. Please ensure the form is valid.')
     else:
@@ -67,7 +67,7 @@ def edit_entry(request, entry_number):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated entry!')
-            return redirect(reverse('gallery'))
+            return redirect(reverse('profile') + "#gallery-entries")
         else:
             messages.error(request, 'Failed to update entry. Please ensure the form is valid.')
     else:
