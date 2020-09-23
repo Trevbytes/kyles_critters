@@ -4,6 +4,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product
+from django.utils.html import strip_tags
 
 import json
 import time
@@ -22,16 +23,26 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
         body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
+            'checkout/confirmation_emails/confirmation_email_body.html',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        plain_message = strip_tags(body)
 
         send_mail(
             subject,
-            body,
+            plain_message,
             settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
-        )        
+            [cust_email],
+            html_message=body
+        )
 
+        # Send a copy to the stores default mail.
+        send_mail(
+            subject,
+            plain_message,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email],
+            html_message=body
+        )
 
     def handle_event(self, event):
         """
