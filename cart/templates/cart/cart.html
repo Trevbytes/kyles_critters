@@ -32,7 +32,7 @@
                         <img
                            class="card-img-top"
                            src="https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg"
-                           alt="Card image cap"
+                           alt="No image"
                            />
                         {% endif %}
                         <a href="{% url 'product_detail' item.product.id %}" target="_blank">
@@ -44,6 +44,7 @@
                      </div>
                   </td>
                   <td class="py-3 px-0 w-50">
+                     <div class="text-center ">                  
                      <form class="update_cart" method="POST" action="{% url 'update_cart' item.item_id %}">
                         {% csrf_token %}                                           
                         <input class="form-control qty_input text-center" type="number"
@@ -51,8 +52,9 @@
                            data-item_id="{{ item.item_id }}"
                            id="id_qty_{{ item.item_id }}">
                      </form>
-                     <button class="btn btn-danger btn-sm remove-item float-left my-1 py-1" id="remove_{{ item.item_id }}"><i class="fas fas fa-times"></i> Remove</button>
-                     <button class="btn text-white bg-color-3 btn-sm float-right my-1 py-1 update-btn"><i class="fas fas fa-sync"></i> Update</button>                                       
+                     <button class="btn btn-danger btn-sm remove-item  my-1 py-1" id="remove_{{ item.item_id }}"><i class="fas fas fa-times"></i> Remove</button>
+                     <button class="btn text-white bg-color-3 btn-sm  my-1 py-1 update-btn"><i class="fas fas fa-sync"></i> Update</button> 
+                     </div>                                  
                   </td>
                   <td class="py-3">
                      <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -96,7 +98,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-   // Update quantity on click
+   // Update item quantity on click
    $('.update-btn').click(function(e) {
        var form = $(this).prevUntil('.update-cart');
        form.submit();
@@ -106,9 +108,8 @@
    $('.remove-item').click(function(e) {
        var csrfToken = "{{ csrf_token }}";
        var itemId = $(this).attr('id').split('remove_')[1];
-       var size = $(this).data('size');
        var url = `/cart/remove/${itemId}/`;
-       var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+       var data = {'csrfmiddlewaretoken': csrfToken};
    
        $.post(url, data)
         .done(function() {
