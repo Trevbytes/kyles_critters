@@ -8,14 +8,13 @@
             <div class="col-12 ">
                 <hr>
                 <h2 class="logo-font mb-4">Gallery</h2>
-
+                <h5 class="text-muted">Add an Entry</h5>
                 <hr>
             </div>
         </div>
 
-        <div class="row bg-color-2 rounded ">
-            <div class="col-12">
-                <h5 class="text-muted pt-3">Add an Entry</h5>            
+        <div class="row bg-color-2 rounded pt-2">
+            <div class="col-12">                        
                 <form method="POST" action="{% url 'add_entry' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                         {{ form.critter_name | as_crispy_field }}
@@ -24,7 +23,7 @@
                         {{ form.media }}
                         {{ form.image }}
                     <div class="text-right">
-                        <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
+                        <a class="btn bg-color-3" href="{% url 'gallery' %}">Cancel</a>
                         <button class="btn bg-color-3" type="submit">Add Entry</button>
                     </div>
                 </form>
