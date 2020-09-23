@@ -97,9 +97,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'products.context.all_critters',
-                'products.context.images',
-                'products.context.google_api_key',
                 'cart.contexts.cart_contents',
+                'context_processors.images',
+                'context_processors.google_api_key',
                 'context_processors.message_form',
             ],
             'builtins': [
