@@ -1,3 +1,4 @@
+<!-- Code structure based from Code Institute lessons -->
 {% extends "base.html" %}
 {% load static %}
 {% load cart_tools %}
@@ -5,7 +6,6 @@
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 {% block content %}
-<div class="overlay"></div>
 <div class="container mb-3 pr-3">
 <div class="row">
    <div class="col">
@@ -32,7 +32,11 @@
             {% if item.product.image %}
             <img class="w-100 rounded" src="{{ item.product.image.url }}" alt="{{ product.name }}">
             {% else %}
-            <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+            <img
+               class="card-img-top"
+               src="https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg"
+               alt="No image"
+               />
             {% endif %}
             </a>
          </div>
@@ -74,21 +78,21 @@
             {{ order_form.county | as_crispy_field }}
             {{ order_form.postcode | as_crispy_field }}
             {% if user.is_authenticated %}                        
-            <div class="custom-control custom-checkbox float-right mr-0 text-color-5">
-               <input class="custom-control-input" type="checkbox" id="id-save-info" name="save-info" checked>
-               <label class="custom-control-label" for="id-save-info">Save this delivery information to my profile</label>
+               <div class="custom-control custom-checkbox float-right mr-0 text-color-5">
+                 <input class="custom-control-input" type="checkbox" id="id-save-info" name="save-info" checked>
+                 <label class="custom-control-label" for="id-save-info">Save this delivery information to my profile</label>
                {% else %}
                <div class="float-right mr-0 text-color-5">
                   <label class="" for="id-save-info">
-                  <a class="" href="{% url 'account_signup' %}">Create an account</a> or 
-                  <a class="" href="{% url 'account_login' %}">login</a> to save this information
+                  <a href="{% url 'account_signup' %}">Create an account</a> or 
+                  <a href="{% url 'account_login' %}">login</a> to save this information
                   </label>
-                  {% endif %}
+               {% endif %}
                </div>
          </fieldset>
          <fieldset class="px-3">
          <legend class="fieldset-label small text-color-5 px-2 w-auto">Payment</legend>
-         <!-- A Stripe card element will go here -->
+         <!-- Stripe card element -->
          <div class="mb-3" id="card-element"></div>
          <!-- Used to display form errors -->
          <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
@@ -96,10 +100,10 @@
          <input type="hidden" value="{{ client_secret }}" name="client_secret">
          </fieldset>
          <div class="submit-button text-right mt-5 mb-2">                    
-         <a href="{% url 'view_cart' %}" class="btn btn-sm bg-color-3 rounded">
+         <a href="{% url 'view_cart' %}" class="btn btn-sm bg-color-3">
          <i class="fas fa-chevron-left"></i> Adjust Cart
          </a>
-         <button id="submit-button" class="btn bg-color-3 rounded">
+         <button id="submit-button" class="btn bg-color-3">
          <i class="fas fa-lock font-weight-bold"></i> Complete Order								
          </button>
          <p class="small text-danger my-0">
