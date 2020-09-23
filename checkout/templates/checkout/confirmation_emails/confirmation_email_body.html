@@ -18,7 +18,7 @@
       <p>Grand Total: ${{ order.grand_total }}</p>
       <br> 
       <p>Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.</p>
-      <p>Your phone number is on file as {{ request.phone_number }}.</p>
+      <p>Your phone number is on file as {{ order.phone_number }}.</p>
       <br>
       <p>If you have any questions, feel free to contact us at {{ contact_email }}.</p>
       <br><br>

@@ -40,7 +40,7 @@ class StripeWH_Handler:
             subject,
             plain_message,
             settings.DEFAULT_FROM_EMAIL,
-            [cust_email],
+            [settings.DEFAULT_FROM_EMAIL],
             html_message=body
         )
 
