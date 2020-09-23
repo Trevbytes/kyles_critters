@@ -68,7 +68,7 @@ def images(request):
         },
 
         GALLERY={
-            "format": "jpg", "crop": "scale", "width": 300,
+            "format": "jpg", "crop": "scale", "width": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
     )
 

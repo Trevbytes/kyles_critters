@@ -1,27 +1,27 @@
 {% load cloudinary %}
 <div class="row d-flex justify-content-center">
-    <div class="grid col-xl-10 pt-3">
-        {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
-        <div class="grid-item card card-flip bg-color-2">
-            <div class="card-front">
-                {% cloudinary entry.image.url GALLERY %}
-            </div>
-            <div class="card-back card bg-color-2 example-1 square scrollbar-cyan thin p-2 text-color-5">
-                <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
-                <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}">
-                <p>{{ entry.critter_info|safe }}<p>
-                {% if not product %}
-                <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>           
-                {% endif %}
-                {% if request.user.is_staff %}
-                <span class="badge badge-pill bg-color-3 mb-2">
-                    <a class="text-white" href="{% url 'edit_entry' entry.entry_number %}">
-                    <i class="fas fa-cog fa-sm text-white" aria-hidden="true"></i> Edit</a
-                    >
-                </span>
-                {% endif %}                                               
-            </div>
-        </div>                   
-        {% endif %}{% endfor %}                   
-    </div>
+   <div class="grid col-xl-10 pt-3">
+      {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
+      <div class="grid-item card card-flip bg-color-2">
+         <div class="card-front">
+            {% cloudinary entry.image.url GALLERY %}
+         </div>
+         <div class="card-back card bg-color-2 gallery-entry square scrollbar-cyan thin p-2 text-color-5">
+            <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
+            <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}" onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
+            <p>{{ entry.critter_info|safe }}</p>
+            {% if not product %}
+            <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>
+            {% endif %}
+            {% if request.user.is_staff %}
+            <span class="badge badge-pill bg-color-3 mb-2">
+            <a class="text-white" href="{% url 'edit_entry' entry.entry_number %}">
+            <i class="fas fa-cog fa-sm text-white" aria-hidden="true"></i> Edit</a
+               >
+            </span>
+            {% endif %}                                               
+         </div>
+      </div>
+      {% endif %}{% endfor %}                   
+   </div>
 </div>

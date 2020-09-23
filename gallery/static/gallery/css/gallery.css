@@ -64,6 +64,6 @@ border-radius: 10px !important; }
 .thin::-webkit-scrollbar {
 width: 6px; }
 
-.example-1 {
+.gallery-entry {
 overflow-y: scroll;
 height: 50px; }
