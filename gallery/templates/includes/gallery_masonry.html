@@ -19,6 +19,12 @@
             <i class="fas fa-cog fa-sm text-white" aria-hidden="true"></i> Edit</a
                >
             </span>
+            {% elif request.user.profile == entry.user_profile %}
+            <span class="badge badge-pill bg-color-3 mb-2">
+            <a class="text-white" href="{% url 'edit_entry' entry.entry_number %}">
+            <i class="fas fa-cog fa-sm text-white" aria-hidden="true"></i> Edit</a
+               >
+            </span>            
             {% endif %}                                               
          </div>
       </div>

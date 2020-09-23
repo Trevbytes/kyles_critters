@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import GalleryEntry
 from .forms import GalleryEntryForm
 from random import shuffle
+from profiles.models import UserProfile
 
 
 def gallery(request):
@@ -31,7 +32,13 @@ def add_entry(request):
     if request.method == 'POST':
         form = GalleryEntryForm(request.POST, request.FILES)
         if form.is_valid():
-            entry = form.save()
+            # Add unique entry number
+            entry_number = form.save()
+            # Attach the user's profile to the order
+            profile = UserProfile.objects.get(user=request.user)
+            new_entry = get_object_or_404(GalleryEntry, entry_number=entry_number)
+            new_entry.user_profile = profile
+            new_entry.save()
             messages.success(request, 'Successfully added entry!')
             return redirect(reverse('gallery'))
         else:
