@@ -26,80 +26,113 @@
                {{ form.default_county | as_crispy_field }}
                {{ form.default_postcode | as_crispy_field }}                        
             </fieldset>
-            <button class="btn col-auto col-lg-4 bg-color-3 px-1 float-right">Update User Information</button>                  
+            <div class="text-center"><button class="btn bg-color-3">Update User Information</button></div>
          </form>
-         <div class="col-8 ml-0 pl-0 my-auto">
+         <hr>
+         <div class=" ml-0 pl-0 text-center">
             <a class="btn btn-sm bg-color-3" href="{% url 'account_email' %}">Email Accounts</a>
             <a class="btn btn-sm bg-color-3" href="{% url 'socialaccount_connections' %}">Social Accounts</a>
          </div>
+         <hr>
+         <div>
+         </div>
       </div>
       <div class="col-12 col-lg-6">
-         <div class="d-lg-none pt-3">
-            <hr>
-         </div>
-         <p class="text-color-5">
-            <small>Order & Loan Request History - Click on the order or request number for a copy of the confirmation</small>
-         </p>
-         <hr>
-         <div class="order-history table-responsive">
-            <table class="table table-hover">
-               <thead>
-                  <tr>
-                     <th>Order Number</th>
-                     <th>Date</th>
-                     <th>Items</th>
-                     <th>Order Total</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {% for order in orders %}
-                  <tr>
-                     <td>
-                        <a href="{% url 'order_history' order.order_number %}"
-                           title="{{ order.order_number }}">
-                        {{ order.order_number|truncatechars:8 }}
-                        </a>
-                     </td>
-                     <td>{{ order.date }}</td>
-                     <td>
-                        <ul class="list-unstyled">
-                           {% for item in order.lineitems.all %}
-                           <li class="small">
-                              {{ item.product.name }} x{{ item.quantity }}
-                           </li>
+         <div class="accordion mt-5" id="histroyAccordian">
+            <div class="card z-depth-0 bg-color-2 text-center">
+               <div class="card-header m-0 p-0" id="orderHeading">
+                  <h5 class="m-0 p-0 bg-color-3">
+                     <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#order-history"
+                        aria-expanded="true" aria-controls="order-history">
+                     Order History
+                     </button>
+                  </h5>
+               </div>
+               <div id="order-history" class="collapse" aria-labelledby="orderHeading"
+                  >
+                  <p class="text-color-5 p-1">
+                     <small>Click on the order number for a copy of the confirmation</small>
+                  </p>
+                  <hr>
+                  <div class="order-history table-responsive card-body">
+                     <table class="table table-hover">
+                        <thead>
+                           <tr>
+                              <th>Order Number</th>
+                              <th>Date</th>
+                              <th>Items</th>
+                              <th>Order Total</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for order in orders %}
+                           <tr>
+                              <td>
+                                 <a href="{% url 'order_history' order.order_number %}"
+                                    title="{{ order.order_number }}">
+                                 {{ order.order_number|truncatechars:8 }}
+                                 </a>
+                              </td>
+                              <td>{{ order.date }}</td>
+                              <td>
+                                 <ul class="list-unstyled">
+                                    {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                       {{ item.product.name }} x{{ item.quantity }}
+                                    </li>
+                                    {% endfor %}
+                                 </ul>
+                              </td>
+                              <td>${{ order.grand_total }}</td>
+                           </tr>
                            {% endfor %}
-                        </ul>
-                     </td>
-                     <td>${{ order.grand_total }}</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
-         </div>
-         <div class="request-history table-responsive">
-            <table class="table table-hover">
-               <thead>
-                  <tr>
-                     <th>Loan Request Number</th>
-                     <th>Date</th>
-                     <th>Critter(s) Requested</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {% for loan_request in loan_requests %}
-                  <tr>
-                     <td>
-                        <a href="{% url 'request_history' loan_request.order_number %}"
-                           title="{{ loan_request.request_number }}">
-                        {{ loan_request.order_number|truncatechars:8 }}
-                        </a>
-                     </td>
-                     <td>{{ loan_request.date }}</td>
-                     <td>{{ loan_request.critter_request }}</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+            <div class="card z-depth-0 bg-color-2 text-center">
+               <div class="card-header m-0 p-0" id="loanHeading">
+                  <h5 class="m-0 p-0 bg-color-3">
+                     <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse"
+                        data-target="#loanRequests" aria-expanded="false" aria-controls="loanRequests">
+                     Loan Requests
+                     </button>
+                  </h5>
+               </div>
+               <div id="loanRequests" class="collapse" aria-labelledby="loanHeading"
+                  >
+                  <p class="text-color-5 p-1">
+                     <small>Click on the request number for a copy of the confirmation</small>
+                  </p>
+                  <hr>
+                  <div class="request-history table-responsive card-body">
+                     <table class="table table-hover">
+                        <thead>
+                           <tr>
+                              <th>Loan Request Number</th>
+                              <th>Date</th>
+                              <th>Critter(s) Requested</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for loan_request in loan_requests %}
+                           <tr>
+                              <td>
+                                 <a href="{% url 'request_history' loan_request.order_number %}"
+                                    title="{{ loan_request.request_number }}">
+                                 {{ loan_request.order_number|truncatechars:8 }}
+                                 </a>
+                              </td>
+                              <td>{{ loan_request.date }}</td>
+                              <td>{{ loan_request.critter_request }}</td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>
