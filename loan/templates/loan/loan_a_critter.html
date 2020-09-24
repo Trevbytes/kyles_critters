@@ -22,10 +22,10 @@
       </div>
    </div>
    <div class="row bg-color-2 rounded-bottom pt-3">
-      <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark">
+      <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark text-center">
          <h4>Available Critters</h4>
-         <p><small>Click to add to the form.</small></p>
-         <div class="container-fluid">
+         <p><small>Click a critter to add it to the form.</small></p>
+         <div class="container-fluid text-center">
             <div class="grid">
                {% for product in products %}
                {% cloudinary product.image.url LOAN %}
