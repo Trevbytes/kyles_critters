@@ -1,6 +1,6 @@
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-color-3 fixed-top">
-   <a class="navbar-brand" href="{% url 'home' %}">Kyle's Critters</a>
+<nav class="mb-1 navbar navbar-expand-md navbar-dark bg-color-3 fixed-top">
+   <a class="navbar-brand d-none d-md-block" href="{% url 'home' %}">Kyle's Critters</a>
    <button
       class="navbar-toggler"
       type="button"
@@ -10,9 +10,10 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
       >
-   <span class="navbar-toggler-icon"></span>
+   <span class="navbar-toggler-icon float-left"></span>
    </button>
-   <ul class="navbar-nav ml-auto nav-flex-icons d-lg-none">
+   <a class="navbar-brand d-md-none mx-auto pl-3" href="{% url 'home' %}">Kyle's Critters</a>
+   <ul class="navbar-nav ml-auto nav-flex-icons d-md-none">
       <li class="nav-item dropdown d-none d-md-inline">
          <a class="nav-link dropdown-toggle mt-3" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -32,7 +33,7 @@
             {% endif %}
          </div>
       </li>
-      <li class="nav-link ml-auto nav-flex-icons d-lg-none">
+      <li class="nav-link ml-auto nav-flex-icons d-md-none">
          <a class=" nav-item waves-effect waves-light text-white mt-2" href="{% url 'view_cart' %}">
             <div class="text-center">
                <div><i class="fas fa-paw fa-lg"></i></div>
@@ -62,24 +63,24 @@
             <a class="nav-link" href="{% url 'gallery' %}">Critter Gallery</a>
          </li>
          <!--Small Screen Search-->
-         <li class="d-lg-none w-100">
-            <form method="GET" action="{% url 'products' %}" class="form-inline mt-1">
-               <div class="md-form my-0">
-                  <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Products" aria-label="Search">
-               </div>
-            </form>
-         </li>         
-      </ul>
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-         <!--Large Screen Search-->
-         <li class="d-none d-lg-inline">
+         <li class="d-md-none w-100">
             <form method="GET" action="{% url 'products' %}" class="form-inline mt-1">
                <div class="md-form my-0">
                   <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Products" aria-label="Search">
                </div>
             </form>
          </li>
-         <li class="nav-item nav-link  d-md-none d-lg-block w-100">
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+         <!--Large Screen Search-->
+         <li class="d-none d-md-inline">
+            <form method="GET" action="{% url 'products' %}" class="form-inline mt-1">
+               <div class="md-form my-0">
+                  <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Products" aria-label="Search">
+               </div>
+            </form>
+         </li>
+         <li class="nav-item nav-link  d-sm-none d-md-block w-100">
             <a class="nav-link dropdown-toggle mt-1 w-100" id="profileDropdown" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user"></i>
@@ -98,7 +99,7 @@
                {% endif %}
             </div>
          </li>
-         <li class="nav-item d-none d-lg-block">
+         <li class="nav-item d-none d-md-block">
             <a class="nav-link waves-effect waves-light" href="{% url 'view_cart' %}">
                <div class="text-center">
                   <div><i class="fas fa-paw fa-lg"></i></div>
