@@ -1,199 +1,157 @@
 <!-- Footer, structure from https://mdbootstrap.com/docs/jquery/navigation/footer/#sc-icons -->
 <footer class="page-footer font-small bg-color-3 pt-4">
-
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
-
-    <!-- Grid row -->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-4 mt-md-0 mt-3">
-
-        <!-- Content -->
-        <h5 class="text-uppercase">Kyle's Critters</h5>
-        <p class="font-weight-bold mb-0">Address:</p>
-        <p class="font-weight-bold mb-0">374 S 230 W</p>
-        <p class="font-weight-bold mb-0">Salt Lake City, UT</p>
-        <p class="font-weight-bold">48575</p>
-        <a class="font-weight-bold" data-toggle="modal" data-target="#modalRegular"><i class="fas fa-map-pin"></i> Find us on Google Maps</a>
-       
-
+   <!-- Footer Links -->
+   <div class="container-fluid text-center text-md-left">
+      <!-- Grid row -->
+      <div class="row">
+         <!-- Grid column -->
+         <div class="col-md-4 mt-md-0 mt-3">
+            <!-- Content -->
+            <h5 class="text-uppercase">Kyle's Critters</h5>
+            <p class="font-weight-bold mb-0">Address:</p>
+            <p class="font-weight-bold mb-0">374 S 230 W</p>
+            <p class="font-weight-bold mb-0">Salt Lake City, UT</p>
+            <p class="font-weight-bold">48575</p>
+            <a class="font-weight-bold" data-toggle="modal" data-target="#modalRegular"><i class="fas fa-map-pin"></i> Find us on Google Maps</a>
+         </div>
+         <!-- Grid column -->
+         <hr class="clearfix w-100 d-md-none pb-3">
+         <!-- Grid column -->
+         <div class="col-md-5 mb-md-0 mb-3">
+            <!-- Links -->
+            <h5 class="text-uppercase">Open Hours:</h5>
+            <ul class="list-unstyled">
+            <li>
+               <p>Currently by appointment only. Call or email us!</p>
+            </li>
+            </ul>
+            <h5 class="text-uppercase">Contact Us</h5>
+            <ul class="list-unstyled">
+               <li>
+                  <p>Phone: 435-234-2342</p>
+               </li>
+               <li>
+                  <a href="" data-toggle="modal" data-target="#modalContactForm"><i class="fas fa-envelope" ></i> Send Message</a>          
+               </li>
+            </ul>
+         </div>
+         <!-- Grid column -->
+         <!-- Grid column -->
+         <div class="col-md-3 mb-md-0 mb-1">
+            <!-- Links -->
+            <h5 class="text-uppercase">Quick Links</h5>
+            <ul class="list-unstyled">
+               <li>
+                  <a href="{% url 'profile' %}">My Profile</a>
+               </li>
+               <li>
+                  <a href="{% url 'view_cart' %}">My Cart</a>
+               </li>
+               <li>
+                  <a href="{% url 'products' %}">All Products</a>
+               </li>
+               <li>
+                  <a href="#!">Privacy Policy/Terms of Service</a>
+               </li>
+            </ul>
+         </div>
+         <!-- Grid column -->
       </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-5 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Open Hours:</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <p>Currently by appointment only. Call or email us!</p>
-          </li>
-
-        <h5 class="text-uppercase">Contact Us</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <p>Phone: 435-234-2342</p>
-          </li>
-          <li>
-            <a href="" data-toggle="modal" data-target="#modalContactForm"><i class="fas fa-envelope" ></i> Send Message</a>          
-          </li>
-        </ul>
-
+      <!-- Grid row -->
+   </div>
+   <!-- Footer Links -->
+   <!-- Footer Elements -->
+   <div class="container">
+      <!-- Grid row-->
+      <div class="row">
+         <!-- Grid column -->
+         <div class="col-md-12 py-4 mb-2">
+            <hr class="mb-2">
+            <div class="flex-center">
+               <!-- Facebook -->
+               <a class="fb-ic" href="https://www.facebook.com" target="_blank">
+               <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
+               </a>
+               <!--Instagram-->
+               <a class="ins-ic" href="https://www.instagram.com" target="_blank">
+               <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
+               </a>
+               <!--Pinterest-->
+               <a class="pin-ic" href="https://www.pinterest.com" target="_blank">
+               <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+               </a>             
+            </div>
+         </div>
+         <!-- Grid column -->
       </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-1">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Quick Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="{% url 'profile' %}">My Profile</a>
-          </li>
-          <li>
-            <a href="{% url 'view_cart' %}">My Cart</a>
-          </li>
-          <li>
-            <a href="{% url 'products' %}">All Products</a>
-          </li>
-          <li>
-            <a href="#!">Privacy Policy/Terms of Service</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!-- Grid row-->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-12 py-4 mb-2">
-        <hr class="mb-2">      
-        <div class="flex-center">
-
-          <!-- Facebook -->
-          <a class="fb-ic" href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic" href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-5 fa-2x"> </i>
-          </a>
-          <!--Pinterest-->
-          <a class="pin-ic" href="https://www.pinterest.com" target="_blank">
-            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-          </a>             
-        </div>    
-      </div>
-
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row-->
-
-  </div>
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    Trevor Adams - For Educational Purposes Only
-  </div>
-  <!-- Copyright -->
-
+      <!-- Grid row-->
+   </div>
+   <!-- Copyright -->
+   <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      Trevor Adams - For Educational Purposes Only
+   </div>
+   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-
 <!--Modal: Name-->
 <div class="modal fade" id="modalRegular" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Body-->
-      <div class="modal-body mb-0 p-0">
-
-        <!--Google map-->
-        <div id="map-container-google-16" class="z-depth-1-half map-container-9" style="height: 400px">
-        </div>
-
+   aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+      <!--Content-->
+      <div class="modal-content">
+         <!--Body-->
+         <div class="modal-body mb-0 p-0">
+            <!--Google map-->
+            <div id="map-container-google-16" class="z-depth-1-half map-container-9" style="height: 400px">
+            </div>
+         </div>
+         <!--Footer-->
+         <div class="modal-footer justify-content-center bg-color-2">
+            <button type="button" class="btn bg-color-3 btn-md" data-dismiss="modal">Close <i class="fas fa-times ml-1"></i></button>
+         </div>
       </div>
-
-      <!--Footer-->
-      <div class="modal-footer justify-content-center">
-
-        <button type="button" class="btn btn-outline-info btn-md" data-dismiss="modal">Close <i class="fas fa-times ml-1"></i></button>
-
-      </div>
-
-    </div>
-    <!--/.Content-->
-
-  </div>
+      <!--/.Content-->
+   </div>
 </div>
-
 <!--Message Modal-->
 <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content bg-color-2 text-color-5">
-      <div class="modal-header text-center bg-color-5 text-white">
-        <h4 class="modal-title w-100 font-weight-bold">Send us a message</h4>
-        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+   aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content bg-color-2 text-color-5">
+         <div class="modal-header text-center bg-color-5 text-white">
+            <h4 class="modal-title w-100 font-weight-bold">Send us a message</h4>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <form action="#" method="POST" id="request-form">
+            {% csrf_token %}
+            <div class="modal-body mx-3 rounded text-color-5">
+               <div class="md-form mb-5 text-color-5">
+                  <i class="fas fa-user prefix text-white"></i>
+                  {{ message_form.full_name  }}
+               </div>
+               <div class="md-form mb-5">
+                  <i class="fas fa-envelope prefix text-white"></i>
+                  {{ message_form.email }}
+               </div>
+               <div class="md-form mb-5">
+                  <i class="fas fa-phone prefix text-white"></i>
+                  {{ message_form.phone_number }}
+               </div>
+               <div class="md-form mb-5">
+                  <i class="fas fa-tag prefix text-white"></i>
+                  {{ message_form.message_subject }}
+               </div>
+               <div class="md-form">         
+                  {{ message_form.message_body | safe }}
+                  {{ message_form.media }}  
+               </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+               <button type="submit" class="btn bg-color-3 text-white"><i class="fas fa-paper-plane "></i> Send</button>
+            </div>
+         </form>
       </div>
-     <form action="#" method="POST" id="request-form">
-        {% csrf_token %}
-      <div class="modal-body mx-3 rounded text-color-5">
-        <div class="md-form mb-5 text-color-5">
-          <i class="fas fa-user prefix black-text"></i>
-          {{ message_form.full_name  }}
-
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix black-text"></i>
-          {{ message_form.email }}
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-phone prefix black-text"></i>
-          {{ message_form.phone_number }}
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-tag prefix black-text"></i>
-        {{ message_form.message_subject }}
-        </div>
-
-        <div class="md-form">         
-            {{ message_form.message_body | safe }}
-            {{ message_form.media }}  
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="submit" class="btn bg-color-3 text-white"><i class="fas fa-paper-plane "></i> Send</button>
-      </div>
-    </form>      
-    </div>
-  </div>
+   </div>
 </div>
