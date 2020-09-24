@@ -1,62 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container col-md-6 mb-3 text-light">
-        <div class="row">
-            <div class="col-12">
-                <hr>
-                <h2 class="logo-font mb-4">Product Management</h2>
-                <h5 class="text-muted">Edit a Product</h5>
-                <hr>
+<div class="overlay"></div>
+<div class="container col-md-6 mb-3 text-light">
+   <div class="row">
+      <div class="col-12">
+         <hr>
+         <h2 class="logo-font mb-4">Product Management</h2>
+         <h5 class="text-muted">Editing {{ product.name }}</h5>
+         <hr>
+      </div>
+   </div>
+   <div class="row bg-color-2 rounded pt-2">
+      <div class="col-12">
+         <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 text-color-5" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.category | as_crispy_field }}
+            {{ form.sub_category | as_crispy_field }}
+            {{ form.sku | as_crispy_field }}
+            {{ form.name | as_crispy_field }}
+            {{ form.description | as_crispy_field | safe }}
+            {{ form.media }}
+            {{ form.price | as_crispy_field }}
+            {{ form.image }}
+            {{ form.featured | as_crispy_field }}
+            {{ form.ready_to_loan | as_crispy_field }}
+            {{ form.out_of_stock | as_crispy_field }}
+            <div class="row">
+               <div class="col justify-contents-left">
+                  <a onclick="return confirmDelete()" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
+               </div>
+               <div class="col float-right justify-contents-right text-right">
+                  <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
+                  <button class="btn bg-color-3 " type="submit">Update Product</button>
+               </div>
             </div>
-        </div>
-
-        <div class="row bg-color-2 rounded pt-2">
-            <div class="col-12">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.category | as_crispy_field }}
-                    {{ form.sub_category | as_crispy_field }}
-                    {{ form.sku | as_crispy_field }}
-                    {{ form.name | as_crispy_field }}
-                    {{ form.description | as_crispy_field | safe }}
-                    {{ form.media }}
-                    {{ form.price | as_crispy_field }}
-                    {{ form.image }}
-                    {{ form.featured | as_crispy_field }}
-                    {{ form.ready_to_loan | as_crispy_field }}
-                    {{ form.out_of_stock | as_crispy_field }}
-                    <div class="row">
-                    <div class="col justify-contents-left">
-                    <a onclick="return confirmDelete()" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
-                    </div>                    
-                    <div class="col float-right justify-contents-right text-right">
-                        <a class="btn bg-color-3" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn bg-color-3 " type="submit">Update Product</button>
-                    </div>
-                    </div>
-                </form>
-            </div>            
-        </div>
-    </div>
+         </form>
+      </div>
+   </div>
+</div>
 {% endblock %}
-
 {% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-        //Confirms deletion
-        function confirmDelete() {
-        if (confirm("Are you sure you want to remove this product?") == false) {
-            return false;
-        } else {
-            return true;
-        }
-        }
-    </script>
+{{ block.super }}
+<script type="text/javascript">
+   $('#new-image').change(function() {
+       var file = $('#new-image')[0].files[0];
+       $('#filename').text(`Image will be set to: ${file.name}`);
+   });
+   //Confirms deletion
+   function confirmDelete() {
+   if (confirm("Are you sure you want to remove this product?") == false) {
+       return false;
+   } else {
+       return true;
+   }
+   }
+</script>
 {% endblock %}
