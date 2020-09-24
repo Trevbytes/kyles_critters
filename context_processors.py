@@ -48,23 +48,23 @@ def message_form(request):
 def images(request):
     return dict(
         THUMBNAIL={
-            "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300,
+            "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         DETAIL_IMAGE={
-            "class": "col-auto m-3 mb-auto p-0 card card-image img-fluid", "format": "jpg", "crop": "scale", "height": 300,
+            "class": "col-auto m-3 mb-auto p-0 card card-image img-fluid", "format": "jpg", "crop": "scale", "height": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         JUMBO={
-            "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto",
+            "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         CARD={
-            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "alt": "Card image cap",
+            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "alt": "Card image cap", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         LOAN={
-            "class": "hoverable grid-item p-2 waves-effect", "format": "jpg", "crop": "scale", "width": 200,
+            "class": "hoverable grid-item p-2 waves-effect", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         GALLERY={
