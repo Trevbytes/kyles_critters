@@ -1,51 +1,41 @@
 {% extends "account/base.html" %}
 {% load account socialaccount %}
 {% load i18n %}
-
 {% block content %}
 <div class="d-flex justify-content-center">
-<!-- Default form register -->
-<form class=" text-center pb-3 pt-0 signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-    {% csrf_token %}
-    <p class="h4 mb-2">Register</p>
-    <hr>
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    
-    <!-- Newsletter -->
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
-    </div>
-
-    <!-- Sign up button -->
-    <button class="btn btn-info my-4 btn-block" type="submit">Register</button>
-
-    <!-- Social register -->
-    <p class="mr-5 pr-5 ml-5 pl-5">or login in with:</p>
-    {% get_providers as socialaccount_providers %}
-    {% providers_media_js %}    
-    <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="mx-2" role="button">
-    <i class="fab fa-facebook-f light-blue-text"></i></a>
-    {% for provider in socialaccount_providers %}
-    {% if provider.name == 'Google' %}
-    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} mx-2" 
-     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fab fa-google-plus-g fa-lg light-blue-text"></i></a>
-    {% endif %}
-    {% endfor %} 
-    <hr>
-
-    <!-- Terms of service -->
-    <p>By clicking
-        <em>Register</em> you agree to our
-        <a href="" target="_blank">terms of service</a>
-    </p>
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">log in</a>.{% endblocktrans %}</p>
-
-</form>
-<!-- Default form register -->
+   <!-- Default form register -->
+   <form class="pb-3 pt-0 signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      <p class="h4 mb-2 text-center">Register</p>
+      <hr>
+      {{ form|crispy }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <!-- Sign up button -->
+      <button class="btn bg-color-3 btn-block my-4  text-center" type="submit">Register</button>
+      <!-- Social register -->
+      <p class="mr-5 pr-5 ml-5 pl-5 text-center">or login in with:</p>
+      <div class="text-center">
+         {% get_providers as socialaccount_providers %}
+         {% providers_media_js %}    
+         <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="mx-2" role="button">
+         <i class="fab fa-facebook-f fa-lg light-blue-text"></i></a>
+         {% for provider in socialaccount_providers %}
+         {% if provider.name == 'Google' %}
+         <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} mx-2" 
+            href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fab fa-google-plus-g fa-lg light-blue-text"></i></a>
+         {% endif %}
+         {% endfor %} 
+      </div>
+      <hr>
+      <!-- Terms of service -->
+      <p class="text-center">By clicking
+         <em>Register</em> you agree to our
+         <a href="" target="_blank">terms of service</a>
+      </p>
+      <p class="text-center">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">log in</a>.{% endblocktrans %}</p>
+   </form>
+   <!-- Default form register -->
 </div>
-
 {% endblock %}
