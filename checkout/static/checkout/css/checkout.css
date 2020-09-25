@@ -4,7 +4,7 @@
   box-sizing: border-box;
   height: 40px;
   padding: 10px 12px;
-  border: 1px solid transparent;
+  border-radius: 5px;
   background-color: var(--bg-color-1);
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
