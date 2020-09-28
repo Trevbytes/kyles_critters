@@ -30,7 +30,7 @@ def add_entry(request):
         return redirect(reverse('gallery'))
 
     if request.method == 'POST':
-        form = GalleryEntryForm(request.POST, request.FILES)
+        form = GalleryEntryForm(request.POST, request.FILES)       
         if form.is_valid():
             # Add unique entry number
             entry_number = form.save()
@@ -62,10 +62,16 @@ def edit_entry(request, entry_number):
         return redirect(reverse('gallery'))
 
     entry = get_object_or_404(GalleryEntry, entry_number=entry_number)
+    profile = entry.user_profile
     if request.method == 'POST':
         form = GalleryEntryForm(request.POST, request.FILES, instance=entry)
         if form.is_valid():
             form.save()
+            # Reattach profile to entry
+            edited_entry = get_object_or_404(GalleryEntry, entry_number=entry_number)
+            edited_entry.user_profile = profile
+            edited_entry.save()
+
             messages.success(request, 'Successfully updated entry!')
             return redirect(reverse('profile') + "#gallery-entries")
         else:
