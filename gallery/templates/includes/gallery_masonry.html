@@ -2,13 +2,13 @@
 <div class="row d-flex justify-content-center">
    <div class="grid col-xl-10 pt-3">
       {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
-      <div class="grid-item card card-flip bg-color-2">
-         <div class="card-front">
+      <div class="grid-item card-flip bg-color-2 rounded">
+         <div class="secondborder card-front">
             {% cloudinary entry.image.url GALLERY %}
          </div>
-         <div class="card-back card bg-color-2 gallery-entry square scrollbar-cyan thin p-2 text-color-5">
+         <div class="card-back card bg-color-2 gallery-entry square scrollbar-cyan  p-2 text-color-5">
             <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
-            <img class="w-75 rounded mx-auto" src="{{ entry.image.url }}" alt="{{ entry.name }}" onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
+            <img class="w-75 rounded mx-auto z-depth-2" src="{{ entry.image.url }}" alt="{{ entry.name }}" onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
             <p>{{ entry.critter_info|safe }}</p>
             {% if not product %}
             <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>

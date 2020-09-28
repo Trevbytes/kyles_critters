@@ -1,7 +1,42 @@
 .grid-item { 
     width: 300px; 
     margin:0 auto;
-   
+    margin-bottom: 20px;
+}
+
+/*
+Code and background images from https://cyndikirkpatrick.com/texture-tiles/picture-borders/
+*/
+.secondborder {
+background-color: #7d7d7d;
+background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
+display: block;
+padding: 4%;
+margin: 1% 0 1% 0;
+border-radius: 5px 5px 5px 5px;
+-moz-border-radius: 5px 5px 5px 5px;
+-webkit-border-radius: 5px 5px 5px 5px;
+border: 1px solid #000;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.80);
+}
+
+img.borderedpicture {
+background-color: #7d7d7d;
+background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
+display: block;
+width: 100%;
+max-width: 100%;
+height: auto;
+size: cover;
+padding: 2%;
+margin: 0;
+border-radius: 5px 5px 5px 5px;
+-moz-border-radius: 5px 5px 5px 5px;
+-webkit-border-radius: 5px 5px 5px 5px;
+border: 1px solid #241312;
+box-shadow: -webkit-box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
+-moz-box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
+box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
 }
 
 /*
