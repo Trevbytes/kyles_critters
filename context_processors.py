@@ -7,6 +7,11 @@ from django.utils.html import strip_tags
 
 
 def message_form(request):
+    """
+    Contact message form. Located in global context as the
+    message form is accessed through the footer in all pages
+    of the site.
+    """
     if request.method == 'GET':
         message_form = MessageForm()
         context = {'message_form': message_form}
@@ -37,15 +42,21 @@ def message_form(request):
                 [email],
                 html_message=body
             )
-            messages.success(request, f'Message sent successfully! A copy of the message will be sent to {email}.')
+            messages.success(
+                request, f'Message sent successfully! A copy of the message will be sent to {email}.')
             message_form = MessageForm()
             context = {
-                    'message_form': message_form,
-                    }
+                'message_form': message_form,
+            }
         return context
 
 
 def images(request):
+    """
+    Image context processor for Cloudinary. Most of the images
+    are proccessed through these keys. They add the correct classes
+    and 'on error' events to the images.
+    """
     return dict(
         THUMBNAIL={
             "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
