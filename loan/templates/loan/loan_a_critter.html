@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'loan/css/loan_image_mask.css' %}">
-{% endblock %}
 {% block page_header %}
 <div class="container">
    {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
