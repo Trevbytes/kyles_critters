@@ -16,6 +16,10 @@ def message_form(request):
         message_form = MessageForm()
         context = {'message_form': message_form}
         return context
+    elif 'send-message' not in request.POST:
+        message_form = MessageForm()
+        context = {'message_form': message_form}
+        return context
     else:
         message_form = MessageForm(request.POST)
         if message_form.is_valid():
@@ -42,13 +46,15 @@ def message_form(request):
                 [email],
                 html_message=body
             )
+            storage = messages.get_messages(request)
+            storage.used = True
             messages.success(
                 request, f'Message sent successfully! A copy of the message will be sent to {email}.')
             message_form = MessageForm()
             context = {
                 'message_form': message_form,
             }
-        return context
+            return context
 
 
 def images(request):
