@@ -14,7 +14,7 @@
         </div>
         <div class="row bg-color-2 p-3 pb-2 pt-4 rounded animated fadeIn">
             <div class="col text-color-5 text-center">
-                <p class=" mb-4">Welcome! Here you can find pictures of critters bought at or sold at our store. If you have purchased a critter from us, please share a photo and short story of your critter in its new home!</p>
+                <p class=" mb-4">Welcome! Here you can find pictures of critters that were bought at our store. If you have purchased a critter from us, please share a photo and short story of your critter in its new home!</p>
                 <hr>                
                 {% if request.user.is_authenticated %}                
                 <a class="btn bg-color-3 text-white" href="{% url 'add_entry' %}">Add a Critter</a>
