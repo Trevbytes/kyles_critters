@@ -35,7 +35,7 @@ def update_cart(request, item_id):
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
-    if quantity > 0 and quantity < 99:
+    if quantity > 0 and quantity < 21:
         cart[item_id] = quantity
         request.session['cart'] = cart
         messages.info(request, f'Updated quantity of {product.name}.')
@@ -44,7 +44,7 @@ def update_cart(request, item_id):
         request.session['cart'] = cart
         messages.warning(request, f'Removed {product.name} from your cart.')
     else:
-        messages.error(request, f'{product.name} quantity must be less than 100.')
+        messages.error(request, f'{product.name} quantity must be 20 or less.')
 
     return redirect(reverse('view_cart'))
 

@@ -44,16 +44,16 @@
                      </div>
                   </td>
                   <td class="py-3 px-0 w-50">
-                     <div class="text-center ">                  
+                     <div>                  
                      <form class="update_cart" method="POST" action="{% url 'update_cart' item.item_id %}">
                         {% csrf_token %}                                           
-                        <input class="form-control qty_input text-center" type="number"
-                           name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                        <input class="form-control qty_input text-center w-50" type="number"
+                           name="quantity" value="{{ item.quantity }}" min="1" max="20"
                            data-item_id="{{ item.item_id }}"
                            id="id_qty_{{ item.item_id }}">
                      </form>
-                     <button class="btn btn-danger btn-sm remove-item  my-1 py-1" id="remove_{{ item.item_id }}"><i class="fas fas fa-times"></i> Remove</button>
-                     <button class="btn text-white bg-color-3 btn-sm  my-1 py-1 update-btn"><i class="fas fas fa-sync"></i> Update</button> 
+                     <button class="btn btn-danger btn-sm remove-item  my-1 py-1 mx-0 px-1" id="remove_{{ item.item_id }}"><i class="fas fas fa-times"></i> Remove</button>
+                     <button class="btn text-white bg-color-3 btn-sm  my-1 py-1 mx-0 px-1 update-btn"><i class="fas fas fa-sync"></i> Update</button> 
                      </div>                                  
                   </td>
                   <td class="py-3">
