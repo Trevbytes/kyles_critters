@@ -26,7 +26,7 @@ class LoanRequestForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'county': 'County',
-            'critter_request': 'Requested Critter(s)',
+            'critter_request': 'Requested Critter(s) - Click on an Available Critter image(s) -',
             'request_info': 'Tell us a little about yourself and why you think you would be a good home for the requested critters.' 
         }
 
