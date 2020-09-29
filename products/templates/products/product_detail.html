@@ -1,9 +1,7 @@
 {% extends "base.html" %} {% load cloudinary %} {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
 {% endblock %}
-
 {% block content %}
 <div class="container bg-color-2 rounded mt-5 p-3">
    <div class="row justify-content-center">
@@ -37,16 +35,16 @@
                <span class="text-uppercase text-white">Back to Critters</span>
                </a>
                <button
-                  type="submit"
-                  class="btn bg-color-3 text-uppercase text-white"
-                  {% if product.out_of_stock %}
-                  disabled
-                  >
-                  Out of Stock
-                  {% else %}
-                  >
-                  <i class="fas fa-paw fa-lg"></i> Add to Cart</button>
-                  {% endif %}
+               type="submit"
+               class="btn bg-color-3 text-uppercase text-white"
+               {% if product.out_of_stock %}
+               disabled
+               >
+               Out of Stock
+               {% else %}
+               >
+               <i class="fas fa-paw fa-lg"></i> Add to Cart</button>
+               {% endif %}
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}" />
          </form>
@@ -58,6 +56,9 @@
    <div class="row justify-content-center">
       <h4>{{product.name}} Showcase</h4>
    </div>
+   <div class="row justify-content-center">
+      <p>These pictures are from our customers who bought their critters here!</p>
+   </div>
    {# Gallery entries. Requires "shuffled_entries" variable. #}
    {% include 'includes/gallery_masonry.html' %}
    {% endif %}                 
@@ -66,6 +67,6 @@
 <div class="p-3 m-3 d-none d-xl-block"></div>
 {% endblock %}
 {% block postloadjs %}
-  {{ block.super }}
-  {% include 'includes/masonry_js.html' %}
+{{ block.super }}
+{% include 'includes/masonry_js.html' %}
 {% endblock %}
