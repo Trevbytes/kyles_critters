@@ -64,7 +64,7 @@ def images(request):
         },
 
         LOAN={
-            "class": "hoverable grid-item p-2 waves-effect", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "class": "hoverable grid-item p-2 waves-effect", "style": "z-index: 10", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         GALLERY={

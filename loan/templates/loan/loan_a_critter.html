@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'loan/css/loan_image_mask.css' %}">
+{% endblock %}
 {% block page_header %}
 <div class="container">
    {% cloudinary "https://res.cloudinary.com/chickpeas/image/upload/v1598974698/mousebanner.jpg" JUMBO %}
@@ -25,6 +28,7 @@
       <div class="col-12 col-lg-6 order-lg-last mb-5 text-dark text-center">
          <h4>Available Critters</h4>
          <p><small>Click a critter to add it to the form.</small></p>
+         <button type="button" onclick="refreshCritters()" style="z-index: 10;" class="btn btn-sm btn-danger">Reset</button>
          <div class="container-fluid text-center">
             <div class="grid">
                {% for product in products %}
@@ -48,6 +52,7 @@
                {{ request_form.county | as_crispy_field }}
                {{ request_form.postcode | as_crispy_field }}
                {{ request_form.critter_request | as_crispy_field }}
+               <button type="button" onclick="refreshCritters()" style="z-index: 10;" class="btn btn-sm btn-danger mt-0 mb-3">Reset Requested Critters</button>
                <p class="text-color-5">Tell us a little about yourself and why you think you would be a good home for the requested critters.</p>
                {{ request_form.request_info | safe }}
                {{ request_form.media }}                        
@@ -68,6 +73,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
+   $("#id_critter_request").attr('readonly','readonly');
    // Create an array with the names of the products
    var names = new Array(
    {% for product in products %}
@@ -90,12 +96,25 @@
    the class 'hoverable'. It adds the product name as 
    the elements id. It then adds an 'onClick' function
    that adds that id to the input with the id of 
-   'id_critter_request'.*/    
-   $(".hoverable").each(function () {
-      $(this).attr("id",productName);
-      $(this).on("click", function () {        
-        $("#id_critter_request").val($('#id_critter_request').val() + $(this).attr("id") +", ");
-        })
-   });   
+   'id_critter_request'.*/
+        function reset() {       
+            $(".hoverable").each(function () {
+                $(this).attr("id",productName);
+                $(this).not(".bound").addClass('bound').on("click", function () {
+                    $("#id_critter_request").val($('#id_critter_request').val() + $(this).attr("id") +", ");
+                    $(this).addClass("animated rotateOutUpLeft")
+                    $(this).removeClass("hoverable waves-effect")
+                    $(this).prop("onclick", null).off("click");
+                    });
+            });
+        }
+        reset();
+        function refreshCritters() {
+            $(".rotateOutUpLeft").addClass("hoverable waves-effect");
+            $(".rotateOutUpLeft").removeClass("animated rotateOutUpLeft bound");
+            $("#id_critter_request").val("")          
+            reset();
+            }   
+
 </script>
 {% endblock %}
