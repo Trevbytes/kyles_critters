@@ -260,9 +260,9 @@ CKEDITOR_CONFIGS = {
             ['Table', 'HorizontalRule'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'],
-            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-            ['NumberedList','BulletedList'],
-            ['Indent','Outdent'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['NumberedList', 'BulletedList'],
+            ['Indent', 'Outdent'],
             ['Maximize'],
         ],
     }
