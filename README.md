@@ -1,13 +1,21 @@
 # Kyle's Critters
 
-Future site preview image
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499934/kyles_critters/screenshots/homepage_kyfy3v.jpg">
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499963/kyles_critters/screenshots/responsive-site_grqdhq.jpg">
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601500129/kyles_critters/screenshots/store_fz7hba.jpg">
 
 Kyle's Critters is my fourth and final milestone project while studying at [The Code Institute](https://codeinstitute.net/).
-The purpose of the milestone project is to build an E-commerce website. The site must use the Django framework, a relational database and use Stripe for secure payments. This is my first project using/learning the TDD(Test Driven Development) method.
+The purpose of the milestone project is to build an E-commerce web app. The site must use the Django framework, a relational database and use Stripe for secure payments. This is my first project using/learning the TDD(Test Driven Development) method.
 
-Kyle's Critters is a online pet store focused on selling small animals such as mice, rats and hamsters.
+Kyle's Critters is a online pet store focused on selling small animals such as mice, rats and hamsters. Kyle wants two additonal features in his store.
 
-Future Live Link to Site
+The first feature he wants is to promote his customer community. Customers can upload pictures of the Critters they have bought at the store, share a short story and publish this picture to the store for future customers to see.
+
+The second feature Kyle wants is for customers to be able to loan critters from the store. As this is a new idea, not all the terms and conditions have been considered. But to start, customers can send a request to loan available critters. The store's staff can then reach out to the customer to negotiate terms.
+
+[Live Link to Site](https://kyles-crittersv1.herokuapp.com/)
+
+
 
 ## Table of Contents
 
@@ -27,93 +35,133 @@ Future Live Link to Site
 
 ## UX
 
-These [wireframes](https://github.com/Trevbytes/Chickpeas/blob/master/wireframes/chickpeas_wireframes.pdf) show the original idea for the pages throughout the site.
+These [wireframes](wireframes.md) show the original idea for the web app.
 
-A user should be able to see if there are substitutes for ingredients in a recipe. This has great value for users with cooking for people with allergies and/or food restrictions.
+The projects main apps and code have been developed using the TDD Software development model. 
 
-This project has been created using the TDD Software development model. 
+Some design changes and additions to the original wireframe ideas have been made throughout the development of the project to improve the user experience. 
 
-Design changes and additions to the original wireframe ideas have been made throughout the development of the project to improve the user experience. 
+The site is designed for a start up pet store to begin selling product.
+
+The optimal viewing device for the site would be a tablet sized device. By designing the site with this in mind, the store can use the web app in a physical store instead of a register.
 
 Kyle's Critters has been designed with the following main features/goals in mind:
 
  - Sell product(animals) online.
  - Have user/member feedback about their purchases. A user should be able to leave a review, or post about the pet they purchased.
+ - Users should be able to login and upload pictures of critters they have purchased from the store. 
 
-The color palette was chosen from [coolors.co](https://coolors.co/f7f7ff-c49991-279af1-60656f-131112).
-I used MDB (Material Design for Bootstrap) CSS framework in building the design of this site. Icons are provided by the framework and Font Awesome. The fonts used are _, provided by Google Fonts.
+Delivery options have not been added as the startup store has limited delivery options. Delivery can be negotiated on an order by order basis.
+
+The color palette was chosen from [coolors.co](https://coolors.co/f7f7ff-c49991-279af1-60656f-131112). The colors used are tied to single CSS variables. This allows a color change of the web app with minimal coding. This could be useful for a future feature of individual user color customization or a general change of the stores theme colors. 
+
+I used MDB (Material Design for Bootstrap) CSS framework in building the design of this site. Icons are provided by the framework and Font Awesome. The font used is the default font of MDB, Roboto, provided by Google Fonts.
+
+Outside of the Django admin pages. Additonal, user friendly pages were added to allow easy management of product and gallery entires. 
 
 ### Defensive Design
 
+All secret keys are stored in enviorment variables, with one exception. Google Maps secret key is visable in the code and can be found in the repository. To secure missue of this key, access with the key has been restricted via Google settings. 
+
+Purchase quantites have been limited to 20 or less of each product per purchase. As most purchases will most likely be of quantities of 5 or less, 20 is set as a percaution but can be easily adjusted. Users are not allowed to add more and receive a message if they try to do so.
+
 Features have been added to help prevent unexpected input or site tampering as well as provide privacy and security for the user. These features include:
  - User accounts
-    - 
+    - Allauth is used to create secure user accounts. Email verification is requried to create an account. All passwords are hashed.
  - Required input
-    - Forms use required input fields in order to ensure that data is entered.
+    - Forms use required input fields in order to ensure that important data is entered.
  - Default images
-    - Default images are used when a user does not enter a URL for an image. If the URL does not work a the default image is also displayed.
- - Privacy
-    - 
+    - Default images are used for missing or broken images.
  - Limited access
     - A non-logged in user can:
-        - _
-    - A logged in user can: 
-        - _
-    - An admin can:
-        - _
+        - View and purchase products.
+        - Request to loan a critter.
+        - View the critter gallery.
+    - A logged in user can additionally: 
+        - Store default user information.
+        - View order and loan request history.
+        - Manage email addresses and social accounts tied to their account.
+        - Post a gallery entry with a image and text entry.
+        - Edit/Remove gallery entries tied to their account.
+    - Staff can additionally:
+        - Add/Edit/Remove products.
+        - Edit/Remove gallery entries in order to moderate content.
+        - Perform other functions granted by a Super User such as view orders and requests.
+    - A Super User:
+        - Has full access to the site and can grant permissions to other users.
+        - Can edit and manage almost everything from the Django admin pages. Some fields in orders and entires are uneditable to prevent tampering.
 
 ### User Stories
 
-*Work in Progress*
-
 As a User I would like to:
 - Use the site on all devices from mobile to desktop.
-- Be able to register
 - Be able to browse product easily.
-- Be able to view information about product.
+- Be able to view information about products.
 - Be able to search for products.
 - Browse products by catagory.
-- Submit my own reviews and posts(when logged in).
-- Register or log in to the site simply. 
-- Edit and delete posts I have submitted.
+- Add products to a cart.
+- Make a secure purchase of the items in the cart.
+- Make a loan request.
+- View all critters in the gallery.
 - Get visual feedback on interactions with the site.
 - Get error messages in case of unexpected issues.
-- Receive emails from the site.
+- Receive confirmation emails from the site.
+- Be able to register by email, Google or Facebook.
+- Be able to send an email message to the store.
+- Locate the store with Google Maps.
 
-With admin access I would like to do everything above as well as:
-- .
+As a Registered User I would like to additionally:
+- Manage stored infomation such as default user information, email and connected social accounts.
+- View previous orders and loan requests.
+- Prefill forms with stored information.
+- Submit galley entries.
+- Edit and delete entries I have submitted.
+
+With staff access I would like to additionally:
+- Add/Edit/Remove products.
+- Edit/Remove gallery entries in order to moderate content.
+- Perform other functions granted by a Super User such as view orders and requests.
+
+As a Super User I would like to additionally:
+- Have full access to site and admin pages.
 
 ## Features
 
 ### Existing Features
+- **Navagation Bar** - All pages contain the nav bar. It is simple and provides access to the majority of the web app(according to the user type) as well as a built in search bar.
+- **Footer** - The footer is visable on all pages. It contains store information as well as:
+    - Google Maps modal - A simple Google map is used with no pinpoint on a location. This is for privacy purposes. The current store address is fake, no location is specified on the map to prevent potential confusion.
+    - Send Message modal - A basic message form that allows users to send an email to the stores email address without giving to stores email address explicitly. This is to prevent pesky bots sending spam mail to the stores email address.
+    - Quick links to common pages as well as the privacy policy and terms & conditions modals.
+    - Links to social media - Currently sending the user to the homepages of the respective sites. No social accounts have been created for the store.
+- **Search Product** - This feature is designed to take a user's search request and find product that contains the search request.
+- **Home Page** - The first page a new user sees. It is also a page to send users to on logout. Here a user can read about the basic idea of the site as well as view featured critters.
+- **Product Catalog** - The product catalog shows all the products in the database. Filters in views.py are used to filter the products shown.
+    - On each card a user can:
+        - Click on the image or 'More info' to navigate to the product details page.
+        - Click on the 'Add 1 to Cart' to quickly add a product to their cart. This is useful for 'in store purchases' as well as for returning customers.
+        - Edit the product, if the user has the appropriate permissions.
+- **Product Details** - This page shows product details. It also allows users to add a larger quantity of the product to the cart.
+        - A filtered gallery is displayed on this page. This shows gallery entries that match the critter type.
+            - For example - The product detail page of 'Rat' shows all gallery entires of the critter type 'Rat'.
+- **Loan a Critter App** - This page contains a form for a user to fill out to request an available critter to loan. Available critters are determined by the store and are displayed as images for the user to click to add it to the form.
+    - When a form is submitted a copy is sent to the user's email address as well as the store's. The information is also stored in the database.
+    - If a logged in user makes a loan request the request is tied to their account and can be viewed on the profile page.
+- **Critter Gallery App** - Logged in users are able to add a gallery entry to this app via the Critter Gallery page. It is intented for users who have purchased critters from the store.
+    - A gallery entry consists of: the purchased critters name, the critter type, an optional short story about the critter and a user uploaded image of the critter in it's new home.
+    - The main critter gallery page contains all entries. A filtered selection of the gallery can be found on product detail pages as well as a users profile page.
+    - A logged in user can add/edit/remove their own gallery entry(s).
+    - Users with granted permissions can edit/remove gallery entries in order to moderate content. 
+- **User Profile page** - This page allows a user to easily access all the users information for the web app.
+    - A user can create an account by registering with a verifified email address or via Google or Facebook.
+    - A user can update their default information in order to prefill forms.
+    - A user can manage their email address(s) and social accounts tied to the app.
+    - A user can view thier previous orders and requests as well as view a copy of confirmation details.
+    - A user can view all of their entries to the Critter Gallery.
+- **CKEditor 6** - CKEditor is used throughout the site to allow users access to a Rich Text Editor. This allows users to format longer text such as descriptions, messages and critter stories.
 
 ### Features Left to Implement
 
-- **Navagation Bar** - All pages contain the nav bar. It is simple and provides access to the whole site(according to the user type) as well as a built in search bar.
-- **Search Product** - This feature is designed to take a user's search request and find product that contain the search request.
-- **Home Page** - The first page a new user sees. It is also a page to send users to on logout. Here a user can read about the basic idea of the site.
-- **Browse Public Recipes** - This page allows a user to view all public recipes. It is sorted into 4 catagories for easier navigation. A logged in user can edit or delete their submitted recipes or create-and-edit a copy of another's recipe to add to their personal cookbook.
-- **Ingredients** - This page allows a user to search through all ingredients in the database. When an ingredient is selected the user can learn more about that ingredient and see common subsitutes, if any have been added.
-    - A logged in user can add new ingredients to the database. The user can also fully edit or delete an ingredient created by the user. A user can partially edit ANY ingredient by adding a common subsitute to the selected ingredient.
-- **Login/Register** - These two pages are used to handle the simple login and registration process.
-- **Dashboard** - The users personal cookbook. Here a user can create a new recipe and view all recipes created by the user, including copied recipes.
-- **Create Recipe or Ingredient** - These modals are used to provide the user a form to submit new a recipe or ingredient to the database.  
-- **Edit/Copy Recipes** - This modal allows a user to edit their recipes or create and edit a copy of another users recipe. 
-- **Delete Recipe/Ingredient** - A user can delete their own recipe or ingredient but not others.  
-- **Edit Ingredient** - This modal allows users to edit an ingredient. As mentioned earlier, all ingredients can be edited by users. However, full editing access is granted only to the creator (or admin) of the ingredient.
-- **Loading Page** - A simple loading page shown when the site is loading.
-- **Error Pages** - In case of unforseen errors these pages will help the user return to the site.
-- Implement [Cloudinary](https://cloudinary.com/). Users should be able to upload their own images and the urls should be stored in the database with the recipe.
-- Power the search by using Google.
-- Add a Rich Text editor, possibly [CKEditor 4 or 5](https://ckeditor.com/), to enable users to format their input text.
-- Add a page to email me (or an admin) about site issuses or suggestions.
-- Add video tutorials for the features of the site.
-- Add metrics to the site. Such as: Total user recipes added and "Liking" of recipes.
-- Add the ability to sign in using a third party such as Google or Facebook.
-- Add the ability to grant admin access to users.
-- Add the ability to reset a forgotten password.
-- Pagination.
-- Redesign the landing page so that featured product are displayed and selectable.
 
 ## Technologies Used
 
@@ -123,7 +171,7 @@ With admin access I would like to do everything above as well as:
 
 - [CSS 3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 
-  - The project uses **CSS 3** to style the HTML elements.
+  - The project uses **CSS 3** to style the HTML elements. Most CSS is from **MDB** and is used by adding certain classes to elements.
 
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
@@ -133,21 +181,17 @@ With admin access I would like to do everything above as well as:
 
   - The project uses **Python** as the base program which runs the website. It works with the database to execute CRUD functions.
 
-- Postgres
+- [Postgres](https://www.postgresql.org/)
 
-  - The project uses **Postgres** for managing the database. 
+  - The project uses **Postgres** for managing the SQL database. 
 
 - [Material Design for Bootstrap](https://mdbootstrap.com/)
 
-  - The project uses **MDB** to create the layout of the site as well as style most of the elements thorughout the site.
+  - The project uses **MDB** to create the layout of the site as well as style most of the elements throughout the site.
 
 - [JQuery](https://jquery.com)
 
   - The project uses **JQuery** to simplify DOM manipulation in javascript files.
-
-- [Google Fonts](https://fonts.google.com/)
-
-  - The project uses **Google Fonts** for fonts used in the website.
 
 - [Font Awesome](https://fontawesome.com/icons?d=gallery)
 
@@ -184,7 +228,11 @@ With admin access I would like to do everything above as well as:
 
 - [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)
 
-  - The project used **Firefox Developer Tools** for debugging the webpage during development.
+  - The project used **Firefox Developer Tools** for debugging the webpage during half of the development.
+
+- [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools)
+
+  - The project uses **Chrome Developer Tools** for debugging the webpage during the second half of development.
 
 - [W3C Markup Validation Service](https://validator.w3.org)
 
@@ -194,8 +242,8 @@ With admin access I would like to do everything above as well as:
 
   - The project uses **JShint** for validating and improving JS code during development.
 
-- [Am I Responsive](http://ami.responsivedesign.is/)
-  - The ReadME used **Am I Responsive** for creating an image of the website on multiple displays to show responsiveness.
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
+  - The ReadME used **Responsive Viewer** for creating an images of the website on multiple displays to show responsiveness.
 
 - [FreeFormatter](https://www.freeformatter.com/)
   - All HTML pages have been formatted using **FreeFormatter**.
@@ -204,7 +252,18 @@ With admin access I would like to do everything above as well as:
 
 - The application uses `Postgres` for data storage.  
 
-The Database has _ models: 
+The Database has 5 models: 
+
+**Profiles**
+
+| Title | Field in db | Form validation type | Data type |
+--- | --- | --- | --- 
+Product ID | _id | None | Id 
+**Orders**
+
+| Title | Field in db | Form validation type | Data type |
+--- | --- | --- | --- 
+Product ID | _id | None | Id 
 
 **Products**
 
@@ -212,13 +271,13 @@ The Database has _ models:
 --- | --- | --- | --- 
 Product ID | _id | None | Id 
 
-**Ingredients**
+**Gallery Entries**
 
 | Title | Field in db | Form validation type | Data type | Core Ingredient Field | User Ingredient Field |
 --- | --- | --- | --- | --- | ---
 MongoDB Ingredient ID | _id | None | ObjectId | Yes | Yes  
 
-**Users**
+**Loan Requests**
 
 | Title | Field in db | form validation type | Data type |
 --- | --- | --- | --- 
@@ -255,7 +314,6 @@ To run the project locally the following must be installed:
 - [PIP](https://pip.pypa.io/en/stable/installing/), python requirements installer.
 - [Python3](https://www.python.org/downloads/), chosen coding language of the app.
 - [GIT](https://www.atlassian.com/git/tutorials/install-git), version control.
-- Django
 
 
 After, download a .ZIP file of my repository ([Master Branch](https://github.com/Trevbytes/kyles_critters)) and unzip this file. In the control line interface, with GIT installed, enter the following command: 
@@ -302,7 +360,7 @@ IP | 0.0.0.0|
 
 ### Media
 
-- Images 
+- All images used in this site by me were from [Pixabay](https://pixabay.com/). All images used in this site or uploaded by me are free for commercial use with no attribution required.
 
 ### Acknowledgements
 
