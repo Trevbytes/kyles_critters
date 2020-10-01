@@ -19,7 +19,7 @@
             aria-haspopup="true" aria-expanded="false" role="button">
          <i class="fas fa-user"></i>
          </div>
-         <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
+         <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3">
             {% if request.user.is_authenticated %}
             {% if request.user.is_staff %}
             <a href="{% url 'add_product' %}" class="dropdown-item nav-link">Add Product to Store</a>
@@ -85,7 +85,7 @@
                aria-haspopup="true" aria-expanded="false" role="button">
             <i class="fas fa-user"></i>
             </div>
-            <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
+            <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3">
                {% if request.user.is_authenticated %}
                {% if request.user.is_staff %}
                <a href="{% url 'add_product' %}" class="dropdown-item nav-link">Add Product to Store</a>
