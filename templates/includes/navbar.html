@@ -15,10 +15,10 @@
    <a class="navbar-brand d-md-none mx-auto pl-3" href="{% url 'home' %}">Kyle's Critters</a>
    <ul class="navbar-nav ml-auto nav-flex-icons d-md-none">
       <li class="nav-item dropdown d-none d-sm-block">
-         <a class="nav-link dropdown-toggle mt-3" id="navbarDropdownMenuLink-lg" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+         <div class="nav-link dropdown-toggle mt-3" id="navbarDropdownMenuLink-lg" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" role="button">
          <i class="fas fa-user"></i>
-         </a>
+         </div>
          <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
             {% if request.user.is_authenticated %}
             {% if request.user.is_staff %}
@@ -81,10 +81,10 @@
             </form>
          </li>
          <li class="nav-item nav-link  d-sm-none d-md-block w-100">
-            <a class="nav-link dropdown-toggle mt-1 w-100" id="profileDropdown" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
+            <div class="nav-link dropdown-toggle mt-1 w-100" id="profileDropdown" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false" role="button">
             <i class="fas fa-user"></i>
-            </a>
+            </div>
             <div class="dropdown-menu dropdown-menu-right dropdown-default bg-color-3" aria-labelledby="user-options">
                {% if request.user.is_authenticated %}
                {% if request.user.is_staff %}
