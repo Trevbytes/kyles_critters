@@ -31,7 +31,7 @@ class CheckoutFormTest(TestCase):
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = OrderForm()
-        """ Tests that the order form is set up correct by checking 
+        """ Tests that the order form is set up correct by checking
         that the following fields exist in the form. """
         self.assertEqual(form.Meta.fields, ('full_name', 'email',
                                             'phone_number',
