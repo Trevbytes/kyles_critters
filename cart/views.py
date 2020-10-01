@@ -23,7 +23,9 @@ def add_to_cart(request, item_id):
         if (cart[item_id] + quantity) < 21:
             cart[item_id] += quantity
         else:
-            messages.error(request, f'Total {product.name} quantity must be 20 or less. You have {cart[item_id]} already in your cart.')
+            messages.error(request, f'Total {product.name} \
+                           quantity must be 20 or less. \
+                           You have {cart[item_id]} already in your cart.')
             return redirect(redirect_url)
     else:
         cart[item_id] = quantity
@@ -66,4 +68,5 @@ def remove_from_cart(request, item_id):
         return HttpResponse(status=200)
 
     except Exception as e:
+        messages.error(request, f'Error removing item. Error: {e}')
         return HttpResponse(status=500)
