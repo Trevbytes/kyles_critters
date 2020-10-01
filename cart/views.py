@@ -20,7 +20,11 @@ def add_to_cart(request, item_id):
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
-        cart[item_id] += quantity
+        if (cart[item_id] + quantity) < 21:
+            cart[item_id] += quantity
+        else:
+            messages.error(request, f'Total {product.name} quantity must be 20 or less. You have {cart[item_id]} already in your cart.')
+            return redirect(redirect_url)
     else:
         cart[item_id] = quantity
     messages.success(request, f'Added {product.name} to your cart.')
