@@ -138,12 +138,22 @@
    </div>
 </div>
 <div class="container p-3 pb-5">
-   {% if shuffled_entries %}
+   {% if shuffled_entries %} 
    <div class="row justify-content-center" id="gallery-entries">
       <h4>Your Gallery Entries</h4>
    </div>
+   <div class="row justify-content-center">
+      <a class="btn bg-color-3 text-white" href="{% url 'gallery' %}">Full Critter Gallery</a>
+   </div>    
    {# Gallery entries. Requires "shuffled_entries" variable. #}
    {% include 'includes/gallery_masonry.html' %}
+   {% else %}   
+   <div class="row justify-content-center" id="gallery-entries">
+      <h4>You have no Critter Gallery entries.</h4>
+   </div> 
+   <div class="row justify-content-center">
+      <a class="btn bg-color-3 text-white" href="{% url 'gallery' %}">Full Critter Gallery</a>
+   </div>    
    {% endif %}
 </div>
 {% endblock %}
