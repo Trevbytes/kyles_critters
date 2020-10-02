@@ -3,7 +3,7 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
    {% for product in products %}
    <!-- col for grid -->
-   <div class="col mb-3 animated fadeIn">
+   <div class="col mb-3 animated fadeIn" id="{{product.id}}">
       <!-- Card -->
       <div class="card h-100 bg-color-2">
          <!--Card image-->
@@ -41,8 +41,7 @@
                <div>
                   <input
                      type="number"
-                     name="quantity"
-                     id="quantity"
+                     name="quantity"                     
                      value="1"
                      hidden
                      />
