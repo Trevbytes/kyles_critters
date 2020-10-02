@@ -17,7 +17,7 @@
    </div>
    <div class="row bg-color-2 rounded-top pt-3">
       <div class="col">
-         <h4 class="mb-4 text-dark">About loaning a critter</h4>
+         <p class="mb-4 text-color-5 ">Are you intersted in loaning our critters? We may have an option for you. We are looking for people that can provide a good home for our critters. If at any point these critters become too difficult to handle we will happily take them off your hands. For the time being we are deciding loan terms case by case. </p>
          <hr>
       </div>
    </div>
@@ -93,25 +93,30 @@
    the class 'hoverable'. It adds the product name as 
    the elements id. It then adds an 'onClick' function
    that adds that id to the input with the id of 
-   'id_critter_request'.*/
-        function reset() {       
-            $(".hoverable").each(function () {
-                $(this).attr("id",productName);
-                $(this).not(".bound").addClass('bound').on("click", function () {
-                    $("#id_critter_request").val($('#id_critter_request').val() + $(this).attr("id") +", ");
-                    $(this).addClass("animated rotateOutUpLeft")
-                    $(this).removeClass("hoverable waves-effect")
-                    $(this).prop("onclick", null).off("click");
-                    });
-            });
-        }
+   'id_critter_request'. After the 'onClick' event the 
+   element is hidden and becomes unclickable until the 
+   reset function is called or the page is refreshed. */
+    function reset() {       
+        $(".hoverable").each(function () {
+            $(this).attr("id",productName);
+            // Bound class used to identify existing 'onClick' functions 
+            $(this).not(".bound").addClass('bound').on("click", function () {
+                $("#id_critter_request").val($('#id_critter_request').val() + $(this).attr("id") +", ");
+                $(this).addClass("animated rotateOutUpLeft")
+                $(this).removeClass("hoverable waves-effect")
+                $(this).prop("onclick", null).off("click");
+                });
+         });
+    }
+    reset();
+   /* Refresh function that adds correct classes and 
+   emptys the critter request input in the form. */
+    function refreshCritters() {
+        $(".rotateOutUpLeft").addClass("hoverable waves-effect");
+        $(".rotateOutUpLeft").removeClass("animated rotateOutUpLeft bound");
+        $("#id_critter_request").val("")          
         reset();
-        function refreshCritters() {
-            $(".rotateOutUpLeft").addClass("hoverable waves-effect");
-            $(".rotateOutUpLeft").removeClass("animated rotateOutUpLeft bound");
-            $("#id_critter_request").val("")          
-            reset();
-            }   
-
+    }   
+   
 </script>
 {% endblock %}
