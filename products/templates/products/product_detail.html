@@ -16,6 +16,12 @@
          {% endif %}     
          <p>{{ product.description | safe }}</p>
          <p>${{ product.price }}</p>
+         {% if product.ready_to_loan %}
+         <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
+         <a class="text-white" href="{% url 'loan' %}">
+         Available to Loan</a>
+         </span>         
+         {% endif %}
          <form action="{% url 'add_to_cart' product.id %}" method="POST">
             {% csrf_token %}
             <label for="quantity">Quantity</label>        
