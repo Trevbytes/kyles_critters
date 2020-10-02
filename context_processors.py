@@ -73,7 +73,7 @@ def images(request):
         },
 
         JUMBO={
-            "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "jumbo banner", "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         CARD={
@@ -81,7 +81,7 @@ def images(request):
         },
 
         LOAN={
-            "class": "hoverable grid-item p-2 waves-effect", "style": "z-index: 10", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "critter name", "class": "hoverable grid-item p-2 waves-effect", "style": "z-index: 10", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
         },
 
         GALLERY={
