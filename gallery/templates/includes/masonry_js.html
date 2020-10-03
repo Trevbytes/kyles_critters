@@ -1,7 +1,16 @@
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script>
-        var $grid = $('.grid').masonry({
+    // Detect Safari Browser, solution from stackoverflow. 
+    if ( !(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))) {
+        $('.not-safari-card-container').addClass('card-flip');
+        $('.not-safari-card-front').addClass('card-front');
+        $('.not-safari-back').removeAttr('hidden').addClass('card-back card bg-color-2 gallery-entry square scrollbar-cyan  p-2 text-color-5');
+        }
+    else {
+        $('.safari-only').removeAttr('hidden');
+    }  
+    var $grid = $('.grid').masonry({
     // options...
         itemSelector: '.grid-item',
         columnWidth: 300,

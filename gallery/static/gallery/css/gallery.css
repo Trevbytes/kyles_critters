@@ -103,4 +103,5 @@ border-radius: 10px !important; }
 width: 6px; }
 
 .gallery-entry {
-height: 50px; }
+overflow-y: scroll;
+}

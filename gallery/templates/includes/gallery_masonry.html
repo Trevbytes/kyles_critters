@@ -1,12 +1,15 @@
 {% load cloudinary %}
+<div hidden class="row text-center safari-only">
+    <h5 class="pt-3">For full functionality, do not use Safari web browser on this site. If you are not using Safari, try a different web browser until this message no longer appears. Sorry for the inconvenience.</h5>
+</div> 
 <div class="row d-flex justify-content-center">
    <div class="grid col-xl-10 pt-3">
       {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
-      <div class="grid-item card-flip bg-color-2 rounded">
-         <div class="secondborder card-front">
+      <div id="cardContainter" class="grid-item not-safari-card-container bg-color-2 rounded">
+         <div id="cardFront" class="secondborder not-safari-card-front">
             {% cloudinary entry.image.url GALLERY %}
          </div>
-         <div class="card-back card bg-color-2 gallery-entry square scrollbar-cyan  p-2 text-color-5" style="overflow-y: scroll; -webkit-overflow-y: hidden;">
+         <div hidden class="not-safari-back" >
             <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
             <img class="w-75 rounded mx-auto z-depth-2" src="{{ entry.image.url }}" alt="{{ entry.name }}" onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
             <p>{{ entry.critter_info|safe }}</p>
@@ -28,6 +31,6 @@
             {% endif %}                                               
          </div>
       </div>
-      {% endif %}{% endfor %}                   
+      {% endif %}{% endfor %}                     
    </div>
 </div>
