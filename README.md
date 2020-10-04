@@ -13,6 +13,7 @@ The first feature he wants is to promote his customer community. Customers can u
 The second feature Kyle wants is for customers to be able to loan critters from the store. As this is a new idea, not all the terms and conditions have been considered. But to start, customers can send a request to loan available critters. The store's staff can then reach out to the customer to negotiate terms.
 
 [Live Link to Site](https://kyles-crittersv1.herokuapp.com/)
+- For test purchases, use the card number 4242 4242 4242 4242, any CVC and any future experation date.
 
 ## Table of Contents
 
