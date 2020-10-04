@@ -1,5 +1,7 @@
 # Kyle's Critters
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a0b9aa3268c64cb696525ecf38318c8b)](https://app.codacy.com/manual/Trevbytes/kyles_critters?utm_source=github.com&utm_medium=referral&utm_content=Trevbytes/kyles_critters&utm_campaign=Badge_Grade_Settings)
+
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499934/kyles_critters/screenshots/homepage_kyfy3v.jpg">
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499963/kyles_critters/screenshots/responsive-site_grqdhq.jpg">
 
