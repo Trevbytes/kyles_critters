@@ -23,6 +23,8 @@ Future Live Application link
 ---
 ## TDD Documentation
 ---
+The projects main apps and code have been developed using the TDD Software development model. 
+
 - [X] A superuser can navigate to */admin to login and access admin controls.
 - [X] A user can login via URL naviagation */accounts/login.
     - Base template created.

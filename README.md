@@ -2,7 +2,6 @@
 
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499934/kyles_critters/screenshots/homepage_kyfy3v.jpg">
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601499963/kyles_critters/screenshots/responsive-site_grqdhq.jpg">
-<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601500129/kyles_critters/screenshots/store_fz7hba.jpg">
 
 Kyle's Critters is my fourth and final milestone project while studying at [The Code Institute](https://codeinstitute.net/).
 The purpose of the milestone project is to build an E-commerce web app. The site must use the Django framework, a relational database and use Stripe for secure payments. This is my first project using/learning the TDD(Test Driven Development) method.
@@ -14,8 +13,6 @@ The first feature he wants is to promote his customer community. Customers can u
 The second feature Kyle wants is for customers to be able to loan critters from the store. As this is a new idea, not all the terms and conditions have been considered. But to start, customers can send a request to loan available critters. The store's staff can then reach out to the customer to negotiate terms.
 
 [Live Link to Site](https://kyles-crittersv1.herokuapp.com/)
-
-
 
 ## Table of Contents
 
@@ -37,13 +34,13 @@ The second feature Kyle wants is for customers to be able to loan critters from 
 
 These [wireframes](wireframes.md) show the original idea for the web app.
 
-The projects main apps and code have been developed using the TDD Software development model. 
-
 Some design changes and additions to the original wireframe ideas have been made throughout the development of the project to improve the user experience. 
 
 The site is designed for a start up pet store to begin selling product.
 
 The optimal viewing device for the site would be a tablet sized device. By designing the site with this in mind, the store can use the web app in a physical store instead of a register.
+
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601500129/kyles_critters/screenshots/store_fz7hba.jpg">
 
 Kyle's Critters has been designed with the following main features/goals in mind:
 
@@ -161,8 +158,11 @@ As a Super User I would like to additionally:
 - **CKEditor 6** - CKEditor is used throughout the site to allow users access to a Rich Text Editor. This allows users to format longer text such as descriptions, messages and critter stories.
 
 ### Features Left to Implement
+- Redesign/Refactor Gallery Entries so that all entry information can be presented on all browsers. Currently Apple devices will not create overflow content on the back of entries and have therefor have been disabled for these type of devices. 
+- Refactor models and code to implement Cloudinary's Upload Widget. This would allow users to view and crop their image before uploading. An attempt was made and code has been written to make this happen. Due to time constraints this feature has been moved to future development. Below you can find an image of what the upload widget looked like.
 
-
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1601823226/kyles_critters/screenshots/widget_uxx2yp.jpg">
+ 
 ## Technologies Used
 
 - [HTML 5](https://en.wikipedia.org/wiki/HTML5)
@@ -180,6 +180,10 @@ As a Super User I would like to additionally:
 - [Python 3.8.2](https://www.python.org/)
 
   - The project uses **Python** as the base program which runs the website. It works with the database to execute CRUD functions.
+
+- [Django](https://www.djangoproject.com/)
+
+  - The project is built on the **Django** framework. 
 
 - [Postgres](https://www.postgresql.org/)
 
@@ -226,6 +230,21 @@ As a Super User I would like to additionally:
 
   - The project uses **Cloudinary** for storing media outside of app and database.  
 
+- [Stripe](https://stripe.com/)
+    - The project uses **Stripe** to process secure payments. 
+
+- [Cloudinary](https://cloudinary.com/), used for all media storage.
+    - The project uses **Cloudinary** for all media storage. Cloudinary allows users to upload files directly to the Cloudinary cloud.
+
+- [Google APIs](https://console.developers.google.com/)
+    - The project uses **Google** to provide login via Google as well as access to **Google Maps** in the site.
+
+- [Facebook for Developers](https://developers.facebook.com/)
+    - The project uses **Facebook** to provide login via Facebook.
+
+- [WhiteNoise](http://whitenoise.evans.io/en/stable/)
+    - The project uses the python library **WhiteNoise** to allow the app to serve its own static files.
+
 - [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)
 
   - The project used **Firefox Developer Tools** for debugging the webpage during half of the development.
@@ -245,45 +264,122 @@ As a Super User I would like to additionally:
 - [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
   - The ReadME used **Responsive Viewer** for creating an images of the website on multiple displays to show responsiveness.
 
+- [BrowserStack](https://www.browserstack.com/)
+  - In order to test the web app on Apple devices, **BrowserStack** was used.
+
 - [FreeFormatter](https://www.freeformatter.com/)
   - All HTML pages have been formatted using **FreeFormatter**.
+
+- [PolicyMaker](https://policymaker.io/)
+  - The project used **PolicyMaker** to create privacy policy and terms and conditions documents.
 
 ## Database Schema
 
 - The application uses `Postgres` for data storage.  
 
-The Database has 5 models: 
+The Database has 8 models: 
 
 **Profiles**
 
-| Title | Field in db | Form validation type | Data type |
+| **Name** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | --- 
-Product ID | _id | None | Id 
+ User | user | OneToOneField 'User' |  on_delete=models.CASCADE
+ Phone Number | default_phone_number | CharField | max_length=20, null=True, blank=True
+ Country | default_country | CountryField | blank_label='Country', null=True, blank=True 
+ Address Line1 | default_street_address1 | CharField | max_length=80, null=True, blank=True
+ Address Line2 | default_street_address2 | CharField | max_length=80, null=True, blank=True
+ Postcode | default_postcode | CharField | max_length=20, null=True, blank=True
+ Town/City | default_town_or_city | CharField | max_length=40, null=True, blank=True
+ County | default_county | CharField | max_length=80, null=True, blank=True
+
 **Orders**
 
-| Title | Field in db | Form validation type | Data type |
+| **Name** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | --- 
-Product ID | _id | None | Id 
+ Order Number | order_number | CharField | max_length=32, null=False, editable=False 
+ User Profile | user_profile | ForeignKey 'UserProfile | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'
+ Full Name | full_name | CharField | max_length=50, null=False, blank=False
+ Email | email | EmailField | max_length=254, null=False, blank=False
+ Phone Number | phone_number | CharField | max_length=20, null=False, blank=False
+ Country | country | CountryField | blank_label='Country *', null=False, blank=False
+ Street Address | street_address1 | CharField | max_length=80, null=False, blank=False
+ Street Address2 | street_address2 | CharField | max_length=80, null=True, blank=True
+ Town or City | town_or_city | CharField | max_length=40, null=False, blank=False
+ County | county | CharField | max_length=80, null=True, blank=True
+ Postcode | postcode | CharField | max_length=20, null=True, blank=True
+ Date | date | DateTimeField | auto_now_add=True
+ Grand Total | grand_total | DecimalField | max_digits=10, decimal_places=2, null=False, default=0
+ Original Cart | original_cart | TextField | null=False, blank=False, default=''
+ Stripe Public ID | stripe_pid | CharField | max_length=254, null=False, blank=False, default=''
 
+**Line Item Orders**
+| **Name** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | --- 
+ Order | order | ForeignKey 'Order' | null=False, blank=False, on_delete=models.CASCADE, related_name='orderitems'
+ Product | product | ForeignKey 'Product' | null=False, blank=False, on_delete=models.CASCADE
+ Quantity | quantity | IntegerField | null=False, blank=False, default=0
+ Lineitem Total | lineitem_total | DecimalField | max_digits=8, decimal_places=2, null=False, blank=False, editable=False
+
+**Product Categories**
+| **Name** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | --- 
+ Category Name | name | CharField | max_length=254
+ Category Friendly Name | friendly_name | CharField | max_length=254, null=True, blank=True
+ 
+**Product SubCategories**
+| **Name** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | --- 
+ SubCategory Name | name | CharField | max_length=254
+ SubCategory Friendly Name | friendly_name | CharField | max_length=254, null=True, blank=True
+ 
 **Products**
 
-| Title | Field in db | Form validation type | Data type |
+| **Name** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | --- 
-Product ID | _id | None | Id 
+ Category | category | ForeignKey 'Category' | null=True, blank=True, on_delete=models.SET_NULL)
+ SubCategory | sub_category | ForeignKey 'SubCategory' | null=True, blank=True, on_delete=models.SET_NULL
+ Sku | sku | CharField | max_length=254, null=False, blank=False
+ Product Name | name | CharField | max_length=254, null=False, blank=False
+ Product Description | description | RichTextField | blank=True, null=True
+ Price | price | DecimalField | max_digits=6, decimal_places=2
+ Image | image | CloudinaryField | 'image', null=True, blank=True
+ Featured Product | featured | BooleanField | null=False, blank=False, default=False
+ Ready to loan product | ready_to_loan | BooleanField | null=False, blank=False, default=False
+ Out of Stock Product | out_of_stock | BooleanField | null=False, blank=False, default=False 
+ Created Date | created_at | DateTimeField | auto_now_add=True, editable=False
+ Edited Date | modified_at | DateTimeField | auto_now=True, editable=False
 
 **Gallery Entries**
 
-| Title | Field in db | Form validation type | Data type | Core Ingredient Field | User Ingredient Field |
---- | --- | --- | --- | --- | ---
-MongoDB Ingredient ID | _id | None | ObjectId | Yes | Yes  
+| **Name** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | --- 
+ Entry Number | entry_number | CharField | max_length=32, null=False, editable=False
+ Created By | user_profile | ForeignKey 'UserProfile' | on_delete=models.SET_NULL, null=True, blank=True, related_name='entries'
+ Critter Name | critter_name | CharField | max_length=50, null=False, blank=False
+ Critter Type | critter_type | ForeignKey | Product, null=True, blank=True, on_delete=models.SET_NULL
+ Critter Info | critter_info | RichTextField | null=True, blank=True
+ Entry Image | image | CloudinaryField | 'image', null=True, blank=True
+ Entry Date | date | DateTimeField | auto_now_add=True
 
 **Loan Requests**
 
-| Title | Field in db | form validation type | Data type |
+| **Name** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | --- 
-User ID | _id | None | ObjectId 
-Username | username | text | string
-Hashed Password | user_password | text | string
+ Order Number | order_number | CharField | max_length=32, null=False, editable=False 
+ User Profile | user_profile | ForeignKey 'UserProfile | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'
+ Full Name | full_name | CharField | max_length=50, null=False, blank=False
+ Email | email | EmailField | max_length=254, null=False, blank=False
+ Phone Number | phone_number | CharField | max_length=20, null=False, blank=False
+ Country | country | CountryField | blank_label='Country *', null=False, blank=False
+ Street Address | street_address1 | CharField | max_length=80, null=False, blank=False
+ Street Address2 | street_address2 | CharField | max_length=80, null=True, blank=True
+ Town or City | town_or_city | CharField | max_length=40, null=False, blank=False
+ County | county | CharField | max_length=80, null=True, blank=True
+ Postcode | postcode | CharField | max_length=20, null=True, blank=True
+ Critter Request | critter_request | CharField | max_length=100, null=True, blank=True
+ Request Info | request_info | RichTextField | null=True, blank=True
+ Date | date | DateTimeField | auto_now_add=True
+
 
 ## Testing
 
@@ -293,6 +389,20 @@ Testing documentation can be found in [Testing.md](testing.md)
 
 ## Deployment
 
+The deployed project can be viewed on the following link: [Kyle's Critters](https://kyles-crittersv1.herokuapp.com/)
+
+In order to have full functionality after deployment the following accounts must be set up:
+- [Stripe](https://stripe.com/), used to process payments.
+    - Sign up for an account. After signing up and verifiying your email you will need your API keys. A publishable key and a Secret key. Create a webhook endpoint in order get your webhook signing secret key.  
+- [Cloudinary](https://cloudinary.com/), used for all media storage.
+    - Create a Cloud. For more info follow step 1 in the [Cloudinary Get Started Docs](https://cloudinary.com/documentation/how_to_integrate_cloudinary). 
+- [Google APIs](https://console.developers.google.com/), used for Google Maps and login via Google.
+    - Create a new project. Set up a Maps API key and a OAuth2.0 Client ID.
+    - The document I used to get started with the API console can be found [here](https://medium.com/@whizzoe/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5). Follow step 7.
+- [Facebook for Developers](https://developers.facebook.com/), used for login via Facebook.
+    - Create a new app after the site is deployed, follow the Quickstart for Facebook Login
+        - For more info follow the [Facebook Login Docs](https://developers.facebook.com/docs/facebook-login/).
+        - For a video tutorial on setting up Facebook login watch [this video](https://www.youtube.com/watch?v=m5sHDaBwxjc&ab_channel=ParwizForogh).
 ### GitHub 
 
 [My GitHub Repository](https://github.com/Trevbytes/kyles_critters)
@@ -305,8 +415,6 @@ For more infomation on how to clone or download the repository click [here](http
 
 ### Local Deployment
 
-*Work in progress*
-
 **To run this project locally**
 
 To run the project locally the following must be installed: 
@@ -315,31 +423,45 @@ To run the project locally the following must be installed:
 - [Python3](https://www.python.org/downloads/), chosen coding language of the app.
 - [GIT](https://www.atlassian.com/git/tutorials/install-git), version control.
 
-
 After, download a .ZIP file of my repository ([Master Branch](https://github.com/Trevbytes/kyles_critters)) and unzip this file. In the control line interface, with GIT installed, enter the following command: 
    
     https://github.com/Trevbytes/kyles_critters.git
 
 - Navigate to the root path using the `cd` command. 
-- Set up your enviorment variables by creating a `.env` file. Include _ values.
+- Set up your enviorment variables by creating a `.env` file(Add your env.py file to .gitignore). Include the following keys and your own values:
+    - "SECRET_KEY" = <'your django secret key'>
+        - New keys can be generated online. [Miniwebtool](https://miniwebtool.com/django-secret-key-generator/), is one place generate a new key.
+    - "DEVELOPMENT" = 'TRUE' (set this variable to False when publishing)
+    - "CLOUDINARY_CLOUD_NAME" = <'your value'>
+    - "CLOUDINARY_API_KEY" = <'your value'>
+    - "CLOUDINARY_API_SECRET" = <'your value'>
+    - "STRIPE_PUBLIC_KEY" = <'your value'>
+    - "STRIPE_SECRET_KEY" = <'your value'>
+    - "STRIPE_WH_SECRET" = <'your value'>
+    - "GOOGLE_MAPS_API_KEY" = <'your value'>
+
 - All requirements from requirements.txt must be installed. Use the following command:
     
         sudo -H pip3 -r requirements.txt
-- Create Database
+- Set up your Django SQLite3 database.
+
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+- Create a Django super user.
+
+        python3 manage.py createsuperuser
 - You should then be able to launch your app using the following command in your terminal:
 
-        python app.py
-
+        python3 manage.py runserver
+- Add '/admin' to the locally deployed project's URL and login with your new super user account. Verify your email account. After verification you can access the admin site through the navigation bar when you are logged in as a super user or staff.
 ### Remote Deployment
 
-*Work in progress*
-
-This project is hosted on Heroku with the master branch() deployed.
+This project is hosted on Heroku with the [master branch](https://github.com/Trevbytes/kyles_critters) deployed.
 
 In order to remotely deploy this project on Heroku the following is the method I recommend.
 
 - Ensure an updated `requirements.txt` exsists in the project. Use the terminal command `pip freeze > requirements.txt` to quickly create/update the file.
-- Ensure a Procfile exists, this essientaly lets Heroku know where to start the app. Use the terminal command `echo web: python app.py > Procfile` to quickly create a Procfile. 
+- Ensure a Procfile exists, this essientaly lets Heroku know where to start the app. Use the terminal command `echo web: gunicorn kyles_critters.wsgi:application > Procfile` to quickly create a Procfile. 
 - Using git (`git add .`, `git commit -m "<your comment>"`) will stage any created or updated files. After, push the project to GitHub using `git push`.
 - Using a browser, naviagte to [Heroku](https://dashboard.heroku.com/login). Login or create a free account.
 - Select the "new" button, give the project a name & set the region. 
@@ -350,13 +472,29 @@ In order to remotely deploy this project on Heroku the following is the method I
 
 | KEY | VALUE |
 --- | --- | 
-IP | 0.0.0.0|
-
+SECRET_KEY | your django secret key
+CLOUDINARY_CLOUD_NAME | your cloudinary cloud name
+CLOUDINARY_API_KEY | your value
+CLOUDINARY_API_SECRET | your value 
+STRIPE_PUBLIC_KEY | your value
+STRIPE_SECRET_KEY | your value
+STRIPE_WH_SECRET | your value
+GOOGLE_MAPS_API_KEY | your value
 
 - In the Heroku dashboard, click "Deploy".
-- Congrats, if all went well, the app is now deployed.
+- Congrats, if all went well, the app is now deployed. Don't forget to configure your Stripe, Cloudinary, Google and Facebook accounts for the new site.
+- Set up a Postgres database after you have connected the project to Heroku.
+- Under the resources tab in Heroku you should add the addon Heroku Postgres.
+- After this is set up run the following code in your IDE to set up the new database.
+
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+- Don't forget to configure your Stripe, Cloudinary, Google and Facebook accounts for the new site.
 
 ## Credits
+
+### Code
+- This project has many roots in the mini-project [Boutique Ado]( https://github.com/mkthewlis/boutique-ado), which was part of *Code Institute's* course material. Although many alterations have been made, the 'cart', 'checkout', 'products' and 'profiles' apps were built upon the course material.
 
 ### Media
 
@@ -364,4 +502,10 @@ IP | 0.0.0.0|
 
 ### Acknowledgements
 
+- For the gallery masonry these two sites were used:
+    - [Masonry](https://masonry.desandro.com/), for the CSS grid layout.
+    - [Images Loaded](https://imagesloaded.desandro.com/), to detect when images have been loaded.
+- A [blog by Zoe Chew](https://medium.com/@whizzoe/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5) on how to set up Google login was very helpful in coding that part of the app. 
 - When stuck with coding issues, I used the following sites to help understand/solve the issues: [W3schools](https://www.w3schools.com/) and [StackOverflow](https://stackoverflow.com/)
+- A big thank you to my family and friends who have helped me with testing and support throughout this course.
+> **_NOTE:_** This project was created for educational purposes only
