@@ -163,8 +163,8 @@ As a Super User I would like to additionally:
 ### Features Left to Implement
 - Redesign/Refactor Gallery Entries so that all entry information can be presented on all browsers. Currently Apple devices will not create overflow content on the back of entries and have therefor have been disabled for these type of devices. 
 - Refactor models and code to implement Cloudinary's Upload Widget. This would allow users to view and crop their image before uploading. An attempt was made and code has been written to make this happen. Due to time constraints this feature has been moved to future development. Below you can find an image of what the upload widget looked like.
-
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601823226/kyles_critters/screenshots/widget_uxx2yp.jpg">
+- Refactor cart code with Ajax to allow the user to add to the cart without being redirecting or refreshing the page.
  
 ## Technologies Used
 
