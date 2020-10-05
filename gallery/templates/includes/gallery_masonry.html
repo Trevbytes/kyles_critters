@@ -5,8 +5,8 @@
 <div class="row d-flex justify-content-center">
    <div class="grid col-xl-10 pt-3">
       {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
-      <div id="cardContainter" class="grid-item not-safari-card-container bg-color-2 rounded">
-         <div id="cardFront" class="secondborder not-safari-card-front">
+      <div class="grid-item not-safari-card-container bg-color-2 rounded">
+         <div class="secondborder not-safari-card-front">
             {% cloudinary entry.image.url GALLERY %}
          </div>
          <div hidden class="not-safari-back" >
