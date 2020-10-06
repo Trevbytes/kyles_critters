@@ -7,7 +7,15 @@
       {% for entry in shuffled_entries %}{% if entry.critter_type != 'Dirt' %}                  
       <div class="grid-item not-safari-card-container bg-color-2 rounded">
          <div class="secondborder not-safari-card-front">
+         {% if entry.image %}
             {% cloudinary entry.image.url GALLERY %}
+         {% else %}
+            <img
+               class="card-img-top"
+               src="https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg"
+               alt="Card image cap"
+            />
+         {% endif %}           
          </div>
          <div hidden class="not-safari-back" >
             <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
@@ -17,7 +25,13 @@
                  onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
             <p>{{ entry.critter_info|safe }}</p>
             {% if not product %}
-            <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>
+            {% if entry.critter_type %}
+            <p><small>Critter Type</small> 
+             <a class="badge-pill badge-primary bg-color-3" 
+                href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}
+             </a>
+            </p>
+            {% endif %}
             {% endif %}
             {% if request.user.is_staff %}
             <span class="badge badge-pill bg-color-3 mb-2">

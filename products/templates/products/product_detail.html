@@ -5,7 +5,15 @@
 {% block content %}
 <div class="container bg-color-2 rounded mt-5 p-3">
    <div class="row justify-content-center">
-      {% cloudinary product.image DETAIL_IMAGE %}
+      {% if product.image %}
+        {% cloudinary product.image DETAIL_IMAGE %}
+      {% else %}
+        <img
+            class="card-img-top"
+            src="https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg"
+            alt="Card image cap"
+        />
+      {% endif %}
       <div class="col-md-6 text-color-5 pt-2">
          <h1>{{ product.name }}</h1>
          {% if request.user.is_staff %}   
@@ -15,9 +23,6 @@
          </span>
          {% endif %}     
          <p>{{ product.description | safe }}</p>
-         <script>
-         console.log("{{product.description}}");
-         </script>
          <p>${{ product.price }}</p>
          {% if product.ready_to_loan %}
          <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
