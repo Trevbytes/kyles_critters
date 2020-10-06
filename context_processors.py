@@ -23,9 +23,9 @@ def message_form(request):
     else:
         message_form = MessageForm(request.POST)
         if message_form.is_valid():
-            full_name = message_form.cleaned_data['full_name']
-            email = message_form.cleaned_data['email']
-            phone_number = message_form.cleaned_data['phone_number']
+            full_name = message_form.cleaned_data['message_full_name']
+            email = message_form.cleaned_data['message_email']
+            phone_number = message_form.cleaned_data['message_phone_number']
             message_subject = message_form.cleaned_data['message_subject']
             message_body = message_form.cleaned_data['message_body']
             subject = render_to_string(
@@ -49,7 +49,8 @@ def message_form(request):
             storage = messages.get_messages(request)
             storage.used = True
             messages.success(
-                request, f'Message sent successfully! A copy of the message will be sent to {email}.')
+                request, f'Message sent successfully! \
+                    A copy of the message will be sent to {email}.')
             message_form = MessageForm()
             context = {
                 'message_form': message_form,
@@ -63,29 +64,50 @@ def images(request):
     are proccessed through these keys. They add the correct classes
     and 'on error' events to the images.
     """
+    image_error =\
+        "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';"
     return dict(
         THUMBNAIL={
-            "alt": "critter picture", "class": "thumbnail inline", "format": "jpg", "crop": "scale", "height": 170, "width": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "critter picture",
+            "class": "thumbnail inline",
+            "format": "jpg", "crop": "scale",
+            "height": 170, "width": 300,
+            "onerror": image_error,
         },
 
         DETAIL_IMAGE={
-            "alt": "critter picture", "class": "col-auto m-3 mb-auto p-0 card card-image img-fluid", "format": "jpg", "crop": "scale", "height": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "critter picture",
+            "class": "col-auto m-3 mb-auto p-0 card card-image img-fluid",
+            "format": "jpg", "crop": "scale", "height": 300,
+            "onerror": image_error,
         },
 
         JUMBO={
-            "alt": "jumbo banner", "crop": "fill", 'height': 300, "class": "jumbotron d-none d-md-block p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "jumbo banner", "crop": "fill", 'height': 300,
+            "class": "jumbotron d-none d-md-block\
+                 p-0 b-0 m-0 mb-2 card card-image img-fluid rounded mx-auto",
+            "onerror": image_error,
         },
 
         CARD={
-            "class": "card-img-top rounded-top img-fluid", "format": "jpg", "crop": "scale", "alt": "Card image cap", "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "class": "card-img-top rounded-top img-fluid", "format": "jpg",
+            "crop": "scale", "alt": "Card image cap",
+            "onerror": image_error,
         },
 
         LOAN={
-            "alt": "critter name", "class": "hoverable grid-item p-2 waves-effect", "style": "z-index: 10", "format": "jpg", "crop": "scale", "width": 200, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "critter name",
+            "class": "hoverable grid-item p-2 waves-effect",
+            "style": "z-index: 10", "format": "jpg", "crop": "scale",
+            "width": 200,
+            "onerror": image_error,
         },
 
         GALLERY={
-            "alt": "critter picture", "class": "borderedpicture", "format": "jpg", "crop": "scale", "width": 300, "onerror": "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';",
+            "alt": "critter picture",
+            "class": "borderedpicture", "format": "jpg",
+            "crop": "scale", "width": 300,
+            "onerror": image_error,
         },
     )
 
