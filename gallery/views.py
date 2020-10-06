@@ -30,19 +30,21 @@ def add_entry(request):
         return redirect(reverse('gallery'))
 
     if request.method == 'POST':
-        form = GalleryEntryForm(request.POST, request.FILES)       
+        form = GalleryEntryForm(request.POST, request.FILES)
         if form.is_valid():
             # Add unique entry number
             entry_number = form.save()
             # Attach the user's profile to the order
             profile = UserProfile.objects.get(user=request.user)
-            new_entry = get_object_or_404(GalleryEntry, entry_number=entry_number)
+            new_entry = get_object_or_404(GalleryEntry,
+                                          entry_number=entry_number)
             new_entry.user_profile = profile
             new_entry.save()
             messages.success(request, 'Successfully added entry!')
             return redirect(reverse('profile') + "#gallery-entries")
         else:
-            messages.error(request, 'Failed to add entry. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add entry. \
+                Please ensure the form is valid.')
     else:
         form = GalleryEntryForm()
 
@@ -68,14 +70,16 @@ def edit_entry(request, entry_number):
         if form.is_valid():
             form.save()
             # Reattach profile to entry
-            edited_entry = get_object_or_404(GalleryEntry, entry_number=entry_number)
+            edited_entry = get_object_or_404(GalleryEntry,
+                                             entry_number=entry_number)
             edited_entry.user_profile = profile
             edited_entry.save()
 
             messages.success(request, 'Successfully updated entry!')
             return redirect(reverse('profile') + "#gallery-entries")
         else:
-            messages.error(request, 'Failed to update entry. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update entry. \
+                Please ensure the form is valid.')
     else:
         form = GalleryEntryForm(instance=entry)
         messages.info(request, f'You are editing {entry.critter_name}')

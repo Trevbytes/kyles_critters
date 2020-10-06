@@ -14,10 +14,11 @@ class GalleryEntry(models.Model):
 
     entry_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-                                     null=True, blank=True, related_name='entries')
+                                     null=True, blank=True,
+                                     related_name='entries')
     critter_name = models.CharField(max_length=50, null=False, blank=False)
     critter_type = models.ForeignKey(Product, null=True, blank=True,
-                                 on_delete=models.SET_NULL)
+                                     on_delete=models.SET_NULL)
     critter_info = RichTextField(null=True, blank=True)
     # Points to a Cloudinary image
     image = CloudinaryField('image', null=True, blank=True)
