@@ -15,4 +15,3 @@ class ProfileModelTest(TestCase):
                                    default_street_address1="234",
                                    default_street_address2="wwer",
                                    default_county="erw")
-
