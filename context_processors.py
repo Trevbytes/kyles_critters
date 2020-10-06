@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from profiles.models import UserProfile
 
 
 def message_form(request):
@@ -12,14 +13,25 @@ def message_form(request):
     message form is accessed through the footer in all pages
     of the site.
     """
-    if request.method == 'GET':
-        message_form = MessageForm()
-        context = {'message_form': message_form}
-        return context
-    elif 'send-message' not in request.POST:
-        message_form = MessageForm()
-        context = {'message_form': message_form}
-        return context
+    if (request.method == 'GET') or ('send-message' not in request.POST):
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                message_form = MessageForm(initial={
+                    'message_full_name': profile.user.get_full_name(),
+                    'message_email': profile.user.email,
+                    'message_phone_number': profile.default_phone_number,
+                })
+                context = {'message_form': message_form}
+                return context
+            except UserProfile.DoesNotExist:
+                message_form = MessageForm()
+                context = {'message_form': message_form}
+                return context
+        else:
+            message_form = MessageForm()
+            context = {'message_form': message_form}
+            return context
     else:
         message_form = MessageForm(request.POST)
         if message_form.is_valid():
