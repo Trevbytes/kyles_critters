@@ -2,7 +2,7 @@ Hi {{ request.full_name }}!
 
 This is a confirmation of your loan request at Kyle's Critters. Your request information is below:
 
-Request Number: {{ request.request_number }}
+Request Number: {{ request.order_number }}
 Request Date: {{ request.date }}
 
 Requested Critters: {{ request.critter_request }}
