@@ -77,8 +77,7 @@ def images(request):
     are proccessed through these keys. They add the correct classes
     and 'on error' events to the images.
     """
-    image_error =\
-        "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';"
+    image_error = "this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';"
     return dict(
         THUMBNAIL={
             "alt": "critter picture",
