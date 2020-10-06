@@ -1,41 +1,41 @@
-.grid-item { 
-    width: 300px; 
-    margin:0 auto;
-    margin-bottom: 20px;
+.grid-item {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 /*
 Code and background images based from https://cyndikirkpatrick.com/texture-tiles/picture-borders/
 */
 .secondborder {
-background-color: #7d7d7d;
-background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
-display: block;
-padding: 4%;
-margin: 1% 0 1% 0;
-border-radius: 5px 5px 5px 5px;
--moz-border-radius: 5px 5px 5px 5px;
--webkit-border-radius: 5px 5px 5px 5px;
-border: 1px solid #000;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.80);
+  background-color: #7d7d7d;
+  background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
+  display: block;
+  padding: 4%;
+  margin: 1% 0 1% 0;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 1px solid #000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
 }
 
 img.borderedpicture {
-background-color: #7d7d7d;
-background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
-display: block;
-width: 100%;
-max-width: 100%;
-height: auto;
-padding: 2%;
-margin: 0;
-border-radius: 5px 5px 5px 5px;
--moz-border-radius: 5px 5px 5px 5px;
--webkit-border-radius: 5px 5px 5px 5px;
-border: 1px solid #241312;
--webkit-box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
--moz-box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
-box-shadow: 0px 0px 60px -9px rgba(0,0,0,1);
+  background-color: #7d7d7d;
+  background-image: url("https://res.cloudinary.com/chickpeas/image/upload/v1601311348/kyles_critters/eoskarensm4c_cwwxft.png");
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  padding: 2%;
+  margin: 0;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 1px solid #241312;
+  -webkit-box-shadow: 0px 0px 60px -9px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 60px -9px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 60px -9px rgba(0, 0, 0, 1);
 }
 
 /*
@@ -66,7 +66,7 @@ flip card
 .card-flip:hover .card-front {
   transform: rotateY(-180deg);
 }
-  
+
 .card-flip:hover .card-back {
   transform: rotateY(0deg);
 }
@@ -75,32 +75,38 @@ flip card
 Card
 */
 .scrollbar-cyan::-webkit-scrollbar-track {
--webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: var(--bg-color-2);
-border-radius: 10px; }
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color-2);
+  border-radius: 10px;
+}
 
 .scrollbar-cyan::-webkit-scrollbar {
-width: 12px;
-background-color: var(--bg-color-2); }
+  width: 12px;
+  background-color: var(--bg-color-2);
+}
 
 .scrollbar-cyan::-webkit-scrollbar-thumb {
-border-radius: 10px;
--webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: var(--bg-color-3); }
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color-3);
+}
 
 .scrollbar-cyan {
-scrollbar-color: var(--bg-color-3) var(--bg-color-2);
+  scrollbar-color: var(--bg-color-3) var(--bg-color-2);
 }
 
 .square::-webkit-scrollbar-track {
-border-radius: 10px !important; }
+  border-radius: 10px !important;
+}
 
 .square::-webkit-scrollbar-thumb {
-border-radius: 10px !important; }
+  border-radius: 10px !important;
+}
 
 .thin::-webkit-scrollbar {
-width: 6px; }
+  width: 6px;
+}
 
 .gallery-entry {
-overflow-y: scroll;
+  overflow-y: scroll;
 }
