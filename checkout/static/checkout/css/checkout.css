@@ -1,4 +1,4 @@
- /* CSS code based from Code Institute Lessons and Stripe CSS documentation.  */
+/* CSS code based from Code Institute Lessons and Stripe CSS documentation.  */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -21,44 +21,44 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+  color: #aab7c4;
 }
 
 .fieldset-label {
-    position: relative;
-    right: .5rem;
+  position: relative;
+  right: 0.5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-    color: var(--bg-color-5);
+  color: var(--bg-color-5);
 }
 
 select,
 select option {
-    color: var(--bg-color-5);
+  color: var(--bg-color-5);
 }
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+  color: #aab7c4 !important;
 }
 
 #loading-overlay {
-	display: none;
-	position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(39, 154, 241, .85);
-    z-index: 9999;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(39, 154, 241, 0.85);
+  z-index: 9999;
 }
 
 .loading-spinner {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
 }
