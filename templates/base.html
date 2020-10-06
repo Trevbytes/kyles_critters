@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/chickpeas/image/upload/v1600080820/kyles_critters/apple-touch-icon_xdupfp.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/chickpeas/image/upload/v1600080820/kyles_critters/favicon-32x32_g6kfwf.png">
         <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/chickpeas/image/upload/v1600080820/kyles_critters/favicon-16x16_amchsf.png">
@@ -51,12 +52,12 @@
     <script>
     let map;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map-container-google-16"), {
-    center: { lat: 40.760734, lng: -111.891644 },
-    zoom: 8
-  });
-}
+    function initMap() {
+     map = new google.maps.Map(document.getElementById("map-container-google-16"), {
+     center: { lat: 40.760734, lng: -111.891644 },
+     zoom: 8
+    });
+    }
     </script>
     {% endblock %}
 
