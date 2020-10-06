@@ -2,7 +2,7 @@ Hi {{ message_form.full_name }}!
 
 This is a copy of your message to Kyle's Critters. Your message information is below:
 
-Message Date: {{ message_form.date }}
+Sender's Email: {{ sender_email }}
 
 Subject: {{ message_form.message_form_subject }}
 
