@@ -188,16 +188,21 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.\
+            UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -216,8 +221,8 @@ USE_L10N = True
 USE_TZ = True
 
 # facebook
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # app key
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 # Cloudinary
@@ -248,14 +253,16 @@ else:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    DEFAULT_FROM_EMAIL = "Kyle's Critters <{}>".format(os.environ.get('EMAIL_HOST_USER'))
+    mail = "Kyle's Critters <{}>".format(os.environ.get('EMAIL_HOST_USER'))
+    DEFAULT_FROM_EMAIL = mail
 
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%',
         'height': 250,
         'toolbar_Full': [
-            ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Format', 'Bold', 'Italic', 'Underline',
+             'Strike', 'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Unlink', 'Anchor'],
             ['Table', 'HorizontalRule'],
             ['TextColor', 'BGColor'],

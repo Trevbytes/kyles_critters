@@ -26,8 +26,11 @@ class LoanRequestForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'county': 'County',
-            'critter_request': 'Requested Critter(s) - Click on an Available Critter image(s) -',
-            'request_info': 'Tell us a little about yourself and why you think you would be a good home for the requested critters.' 
+            'critter_request':
+            'Requested Critter(s) - Click on an Available Critter image(s) -',
+            'request_info':
+            'Tell us a little about yourself and why \
+                you think you would be a good home for the requested critters.'
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
@@ -38,4 +41,5 @@ class LoanRequestForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
-            self.fields['country'].widget.attrs['class'] = 'browser-default custom-select'
+            self.fields['country'].widget.attrs['class'] = 'browser-default \
+                custom-select'
