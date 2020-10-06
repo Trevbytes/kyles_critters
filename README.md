@@ -161,11 +161,20 @@ As a Super User I would like to additionally:
 - **CKEditor 6** - CKEditor is used throughout the site to allow users access to a Rich Text Editor. This allows users to format longer text such as descriptions, messages and critter stories.
 
 ### Features Left to Implement
+- Add code to check that Sku codes on products are unique. Do not allow non-unique sku codes to be accepted in the database.
 - Redesign/Refactor Gallery Entries so that all entry information can be presented on all browsers. Currently Apple devices will not create overflow content on the back of entries and have therefor have been disabled for these type of devices. 
 - Refactor models and code to implement Cloudinary's Upload Widget. This would allow users to view and crop their image before uploading. An attempt was made and code has been written to make this happen. Due to time constraints this feature has been moved to future development. Below you can find an image of what the upload widget looked like.
 <img src="https://res.cloudinary.com/chickpeas/image/upload/v1601823226/kyles_critters/screenshots/widget_uxx2yp.jpg">
+
 - Refactor cart code with Ajax to allow the user to add to the cart without being redirecting or refreshing the page.
- 
+- Allow users to sign up to be informed when product is back in stock.
+- Allow users to sign up for a newsletter.
+- Add more store info on the home page.
+- Add customer testimonials on the home page.
+- Allow users to update their saved 'Full Name' info.
+- Allow users to remove their loan requests, if the loan request has not yet been approved.
+- Add a loading page. As more entries are entered in the Critter Gallery this will become more important.
+- Add info on delivery and tax charges. As this web app has been built for a startup petstore, tax will be included in the price and delivery will be determined on a order by order basis. As the startup grows, these charges can be mentioned in the web app as well as add a discount feature.
 ## Technologies Used
 
 - [HTML 5](https://en.wikipedia.org/wiki/HTML5)
@@ -412,7 +421,7 @@ In order to have full functionality after deployment the following accounts must
 
 After navigating to my repo you can download the project to a .zip file or open it in the online IDE Gitpod.
 
-<img src="/static/images/readme/clone_repo.jpg">
+<img src="https://res.cloudinary.com/chickpeas/image/upload/v1602022469/kyles_critters/screenshots/githubkc_ce5ebj.jpg">
 
 For more infomation on how to clone or download the repository click [here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
