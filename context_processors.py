@@ -45,6 +45,7 @@ def message_form(request):
             body = render_to_string(
                 'home/message_emails/message_email_body.html',
                 {'full_name': full_name,
+                 'sender_email': email,
                  'phone_number': phone_number,
                  'message_body': message_body,
                  'message_subject': message_subject,
