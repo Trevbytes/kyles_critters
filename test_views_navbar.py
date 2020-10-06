@@ -45,7 +45,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_get_search_q(self):
-        """ Test search function """
+        """Test search function"""
         Product.objects.create(name='Rat', description='1-description',
                                price=3.7)
         Product.objects.create(name='Mouse', description='2-description',
@@ -60,7 +60,7 @@ class TestViews(TestCase):
         self.assertNotContains(response2, 'Rat')
 
     def test_get_product_categories(self):
-        """ Test search function """
+        """Test search function"""
         Product.objects.create(category=(Category.objects.create(
                                          name='critters',
                                          friendly_name='Critters')),

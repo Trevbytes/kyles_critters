@@ -9,7 +9,9 @@ from profiles.models import UserProfile
 
 def message_form(request):
     """
-    Contact message form. Located in global context as the
+    Contact Message Form
+
+    Located in global context as the
     message form is accessed through the footer in all pages
     of the site.
     """
@@ -73,7 +75,9 @@ def message_form(request):
 
 def images(request):
     """
-    Image context processor for Cloudinary. Most of the images
+    Image context processor for Cloudinary.
+
+    Most of the images
     are proccessed through these keys. They add the correct classes
     and 'on error' events to the images.
     """

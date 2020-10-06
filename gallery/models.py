@@ -10,6 +10,7 @@ from ckeditor.fields import RichTextField
 class GalleryEntry(models.Model):
 
     class Meta:
+        """Update the plural spelling of entry."""
         verbose_name_plural = "Gallery Entries"
 
     entry_number = models.CharField(max_length=32, null=False, editable=False)
@@ -25,19 +26,16 @@ class GalleryEntry(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def _generate_entry_number(self):
-        """
-        Generate a random, unique request number using UUID
-        """
+        """Generate a random, unique request number using UUID"""
         return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set the order number
-        if it hasn't been set already.
-        """
+        """Override the original save method to set the order number
+        if it hasn't been set already."""
         if not self.entry_number:
             self.entry_number = self._generate_entry_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """Returns the entry number."""
         return self.entry_number

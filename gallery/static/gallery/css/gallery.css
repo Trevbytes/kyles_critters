@@ -74,6 +74,10 @@ flip card
 /*
 Card
 */
+.scrollbar-cyan {
+  scrollbar-color: var(--bg-color-3) var(--bg-color-2);
+}
+
 .scrollbar-cyan::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: var(--bg-color-2);
@@ -89,10 +93,6 @@ Card
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: var(--bg-color-3);
-}
-
-.scrollbar-cyan {
-  scrollbar-color: var(--bg-color-3) var(--bg-color-2);
 }
 
 .square::-webkit-scrollbar-track {

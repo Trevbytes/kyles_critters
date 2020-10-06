@@ -4,6 +4,7 @@ from .models import LoanRequest
 
 class LoanRequestForm(forms.ModelForm):
     class Meta:
+        """Uses the Loan Request model."""
         model = LoanRequest
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
@@ -11,10 +12,8 @@ class LoanRequestForm(forms.ModelForm):
                   'county', 'critter_request', 'request_info',)
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
+        """Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field"""
         super().__init__(*args, **kwargs)
         placeholders = {
             'full_name': 'Full Name*',
@@ -39,5 +38,5 @@ class LoanRequestForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             else:
                 self.fields['country'].widget.attrs['class'] = 'browser-default \
-                    custom-select'                
+                    custom-select'
             self.fields[field].label = False

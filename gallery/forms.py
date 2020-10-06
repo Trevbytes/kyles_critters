@@ -6,6 +6,7 @@ from cloudinary.models import CloudinaryField
 class GalleryEntryForm(forms.ModelForm):
 
     class Meta:
+        """Uses Gallery Entry model."""
         model = GalleryEntry
         fields = '__all__'
 

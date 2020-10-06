@@ -3,7 +3,6 @@ from products.models import Product
 
 
 class HomePageTests(TestCase):
-
     """Test whether featured product entries show up on the home page."""
 
     def test_one_product(self):

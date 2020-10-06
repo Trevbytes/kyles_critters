@@ -11,10 +11,8 @@ class MessageForm(forms.Form):
     message_body = forms.CharField(widget=CKEditorWidget())
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
+        """Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field."""
         super().__init__(*args, **kwargs)
         placeholders = {
             'message_full_name': 'Full Name',

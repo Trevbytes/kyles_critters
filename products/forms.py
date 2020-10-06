@@ -6,12 +6,14 @@ from cloudinary.models import CloudinaryField
 class ProductForm(forms.ModelForm):
 
     class Meta:
+        """Uses the Product model."""
         model = Product
         fields = '__all__'
 
     image = CloudinaryField('image', null=True, blank=True)
 
     def __init__(self, *args, **kwargs):
+        """Add categories and subcategories to selection fields."""
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
         sub_categories = SubCategory.objects.all()

@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 class Category(models.Model):
 
     class Meta:
+        """Fix plural spelling error."""
         verbose_name_plural = "Categories"
 
     name = models.CharField(max_length=254)
@@ -21,6 +22,7 @@ class Category(models.Model):
 class SubCategory(models.Model):
 
     class Meta:
+        """Fix plural spelling error."""
         verbose_name_plural = "Sub-Categories"
 
     name = models.CharField(max_length=254)

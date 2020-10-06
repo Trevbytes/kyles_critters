@@ -14,7 +14,7 @@ from django.utils.html import strip_tags
 
 
 def loan(request):
-    """ A view to return the loan a critter page """
+    """A view to return the loan a critter page"""
     if request.method == 'POST':
 
         form_data = {
@@ -71,10 +71,8 @@ def loan(request):
 
 
 def request_success(request, order_number):
-    """
-    Handle successful loan requests and send the user
-    and store a confirmation email.
-    """
+    """Handle successful loan requests and send the user
+    and store a confirmation email."""
     loan_request = get_object_or_404(LoanRequest, order_number=order_number)
     request_email = loan_request.email
     subject = render_to_string(

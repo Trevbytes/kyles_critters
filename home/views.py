@@ -5,7 +5,7 @@ from django.db.models import Q
 
 
 def index(request):
-    """ A view to return the index page """
+    """A view to return the index page"""
 
     products = Product.objects.filter(Q(featured=True))
     context = {

@@ -3,10 +3,9 @@ from products.models import Product
 
 
 def cart_contents(request):
-    """ Cart contents provides the entire site with access to
+    """Cart contents provides the entire site with access to
     cart info such as the items in the cart, the total amount of items,
-    the sub-total, and grand total. """
-
+    the sub-total, and grand total."""
     cart_items = []
     total = 0
     product_count = 0

@@ -3,7 +3,7 @@ from .models import Product, Category, SubCategory
 
 
 class ProductModelTest(TestCase):
-
+    """Test the product Model."""
     def test_string_representation(self):
         product = Product(name="Product Name")
         self.assertEqual(str(product), product.name)
@@ -19,7 +19,6 @@ class ProductModelTest(TestCase):
 
 
 class ProductsPageTests(TestCase):
-
     """Test whether product entries show up on the products page."""
 
     def test_one_product(self):
@@ -55,5 +54,5 @@ class ProductPageTest(TestCase):
                                     id.&lt;/p&gt;',
                                price=5.8)
         response = self.client.get('/products/1')
-        # Client is redirected due to interger use in the url.
+        # Client is redirected due to integer use in the url.
         self.assertEqual(response.status_code, 301)
