@@ -37,7 +37,7 @@ class LoanRequestForm(forms.ModelForm):
             if field != 'country':
                 placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].label = False
-            if field == 'country':
+            else:
                 self.fields['country'].widget.attrs['class'] = 'browser-default \
-                    custom-select'
+                    custom-select'                
+            self.fields[field].label = False
