@@ -11,7 +11,10 @@
          </div>
          <div hidden class="not-safari-back" >
             <h3 class="mx-auto"><strong>{{ entry.critter_name }}</strong></h3>
-            <img class="w-75 rounded mx-auto z-depth-2" src="{{ entry.image.url }}" alt="{{ entry.name }}" onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
+            <img class="w-75 rounded mx-auto z-depth-2"
+                 src="{{ entry.image.url }}" 
+                 alt="{{ entry.name }}"
+                 onerror="this.onerror=null;this.src='https://res.cloudinary.com/chickpeas/image/upload/v1600164143/kyles_critters/noImage_mumbcz.jpg';">
             <p>{{ entry.critter_info|safe }}</p>
             {% if not product %}
             <p><small>Critter Type</small> <a class="badge-pill badge-primary bg-color-3" href="{% url 'product_detail' entry.critter_type.id %}">{{ entry.critter_type }}</a></p>

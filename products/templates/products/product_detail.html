@@ -15,6 +15,9 @@
          </span>
          {% endif %}     
          <p>{{ product.description | safe }}</p>
+         <script>
+         console.log("{{product.description}}");
+         </script>
          <p>${{ product.price }}</p>
          {% if product.ready_to_loan %}
          <span class="badge badge-pill badge-cyan bg-color-3 mb-2">
