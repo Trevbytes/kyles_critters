@@ -105,7 +105,7 @@ Most errors throughout the project have been simple syntax errors that took very
 - Negative numbers or absurdly large numbers can be used for the price of products.
   - Number validation should be added to prevent unintened quantity/price values. However as the price is only edited by staff or admin this is a smaller issue.
 - Occasionally, if a default (error) image is displayed in gallery code, it can cause another gallery entry to overlap the default image. A page refresh fixes this issue.
-
+- Automated tests that contain a Rich Text field in an object fail. 
 ---
 
 ## Pre-Release Testing
