@@ -104,6 +104,8 @@ Most errors throughout the project have been simple syntax errors that took very
 - Mulitiple CKEditors on the same page create duplicate id tags. This is causing no notable difference in functionality.
 - Negative numbers or absurdly large numbers can be used for the price of products.
   - Number validation should be added to prevent unintened quantity/price values. However as the price is only edited by staff or admin this is a smaller issue.
+- Occasionally, if a default (error) image is displayed in gallery code, it can cause another gallery entry to overlap the default image. A page refresh fixes this issue.
+
 ---
 
 ## Pre-Release Testing

@@ -62,7 +62,7 @@ Outside of the Django admin pages. Additonal, user friendly pages were added to 
 
 ### Defensive Design
 
-All secret keys are stored in enviorment variables, with one exception. Google Maps secret key is visable in the code and can be found in the repository. To secure missue of this key, access with the key has been restricted via Google settings.
+All secret keys are stored in enviorment variables, with one exception. Google Maps secret key was visable in the code and can be found in the repository. It was added to enviorment variables later and the key was regenerated. This removes the key from the code and invalidates the key in the repos. However, the key can still be found by inspecting the HTML page source via a tool like Chrome Dev tools. To secure missue of this key, access with the key has been restricted via Google settings.
 
 Purchase quantites have been limited to 20 or less of each product per purchase. As most purchases will most likely be of quantities of 5 or less, 20 is set as a percaution but can be easily adjusted. Users are not allowed to add more and receive a message if they try to do so.
 
