@@ -86,24 +86,31 @@ Most errors throughout the project have been simple syntax errors that took very
 
 ##### Resolved
 
+- An early bug that was caught by automated testing was url links missing '/' at the end of the link.
 - A 404 error with no error details has been seen a few times throughout building the project. The exact reason I suspect has something to do with allauth. The current quick fix is to change the SITE_ID to '2' in the settings. After changing the id the project works again.
 - A Server Error 500 happend when a user submited a Gallery Entry with no critter type.
   - This error happened due to the 'Critter Type' badge located in entries. If no critter type was given no working link would be generated causing all pages with that entry to crash.
   - Python logic was added to the template to not generate the badge if no critter type is given.
-- Negative numbers or absurdly large numbers could be used for the price of products or for quantities.
-  - Number validation has been added to prevent unintened quantity/price values.
+- Negative numbers or absurdly large numbers can be used for quantities of products.
+  - Number validation was added to ensure all quantities are within the range of 1-20.
+- Two javascript files were added to the IDE workspace to get Masonry and ImagesLoaded to work. For some reason opening either of these files causes the workspace to freeze and become unresponsive. The workspace will not allow removal of these files either.
+  - The nessecary code is now loaded from online sources. The files have been added to .gitignore and have never been pushed to GitHub. 
 
 ##### Unresolved
 
-- If a product is removed from the store that is stored in a user's web browser cookies, the error of 'The requested resource was not found on this server' appears for the user. The user can not access the site while those cookies are removed.
-
+- Y-axis overflow is not working on Apple devices.
+  - To maintain correct image sizes, features with a Y-axis overflow have been disabled for Apple devices.
+- If a product that is stored in a user's web browser cookies is removed from the store, the error of 'The requested resource was not found on this server' appears for the user. The user can not access the site until those cookies are removed.
+- Mulitiple CKEditors on the same page create duplicate id tags. This is causing no notable difference in functionality.
+- Negative numbers or absurdly large numbers can be used for the price of products.
+  - Number validation should be added to prevent unintened quantity/price values. However as the price is only edited by staff or admin this is a smaller issue.
 ---
 
 ## Pre-Release Testing
 
----
+These tests were done when the original project was complete but not ready for full release.
 
-##### These other tests were done when the original project was complete but not ready for full release.
+---
 
 ### Code Testing
 
@@ -294,7 +301,9 @@ In order to ensure the site works as required, I manually tested the these aspec
 - Check that order history and loan request accordions work properly. Order numbers can be clicked to navigate to a copy of the order/request. A user can return to the profile instead of the products page when viewing the order/request this way.
   - No errors
 - Check that a user's gallery entries display properly. - No errors
-  **Email & Social Account settings(logged in user)**
+
+**Email & Social Account settings(logged in user)**
+
 - Check that the pages resize properly.
   - No errors
 - Check that all buttons work as intended.
@@ -329,7 +338,7 @@ In order to ensure the site works as required, I manually tested the these aspec
   - No errors
   - _Note:_ Products can be created with a non-unique Sku code. This is not intentional and the fix for this is a high priority future feature.
 - Check that a negative numbers can not be used for the price.
-  - _Fail_ Negative numbers can be used for the price. The staff or admin should be aware of this and fix the price quickly.
+  - _Fail_ Negative numbers can be used for the price. The staff or admin should be aware of this and fix the price quickly if this happens.
 - Check that new products show up in the product card stack, can be filtered and searched and the new critter type can be used in the Critter Gallery to add customer pictures of the critters.
   - No errors
 - Check that featured, ready to loan, and out of stock options work as intended.
@@ -355,12 +364,31 @@ This project has been reviewed/tested by an experienced web developer. A mentor 
 
 This project has been reviewed/tested by friends and family.
 
-A Full Usability test was done when all features were in place. This was done to identify possible bugs as well as ensure that the application is easy-to-use.
+Usability tests were done when all features were in place. This was done to identify possible bugs as well as ensure that the application is easy-to-use.
 
 - Intended Test Audience - A new user interested in purchasing a pet.
 
-**Feedback From User Test**
+**Feedback From User Tests**
 
-After this test the following feedback was given:
+After these tests the following feedback was given:
 
-**Errors After User Test**
+- When viewing a products detail, one sees the "showcase" possibly without knowing what the Critter Gallery is. This could cause confusion for users who might think that the specific "showcase" animals are for sale.
+    - _Fixed:_ Added more text about the showcase for clarity.
+- Gallery text says "critters bought at or sold at". This is essentially the same thing.
+    - _Fixed:_ Clarified wording.
+- Loan a Critter's available critter images has no user feedback when clicked. This can cause users to click on the image mulitiple times before they understand what it does.
+    - _Fixed:_ Added an animation to show when a user clicks on an image. Images can now only be clicked once.
+- The verify email page is unstyled.
+    - _Fixed:_ Styled the page.
+- The quantity box in the cart is very large for a max input of two numbers.
+    - _Fixed:_ Shortened the quantity box.
+- Updating user info causes a server 500 error.
+    - _Fixed:_ This was due to a conflict with the "Send Message" form in Post data. Python logic has been implemented to differentiate these forms.
+- An IP address is displayed in the sent email after requesting to loan a critter.
+    - _Fixed:_ The IP address field variable was removed.
+- A logged in user can edit all gallery entires.
+    - _Fixed:_ This was due to missing code tieing the gallery entries to the owner's user profile. The code was added to fix this issue.
+- The image on the front of Gallery Entries are not resizing properly.
+    - _Fixed:_ This happened for Iphone users. After looking into the issue I found that the cause of this is that the overflow on the back of the card does not work as intended for Apple devices. As a temporary fix, the back of cards have been disabled for Apple device users. The front image displays properly.
+- Gallery Entires were too close together.
+    - _Fixed:_ Space has been added between entries. This looked strange so I added frames around the entries to mimic frames in a physical photo gallery.
