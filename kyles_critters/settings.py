@@ -32,8 +32,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'SECRET_KEY' in os.environ
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#'DEVELOPMENT' in os.environ
+DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ['kyles-crittersv1.herokuapp.com', 'localhost']
 
 
